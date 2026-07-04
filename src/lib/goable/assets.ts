@@ -3,8 +3,8 @@
 const asset = (file: string) => `/goable-assets/${file}`;
 
 export const brand = {
-  logoBlack: asset("logo-preto-crop.png"),
-  logoWhite: asset("logo-branco-crop.png"),
+  logoBlack: asset("logo-preto-tight.png"),
+  logoWhite: asset("logo-branco-tight.png"),
   markBlack: asset("simbolo-preto-crop.png"),
   markWhite: asset("simbolo-branco-crop.png"),
   logoOnWhite: asset("logo-bg-branco.png"),

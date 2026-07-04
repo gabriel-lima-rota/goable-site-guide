@@ -428,7 +428,7 @@
 
 .site-brand-logo {
   display: block;
-  height: 2rem;
+  height: 1.85rem;
   width: auto;
   object-fit: contain;
   object-position: left;
@@ -695,7 +695,7 @@
   }
 
   .site-brand-logo {
-    height: 1.8rem;
+    height: 1.7rem;
   }
 
   .site-mobile-toggle {
