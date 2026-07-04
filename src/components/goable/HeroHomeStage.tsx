@@ -111,16 +111,17 @@ export function HeroHomeStage() {
             <div className="hero-method-list">
               <div className="hero-method-item">
                 <span className="hero-method-num">01</span>
-                <span>Diagnóstico</span>
+                <span>Diagnóstico completo da sua empresa</span>
               </div>
               <div className="hero-method-item">
                 <span className="hero-method-num">02</span>
-                <span>Personalizar sua solução com especialistas</span>
+                <span>Personalização com os nossos especialistas</span>
               </div>
               <div className="hero-method-item">
                 <span className="hero-method-num">03</span>
-                <span>Entregar de forma rápida</span>
+                <span>Entrega na velocidade que a sua urgência pede</span>
               </div>
+
             </div>
           </div>
         </div>
