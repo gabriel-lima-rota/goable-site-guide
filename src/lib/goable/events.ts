@@ -1,0 +1,41 @@
+export type EventKey = "business" | "med" | "gov";
+
+export const eventData = {
+  business: {
+    key: "business" as const,
+    name: "Conect.AI Empresários",
+    date: "24/07/2026",
+    time: "",
+    location: "Instituto Caldeira, Porto Alegre",
+    price: "R$ 3.900 por participante",
+    audience: "Empresários, diretores, líderes e gestores",
+    path: "/conect-ai/business",
+    accent: "violet",
+  },
+  med: {
+    key: "med" as const,
+    name: "Conect.AI MED",
+    date: "22/07/2026",
+    time: "9h às 18h",
+    location: "Instituto Caldeira, Porto Alegre",
+    price: "Sob consulta",
+    audience: "Médicos, clínicas e gestores de saúde",
+    path: "/conect-ai/med",
+    accent: "med",
+    realization: "Faculdade Unimed",
+    support: ["Goable AI", "Unimed Porto Alegre"],
+  },
+  gov: {
+    key: "gov" as const,
+    name: "Conect.AI GOV",
+    date: "23/07/2026",
+    time: "",
+    location: "Instituto Caldeira, Porto Alegre",
+    price: "R$ 3.900 por participante",
+    audience: "Prefeitos, vice-prefeitos, secretários e equipes técnicas",
+    path: "/conect-ai/gov",
+    accent: "gov",
+    realization: "Goable AI",
+    coRealization: "Camila Rodrigues Advocacia",
+  },
+} as const;
