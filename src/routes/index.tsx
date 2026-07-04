@@ -77,6 +77,24 @@ function HomePage() {
       <div className="home-premium-page">
         <HeroHomeStage />
 
+        <div className="home-method-bridge">
+          <div className="home-method-bridge-title">Como vamos solucionar seu problema</div>
+          <div className="home-method-bridge-grid">
+            <article className="home-method-box">
+              <span className="home-method-box-num">01</span>
+              <h3>Diagnóstico completo da sua empresa</h3>
+            </article>
+            <article className="home-method-box">
+              <span className="home-method-box-num">02</span>
+              <h3>Personalização com os nossos especialistas</h3>
+            </article>
+            <article className="home-method-box">
+              <span className="home-method-box-num">03</span>
+              <h3>Entrega na velocidade que a sua urgência pede</h3>
+            </article>
+          </div>
+        </div>
+
         <section className="home-pain-chapter">
           <div className="home-section-motion-waves" aria-hidden />
           <div className="home-section-inner">
