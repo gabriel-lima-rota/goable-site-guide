@@ -176,13 +176,12 @@ function HomePage() {
               <PhotoPlaceholder
                 tone="dark"
                 ratio="4/5"
-                src={photos.edgarPortrait}
-                overlayLabel="Edgar Abreu"
-                label="Liderança Goable"
+                src={photos.edgarSmile}
                 parallax
                 reveal
                 compact
               />
+
 
               <div className="home-specialist-panel">
                 <span>CEO e Founder</span>
