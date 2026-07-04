@@ -9,38 +9,148 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as ConectAiRouteImport } from './routes/conect-ai'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConectAiIndexRouteImport } from './routes/conect-ai.index'
+import { Route as ConectAiMedRouteImport } from './routes/conect-ai.med'
+import { Route as ConectAiGovRouteImport } from './routes/conect-ai.gov'
+import { Route as ConectAiBusinessRouteImport } from './routes/conect-ai.business'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConectAiRoute = ConectAiRouteImport.update({
+  id: '/conect-ai',
+  path: '/conect-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConectAiIndexRoute = ConectAiIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ConectAiRoute,
+} as any)
+const ConectAiMedRoute = ConectAiMedRouteImport.update({
+  id: '/med',
+  path: '/med',
+  getParentRoute: () => ConectAiRoute,
+} as any)
+const ConectAiGovRoute = ConectAiGovRouteImport.update({
+  id: '/gov',
+  path: '/gov',
+  getParentRoute: () => ConectAiRoute,
+} as any)
+const ConectAiBusinessRoute = ConectAiBusinessRouteImport.update({
+  id: '/business',
+  path: '/business',
+  getParentRoute: () => ConectAiRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conect-ai': typeof ConectAiRouteWithChildren
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
+  '/conect-ai/business': typeof ConectAiBusinessRoute
+  '/conect-ai/gov': typeof ConectAiGovRoute
+  '/conect-ai/med': typeof ConectAiMedRoute
+  '/conect-ai/': typeof ConectAiIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
+  '/conect-ai/business': typeof ConectAiBusinessRoute
+  '/conect-ai/gov': typeof ConectAiGovRoute
+  '/conect-ai/med': typeof ConectAiMedRoute
+  '/conect-ai': typeof ConectAiIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conect-ai': typeof ConectAiRouteWithChildren
+  '/contato': typeof ContatoRoute
+  '/sobre': typeof SobreRoute
+  '/conect-ai/business': typeof ConectAiBusinessRoute
+  '/conect-ai/gov': typeof ConectAiGovRoute
+  '/conect-ai/med': typeof ConectAiMedRoute
+  '/conect-ai/': typeof ConectAiIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/conect-ai'
+    | '/contato'
+    | '/sobre'
+    | '/conect-ai/business'
+    | '/conect-ai/gov'
+    | '/conect-ai/med'
+    | '/conect-ai/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contato'
+    | '/sobre'
+    | '/conect-ai/business'
+    | '/conect-ai/gov'
+    | '/conect-ai/med'
+    | '/conect-ai'
+  id:
+    | '__root__'
+    | '/'
+    | '/conect-ai'
+    | '/contato'
+    | '/sobre'
+    | '/conect-ai/business'
+    | '/conect-ai/gov'
+    | '/conect-ai/med'
+    | '/conect-ai/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConectAiRoute: typeof ConectAiRouteWithChildren
+  ContatoRoute: typeof ContatoRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conect-ai': {
+      id: '/conect-ai'
+      path: '/conect-ai'
+      fullPath: '/conect-ai'
+      preLoaderRoute: typeof ConectAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +158,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conect-ai/': {
+      id: '/conect-ai/'
+      path: '/'
+      fullPath: '/conect-ai/'
+      preLoaderRoute: typeof ConectAiIndexRouteImport
+      parentRoute: typeof ConectAiRoute
+    }
+    '/conect-ai/med': {
+      id: '/conect-ai/med'
+      path: '/med'
+      fullPath: '/conect-ai/med'
+      preLoaderRoute: typeof ConectAiMedRouteImport
+      parentRoute: typeof ConectAiRoute
+    }
+    '/conect-ai/gov': {
+      id: '/conect-ai/gov'
+      path: '/gov'
+      fullPath: '/conect-ai/gov'
+      preLoaderRoute: typeof ConectAiGovRouteImport
+      parentRoute: typeof ConectAiRoute
+    }
+    '/conect-ai/business': {
+      id: '/conect-ai/business'
+      path: '/business'
+      fullPath: '/conect-ai/business'
+      preLoaderRoute: typeof ConectAiBusinessRouteImport
+      parentRoute: typeof ConectAiRoute
+    }
   }
 }
 
+interface ConectAiRouteChildren {
+  ConectAiBusinessRoute: typeof ConectAiBusinessRoute
+  ConectAiGovRoute: typeof ConectAiGovRoute
+  ConectAiMedRoute: typeof ConectAiMedRoute
+  ConectAiIndexRoute: typeof ConectAiIndexRoute
+}
+
+const ConectAiRouteChildren: ConectAiRouteChildren = {
+  ConectAiBusinessRoute: ConectAiBusinessRoute,
+  ConectAiGovRoute: ConectAiGovRoute,
+  ConectAiMedRoute: ConectAiMedRoute,
+  ConectAiIndexRoute: ConectAiIndexRoute,
+}
+
+const ConectAiRouteWithChildren = ConectAiRoute._addFileChildren(
+  ConectAiRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConectAiRoute: ConectAiRouteWithChildren,
+  ContatoRoute: ContatoRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
