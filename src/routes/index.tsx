@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
-import { CTAButton } from "@/components/goable/CTAButton";
 import { EventPhotoSlot } from "@/components/goable/EventPhotoSlot";
 import { HeroHomeStage } from "@/components/goable/HeroHomeStage";
+import { HomeDiagnosticChat } from "@/components/goable/HomeDiagnosticChat";
 import { MethodSection } from "@/components/goable/MethodSection";
 import { PhotoPlaceholder } from "@/components/goable/PhotoPlaceholder";
 import { Slot } from "@/components/goable/Slot";
@@ -206,22 +206,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="home-final-chapter">
-          <div className="home-section-inner">
-            <div className="home-final-card">
-              <div className="home-final-wave" aria-hidden />
-              <img src={glass.gSymbol} alt="" aria-hidden draggable={false} />
-              <div>
-                <span>Próximo passo</span>
-                <Slot id="COPY_HOME_FINAL_CTA_TITLE" as="h2" />
-                <p>
-                  Conte onde a operação trava. A Goable entende o contexto e transforma o problema certo em sistema.
-                </p>
-                <CTAButton variant="primary" size="lg">Contato</CTAButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeDiagnosticChat />
       </div>
     </AppShell>
   );
