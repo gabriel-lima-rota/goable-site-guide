@@ -56,7 +56,7 @@ export const photos = {
   cracha: asset("combo-studios-9.webp"),
   edgarBackdrop: asset("combo-studios-589.webp"),
   edgarPortrait: asset("combo-studios-591.webp"),
-  edgarSmile: asset("combo-studios-592.webp"),
+  edgarSmile: asset("combo-studios-611.jpg"),
   aiSprint: asset("combo-studios-652.webp"),
 };
 
