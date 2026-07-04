@@ -105,24 +105,6 @@ export function HeroHomeStage() {
             </CTAButton>
             <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI</CTAButton>
           </div>
-
-          <div className="hero-method fade-up-delay-3" aria-label="Como vamos solucionar seu problema">
-            <div className="hero-method-title">Como vamos solucionar seu problema</div>
-            <div className="hero-method-list">
-              <div className="hero-method-item">
-                <span className="hero-method-num">01</span>
-                <span>Diagnóstico</span>
-              </div>
-              <div className="hero-method-item">
-                <span className="hero-method-num">02</span>
-                <span>Personalizar sua solução com especialistas</span>
-              </div>
-              <div className="hero-method-item">
-                <span className="hero-method-num">03</span>
-                <span>Entregar de forma rápida</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="hero-symbol-stage" aria-hidden>
