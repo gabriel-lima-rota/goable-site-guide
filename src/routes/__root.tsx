@@ -44,7 +44,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="text-xl font-semibold tracking-normal text-foreground">
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -77,21 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Goable AI | Sistemas inteligentes sob medida" },
+      { name: "description", content: "Goable AI cria sistemas inteligentes sob medida. Antes da solução, o entendimento." },
+      { name: "author", content: "Goable AI" },
+      { property: "og:title", content: "Goable AI | Sistemas inteligentes sob medida" },
+      { property: "og:description", content: "Goable AI cria sistemas inteligentes sob medida. Antes da solução, o entendimento." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Goable AI | Sistemas inteligentes sob medida" },
+      { name: "twitter:description", content: "Goable AI cria sistemas inteligentes sob medida. Antes da solução, o entendimento." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/QcFQOlQPTkP50xLNR4vy6A6bW1p2/social-images/social-1782952951483-COMBO_STUDIOS-644.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/QcFQOlQPTkP50xLNR4vy6A6bW1p2/social-images/social-1782952951483-COMBO_STUDIOS-644.webp" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
@@ -102,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
