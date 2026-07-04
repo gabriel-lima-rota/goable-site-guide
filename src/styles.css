@@ -2,6 +2,19 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/4379f4d5-fbd9-461b-b1d4-c55dd6f27551/Satoshi-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/113f435c-2bb7-47ec-8e9d-53d26512c5b0/Satoshi-LightItalic.otf') format('opentype'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/c67edbca-bc89-4d78-a0f5-128af2c4a5c3/Satoshi-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/9d0c842e-af3f-4673-a86d-9cb417b33c48/Satoshi-Italic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/b5793add-55c7-4678-96b9-0fdbdd0b8b4f/Satoshi-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/f519d2e8-305d-442c-bfcd-a8a49c2cce15/Satoshi-MediumItalic.otf') format('opentype'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/e23a4d36-ec3a-49ff-9e16-2c173ef0ff82/Satoshi-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/70a2dc46-b3a5-4ade-8ff2-9fbe5f943183/Satoshi-BoldItalic.otf') format('opentype'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/f1595dba-775b-45c6-ae04-3b5b45544617/Satoshi-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/__l5e/assets-v1/eb28246c-0102-4e29-9a28-bbf9e8b27713/Satoshi-BlackItalic.otf') format('opentype'); font-weight: 900; font-style: italic; font-display: swap; }
+
+
+
 @custom-variant dark (&:is(.dark *));
 
 /*
