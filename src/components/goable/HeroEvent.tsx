@@ -56,7 +56,7 @@ export function HeroEvent({
             <Slot
               id={h1Slot}
               as="h1"
-              className={`fade-up-delay-1 text-5xl md:text-7xl font-semibold leading-[0.98] tracking-normal max-w-[16ch] ${headingColor}`}
+              className={`goable-page-title fade-up-delay-1 ${headingColor}`}
             />
             {subSlot ? (
               <div className="mt-6 max-w-xl fade-up-delay-2">

@@ -105,12 +105,6 @@ export function HeroEventStage({
   const t = themeMap[theme];
   void centerBadge;
   const overlayNodes = nodes.slice(0, 4);
-  const h1Size =
-    theme === "gov"
-      ? "text-[clamp(2.4rem,4.6vw,4.4rem)]"
-      : theme === "med"
-      ? "text-[clamp(2.5rem,4.8vw,4.75rem)]"
-      : "text-[clamp(2.75rem,5.4vw,5.25rem)]";
   const h1MaxCh = theme === "gov" ? "max-w-[14ch]" : "max-w-[15ch]";
   const dockStyle: CSSProperties = {
     background:
@@ -143,7 +137,7 @@ export function HeroEventStage({
             <Slot
               id={h1Slot}
               as="h1"
-              className={`fade-up-delay-1 ${h1Size} font-semibold leading-[1.02] tracking-normal ${h1MaxCh} ${t.headingColor}`}
+              className={`goable-page-title fade-up-delay-1 ${h1MaxCh} ${t.headingColor}`}
             />
             {subSlot ? (
               <div className="mt-5 max-w-xl fade-up-delay-2">

@@ -156,7 +156,7 @@ function BusinessPage() {
 
       <Section bg="dark">
         <div className="text-center max-w-2xl mx-auto">
-          <Slot id="COPY_BUSINESS_FINAL_CTA_TITLE" as="h2" className="text-3xl md:text-5xl font-semibold text-[var(--soft-white)]" />
+          <Slot id="COPY_BUSINESS_FINAL_CTA_TITLE" as="h2" className="goable-section-title text-[var(--soft-white)]" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <CTAButton variant="event" size="lg">Garantir meu ingresso</CTAButton>
             <CTAButton variant="secondary" size="lg">Falar com a equipe</CTAButton>

@@ -160,7 +160,7 @@ function MedPage() {
 
       <Section bg="dark">
         <div className="text-center max-w-2xl mx-auto">
-          <Slot id="COPY_MED_FINAL_CTA_TITLE" as="h2" className="text-3xl md:text-5xl font-semibold text-[var(--soft-white)]" />
+          <Slot id="COPY_MED_FINAL_CTA_TITLE" as="h2" className="goable-section-title text-[var(--soft-white)]" />
           <div className="mt-8">
             <CTAButton variant="med" size="lg">Falar com a equipe</CTAButton>
           </div>

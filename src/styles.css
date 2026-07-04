@@ -2261,7 +2261,7 @@
   --home-type-body-lg: 1.06rem;
   --home-type-card: 0.92rem;
   --home-type-card-title: 1.05rem;
-  --home-type-section: 2.3rem;
+  --home-type-section: var(--home-type-hero);
   --home-type-panel: 2rem;
   --home-type-hero: 1.78rem;
   font-family: var(--font-sans);
@@ -2269,6 +2269,26 @@
 
 .home-premium-page :where(h1, h2, h3, h4, p, a, button, span, strong) {
   letter-spacing: 0;
+}
+
+.goable-section-title {
+  display: block;
+  max-width: 13.5ch;
+  font-size: 1.78rem;
+  line-height: 0.96;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.goable-page-title {
+  display: block;
+  max-width: 16ch;
+  font-size: 1.78rem;
+  line-height: 0.96;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .hero-headline {
@@ -2409,7 +2429,6 @@
   .home-premium-page {
     --home-type-body: 1.04rem;
     --home-type-body-lg: 1.1rem;
-    --home-type-section: 3.15rem;
     --home-type-panel: 2.55rem;
     --home-type-hero: 2.6rem;
   }
@@ -2427,6 +2446,14 @@
   .home-section-inner {
     padding-block: 6rem;
   }
+
+  .goable-section-title {
+    font-size: 2.6rem;
+  }
+
+  .goable-page-title {
+    font-size: 2.6rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2434,7 +2461,6 @@
     --home-type-kicker: 0.72rem;
     --home-type-body: 1.08rem;
     --home-type-body-lg: 1.16rem;
-    --home-type-section: 4.45rem;
     --home-type-panel: 3.25rem;
     --home-type-hero: 2.9rem;
   }
@@ -2452,12 +2478,27 @@
   .home-section-inner {
     padding-block: 7.2rem;
   }
+
+  .goable-section-title {
+    font-size: 2.9rem;
+  }
+
+  .goable-page-title {
+    font-size: 2.9rem;
+  }
 }
 
 @media (min-width: 1280px) {
   .home-premium-page {
-    --home-type-section: 4.85rem;
     --home-type-hero: 3.05rem;
+  }
+
+  .goable-section-title {
+    font-size: 3.05rem;
+  }
+
+  .goable-page-title {
+    font-size: 3.05rem;
   }
 }
 
@@ -2750,7 +2791,6 @@
 .home-pain-chapter .home-section-heading h2 {
   color: transparent;
   max-width: 14.2ch;
-  font-size: clamp(3.35rem, 5.1vw, 4.35rem);
   background:
     linear-gradient(180deg, #F4F6FA 0%, #B9AEFF 132%);
   background-clip: text;
@@ -3723,7 +3763,6 @@
 
 .home-final-card h2 {
   max-width: 11.6ch;
-  font-size: clamp(3.2rem, 5vw, 4.6rem);
 }
 
 .home-final-card p {

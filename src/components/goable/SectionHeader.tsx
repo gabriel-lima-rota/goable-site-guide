@@ -18,7 +18,7 @@ export function SectionHeader({
           {eyebrow}
         </div>
       ) : null}
-      <Slot id={titleSlot} as="h2" className="text-3xl md:text-5xl font-semibold text-[var(--goable-black)]" />
+      <Slot id={titleSlot} as="h2" className="goable-section-title text-[var(--goable-black)]" />
       {subSlot ? (
         <div className="mt-4">
           <Slot id={subSlot} as="p" className="text-base md:text-lg text-muted-foreground" />

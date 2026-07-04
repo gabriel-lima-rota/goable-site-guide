@@ -38,7 +38,7 @@ function ConectAiIndex() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--strategic-violet)] pulse-dot" />
                 Conect.AI
               </div>
-              <Slot id="COPY_CONNECT_HERO_H1" as="h1" className="fade-up-delay-1 mt-5 text-4xl md:text-6xl lg:text-[4.75rem] font-semibold leading-[1.0] tracking-normal text-[var(--goable-black)] max-w-[16ch]" />
+              <Slot id="COPY_CONNECT_HERO_H1" as="h1" className="goable-page-title fade-up-delay-1 mt-5 text-[var(--goable-black)]" />
               <div className="mt-7 max-w-lg fade-up-delay-2">
                 <Slot id="COPY_CONNECT_HERO_SUB" as="p" className="text-lg text-muted-foreground" />
               </div>
@@ -132,7 +132,7 @@ function ConectAiIndex() {
 
       <Section bg="dark">
         <div className="text-center max-w-2xl mx-auto">
-          <Slot id="COPY_CONNECT_FINAL_CTA_TITLE" as="h2" className="text-3xl md:text-5xl font-semibold text-[var(--soft-white)]" />
+          <Slot id="COPY_CONNECT_FINAL_CTA_TITLE" as="h2" className="goable-section-title text-[var(--soft-white)]" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <CTAButton variant="primary" size="lg">Falar com a Goable</CTAButton>
             <CTAButton variant="ghost" size="lg" to="/conect-ai/business">Ver edições</CTAButton>

@@ -44,7 +44,7 @@ export function HeroEditorial({
             <Slot
               id={h1Slot}
               as="h1"
-              className="fade-up-delay-1 text-5xl md:text-7xl lg:text-[5.25rem] font-semibold leading-[0.98] tracking-normal text-[var(--goable-black)] max-w-[16ch]"
+              className="goable-page-title fade-up-delay-1 text-[var(--goable-black)]"
             />
             {subSlot ? (
               <div className="mt-8 max-w-lg fade-up-delay-2">

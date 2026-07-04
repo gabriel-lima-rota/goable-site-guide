@@ -99,7 +99,7 @@ function ContatoPage() {
                   <Slot
                     id="COPY_CONTACT_HERO_H1"
                     as="h1"
-                    className="fade-up-delay-1 mt-5 text-4xl md:text-5xl font-semibold leading-[1.04] tracking-normal text-[var(--goable-black)]"
+                    className="goable-page-title fade-up-delay-1 mt-5 text-[var(--goable-black)]"
                   />
                   <Slot
                     id="COPY_CONTACT_HERO_SUB"
