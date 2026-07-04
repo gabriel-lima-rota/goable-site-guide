@@ -8,13 +8,14 @@ export default defineTool({
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async () => {
-    const { events } = await import("@/lib/goable/events");
-    const items = Object.values(events).map((e: any) => ({
-      slug: e.slug,
-      title: e.title,
+    const { eventData } = await import("@/lib/goable/events");
+    const items = Object.values(eventData).map((e) => ({
+      key: e.key,
+      name: e.name,
       date: e.date,
+      location: e.location,
       audience: e.audience,
-      url: `/conect-ai/${e.slug}`,
+      url: e.path,
     }));
     return {
       content: [{ type: "text", text: JSON.stringify(items, null, 2) }],
