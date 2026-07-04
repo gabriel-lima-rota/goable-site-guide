@@ -30,13 +30,13 @@ export function SpecialistBand() {
               <PhotoPlaceholder
                 tone="violet"
                 ratio="4/5"
-                label="Edgar Abreu"
                 overlayLabel="Liderança"
                 src={photos.edgarSmile}
                 parallax
                 reveal
                 compact
               />
+
             </div>
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.24em] text-[var(--deep-violet)]">
