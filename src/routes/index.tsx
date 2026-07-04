@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
 import { EventPhotoSlot } from "@/components/goable/EventPhotoSlot";
 import { HeroHomeStage } from "@/components/goable/HeroHomeStage";
+import { MethodSection } from "@/components/goable/MethodSection";
 import { PhotoPlaceholder } from "@/components/goable/PhotoPlaceholder";
 import { Slot } from "@/components/goable/Slot";
-import { glass, glass3d, gradientGlass, photos } from "@/lib/goable/assets";
+import { glass, gradientGlass, photos } from "@/lib/goable/assets";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -41,12 +42,6 @@ const painItems: Array<{ key: PainKey; label: string; title: string; body: strin
     title: "O processo muda, mas o sistema não acompanha",
     body: "A empresa cria exceções todos os dias e a tecnologia vira barreira.",
   },
-];
-
-const methodSteps = [
-  ["01", "Diagnóstico", "Entender a raiz antes de falar em ferramenta."],
-  ["02", "Arquitetura", "Desenhar sistema, dados, regras e jornada."],
-  ["03", "Execução", "Implementar com especialistas e medir no uso real."],
 ];
 
 const diagnosticCaption: Record<PainKey, string> = {
@@ -126,40 +121,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="home-method-chapter">
-          <div className="home-method-liquid-bg" aria-hidden>
-            <img src={glass3d.loop} alt="" draggable={false} />
-          </div>
-          <div className="home-section-inner">
-            <div className="home-method-layout">
-              <div className="home-section-heading">
-                <span>Método</span>
-                <Slot id="COPY_HOME_METHOD_TITLE" as="h2" />
-                <p>
-                  A Goable não força a empresa a caber em um software. O sistema nasce da operação, dos dados e da decisão que precisa acontecer melhor.
-                </p>
-              </div>
-
-              <div className="home-method-board">
-                <div className="home-method-board-head">
-                  <span>Mapa de implantação</span>
-                  <strong>sob medida</strong>
-                </div>
-                {methodSteps.map(([number, title, body]) => (
-                  <article className="home-method-step" key={number}>
-                    <strong>{number}</strong>
-                    <h3>{title}</h3>
-                    <p>{body}</p>
-                  </article>
-                ))}
-                <div className="home-method-result">
-                  <CheckCircle2 aria-hidden className="h-5 w-5" />
-                  <span>Sistema funcionando, medido e ajustado com o time.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <MethodSection />
 
         <section className="home-specialist-chapter">
           <div className="home-section-motion-waves home-section-motion-waves-soft" aria-hidden />
