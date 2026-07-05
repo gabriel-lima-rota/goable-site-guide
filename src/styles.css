@@ -4768,7 +4768,7 @@
 }
 
 .home-diagnostic-chat-chapter > .home-section-inner {
-  padding-top: clamp(4.6rem, 8vw, 7rem);
+  padding-top: clamp(6.4rem, 9vw, 8.4rem);
   padding-bottom: clamp(4.8rem, 8vw, 7.4rem);
 }
 
@@ -4858,6 +4858,7 @@
   justify-content: flex-start;
   padding: clamp(1rem, 2vw, 2rem);
   padding-top: clamp(5.2rem, 7vw, 6.6rem);
+  transform: translateY(clamp(3rem, 4.8vw, 4.35rem));
 }
 
 .home-diagnostic-chat-copy > span {
@@ -5265,6 +5266,7 @@
 
   .home-diagnostic-chat-copy {
     padding-bottom: 0;
+    transform: none;
   }
 
   .home-diagnostic-chat-copy h2 {
