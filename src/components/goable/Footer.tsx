@@ -1,43 +1,78 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { CTAButton } from "./CTAButton";
-import { brand } from "@/lib/goable/assets";
+import { brand, glass } from "@/lib/goable/assets";
+
+const navGroups = [
+  {
+    title: "Empresa",
+    links: [
+      { label: "Home", to: "/" },
+      { label: "Sobre", to: "/sobre" },
+      { label: "Contato", to: "/contato" },
+    ],
+  },
+  {
+    title: "Conect.AI",
+    links: [
+      { label: "Visão geral", to: "/conect-ai" },
+      { label: "Empresários", to: "/conect-ai/business" },
+      { label: "MED", to: "/conect-ai/med" },
+      { label: "GOV", to: "/conect-ai/gov" },
+    ],
+  },
+  {
+    title: "Ação",
+    links: [
+      { label: "Agendar diagnóstico", to: "/contato" },
+      { label: "Falar com a Goable", to: "/contato" },
+    ],
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-[var(--border)] bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
-            <img
-              src={brand.logoBlack}
-              alt="Goable AI"
-              className="block h-10 w-[140px] object-cover object-center select-none"
-              draggable={false}
-            />
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              Clareza para transformar.
+    <footer className="goable-footer">
+      <div className="goable-footer-shell">
+        <div className="goable-footer-glass" aria-hidden>
+          <img src={glass.gSymbol} alt="" draggable={false} />
+        </div>
+
+        <div className="goable-footer-main">
+          <div className="goable-footer-brand">
+            <Link to="/" aria-label="Goable AI" className="goable-footer-logo-link">
+              <img
+                src={brand.logoWhite}
+                alt="Goable AI"
+                className="goable-footer-logo"
+                draggable={false}
+              />
+            </Link>
+            <p>
+              Sistemas inteligentes para empresas que não cabem em soluções genéricas.
             </p>
-            <div className="mt-6">
-              <CTAButton variant="primary" size="sm">Contato</CTAButton>
+            <div className="goable-footer-actions">
+              <CTAButton variant="primary" size="sm" to="/contato">
+                Contato
+              </CTAButton>
+              <Link to="/conect-ai" className="goable-footer-ghost-link">
+                Conect.AI
+                <ArrowUpRight size={14} />
+              </Link>
             </div>
           </div>
-          <FooterCol title="Empresa" links={[
-            { label: "Home", to: "/" },
-            { label: "Sobre", to: "/sobre" },
-            { label: "Contato", to: "/contato" },
-          ]} />
-          <FooterCol title="Conect.AI" links={[
-            { label: "Visão geral", to: "/conect-ai" },
-            { label: "Empresários", to: "/conect-ai/business" },
-            { label: "MED", to: "/conect-ai/med" },
-            { label: "GOV", to: "/conect-ai/gov" },
-          ]} />
-          <FooterCol title="Institucional" links={[
-            { label: "Contato", to: "/contato" },
-          ]} />
+
+          <nav className="goable-footer-nav" aria-label="Navegação do rodapé">
+            {navGroups.map((group) => (
+              <FooterCol key={group.title} title={group.title} links={group.links} />
+            ))}
+          </nav>
         </div>
-        <div className="mt-12 border-t border-[var(--border)] pt-6 text-xs text-muted-foreground">
-          Goable AI · Sistemas inteligentes sob medida
+
+        <div className="goable-footer-bottom">
+          <span>Goable AI</span>
+          <span>Sistemas inteligentes sob medida</span>
+          <span>IA aplicada à empresa real</span>
         </div>
       </div>
     </footer>
@@ -46,16 +81,12 @@ export function Footer() {
 
 function FooterCol({ title, links }: { title: string; links: Array<{ label: string; to: string }> }) {
   return (
-    <div>
-      <div className="text-xs uppercase tracking-[0.2em] text-[var(--goable-black)] font-medium">
-        {title}
-      </div>
-      <ul className="mt-4 space-y-2 text-sm">
-        {links.map((l) => (
-          <li key={l.to + l.label}>
-            <Link to={l.to} className="text-muted-foreground hover:text-[var(--goable-black)] transition-colors">
-              {l.label}
-            </Link>
+    <div className="goable-footer-col">
+      <strong>{title}</strong>
+      <ul>
+        {links.map((link) => (
+          <li key={`${link.to}-${link.label}`}>
+            <Link to={link.to}>{link.label}</Link>
           </li>
         ))}
       </ul>
