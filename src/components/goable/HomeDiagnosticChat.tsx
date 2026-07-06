@@ -104,14 +104,10 @@ export function HomeDiagnosticChat() {
   return (
     <section className="home-final-chapter home-diagnostic-chat-chapter">
       <div className="home-section-inner">
-        <div className="home-diagnostic-chat-card">
-          <div className="home-diagnostic-chat-bg" aria-hidden>
-            <img src={glass.gSymbol} alt="" draggable={false} />
-          </div>
-
+        <div className="home-diagnostic-final-shell">
           <div className="home-diagnostic-chat-copy">
             <span>Próximo passo</span>
-            <h2>Agende seu diagnóstico com contexto</h2>
+            <h2>Diagnóstico rápido para entender sua operação</h2>
             <p>
               Responda quatro perguntas rápidas. A Goable entende o cenário e prepara uma reunião mais precisa.
             </p>
@@ -130,97 +126,103 @@ export function HomeDiagnosticChat() {
             </div>
           </div>
 
-          <div className="home-diagnostic-chat-panel">
-            <div className="home-diagnostic-chat-topbar">
-              <div className="home-product-dots" aria-hidden>
-                <span />
-                <span />
-                <span />
+          <div className="home-diagnostic-chat-card">
+            <div className="home-diagnostic-chat-bg" aria-hidden>
+              <img src={glass.gSymbol} alt="" draggable={false} />
+            </div>
+
+            <div className="home-diagnostic-chat-panel">
+              <div className="home-diagnostic-chat-topbar">
+                <div className="home-product-dots" aria-hidden>
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <strong>Diagnóstico Goable</strong>
+                <em>{sent ? "registrado" : "ao vivo"}</em>
               </div>
-              <strong>Diagnóstico Goable</strong>
-              <em>{sent ? "registrado" : "ao vivo"}</em>
-            </div>
 
-            <div className="home-diagnostic-chat-thread" ref={scroller}>
-              {messages.map((message, index) => (
-                <div
-                  key={`${message.role}-${index}`}
-                  className={`home-diagnostic-message is-${message.role}`}
-                >
-                  {message.role === "bot" ? <span>Goable</span> : null}
-                  <p>{message.text}</p>
-                </div>
-              ))}
-              {step !== "done" ? (
-                <div className="home-diagnostic-typing" aria-hidden>
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              ) : null}
-            </div>
-
-            <div className="home-diagnostic-chat-actions">
-              {step === "employees" ? (
-                <OptionGrid options={employeeOptions} onSelect={selectEmployees} />
-              ) : null}
-
-              {step === "area" ? (
-                <OptionGrid options={areaOptions} onSelect={selectArea} />
-              ) : null}
-
-              {step === "problems" ? (
-                <>
-                  <div className="home-diagnostic-options">
-                    {problemOptions.map((option) => (
-                      <button
-                        type="button"
-                        key={option}
-                        className={problems.includes(option) ? "is-selected" : ""}
-                        onClick={() => toggleProblem(option)}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="home-diagnostic-send"
-                    disabled={!problems.length}
-                    onClick={confirmProblems}
+              <div className="home-diagnostic-chat-thread" ref={scroller}>
+                {messages.map((message, index) => (
+                  <div
+                    key={`${message.role}-${index}`}
+                    className={`home-diagnostic-message is-${message.role}`}
                   >
-                    Continuar
-                    <ArrowRight size={16} />
-                  </button>
-                </>
-              ) : null}
+                    {message.role === "bot" ? <span>Goable</span> : null}
+                    <p>{message.text}</p>
+                  </div>
+                ))}
+                {step !== "done" ? (
+                  <div className="home-diagnostic-typing" aria-hidden>
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                ) : null}
+              </div>
 
-              {step === "details" ? (
-                <form
-                  className="home-diagnostic-details"
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    finish();
-                  }}
-                >
-                  <textarea
-                    value={details}
-                    onChange={(event) => setDetails(event.target.value)}
-                    placeholder="Exemplo: perdemos follow-up, os dados ficam em planilhas e a gestão não sabe onde a operação trava."
-                  />
-                  <button type="submit" className="home-diagnostic-send" disabled={!details.trim()}>
-                    Enviar diagnóstico
-                    <ArrowRight size={16} />
-                  </button>
-                </form>
-              ) : null}
+              <div className="home-diagnostic-chat-actions">
+                {step === "employees" ? (
+                  <OptionGrid options={employeeOptions} onSelect={selectEmployees} />
+                ) : null}
 
-              {step === "done" ? (
-                <div className="home-diagnostic-done">
-                  <CheckCircle2 size={18} />
-                  <span>Pré-diagnóstico registrado. Entraremos em contato para montar a reunião.</span>
-                </div>
-              ) : null}
+                {step === "area" ? (
+                  <OptionGrid options={areaOptions} onSelect={selectArea} />
+                ) : null}
+
+                {step === "problems" ? (
+                  <>
+                    <div className="home-diagnostic-options">
+                      {problemOptions.map((option) => (
+                        <button
+                          type="button"
+                          key={option}
+                          className={problems.includes(option) ? "is-selected" : ""}
+                          onClick={() => toggleProblem(option)}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      className="home-diagnostic-send"
+                      disabled={!problems.length}
+                      onClick={confirmProblems}
+                    >
+                      Continuar
+                      <ArrowRight size={16} />
+                    </button>
+                  </>
+                ) : null}
+
+                {step === "details" ? (
+                  <form
+                    className="home-diagnostic-details"
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      finish();
+                    }}
+                  >
+                    <textarea
+                      value={details}
+                      onChange={(event) => setDetails(event.target.value)}
+                      placeholder="Exemplo: perdemos follow-up, os dados ficam em planilhas e a gestão não sabe onde a operação trava."
+                    />
+                    <button type="submit" className="home-diagnostic-send" disabled={!details.trim()}>
+                      Enviar diagnóstico
+                      <ArrowRight size={16} />
+                    </button>
+                  </form>
+                ) : null}
+
+                {step === "done" ? (
+                  <div className="home-diagnostic-done">
+                    <CheckCircle2 size={18} />
+                    <span>Pré-diagnóstico registrado. Entraremos em contato para montar a reunião.</span>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
