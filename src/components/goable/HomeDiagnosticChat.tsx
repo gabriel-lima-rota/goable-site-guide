@@ -111,10 +111,15 @@ export function HomeDiagnosticChat() {
 
           <div className="home-diagnostic-chat-copy">
             <span>Próximo passo</span>
-            <h2>Monte seu pré-diagnóstico em poucos minutos</h2>
+            <h2>Agende seu diagnóstico com contexto</h2>
             <p>
-              Responda algumas perguntas rápidas. A Goable entende o contexto e entra em contato para estruturar sua reunião de diagnóstico.
+              Responda quatro perguntas rápidas. A Goable entende o cenário e prepara uma reunião mais precisa.
             </p>
+            <div className="home-diagnostic-copy-meta" aria-label="Como funciona o diagnóstico">
+              <span>4 perguntas</span>
+              <span>sem compromisso</span>
+              <span>retorno do time</span>
+            </div>
             <div className="home-diagnostic-summary" aria-label="Resumo do diagnóstico">
               {summary.map(([label, value]) => (
                 <div key={label}>

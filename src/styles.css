@@ -6027,3 +6027,278 @@
     text-align: left;
   }
 }
+
+/* ============ Home final diagnostic rebuild ============ */
+.home-diagnostic-chat-chapter > .home-section-inner {
+  padding-top: clamp(5.4rem, 8vw, 7.2rem);
+  padding-bottom: clamp(5.2rem, 8vw, 7rem);
+}
+
+.home-diagnostic-chat-card {
+  grid-template-columns: minmax(0, 0.88fr) minmax(460px, 1.12fr);
+  align-items: stretch;
+  min-height: 0;
+  gap: clamp(1.4rem, 3vw, 3.2rem);
+  overflow: hidden;
+  padding: clamp(1.35rem, 2.4vw, 2.25rem);
+}
+
+.home-diagnostic-chat-copy {
+  align-self: stretch;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(1.2rem, 2.6vw, 2.3rem);
+  padding-top: clamp(1.2rem, 2.6vw, 2.3rem);
+  transform: none;
+}
+
+.home-diagnostic-chat-copy > span {
+  margin-bottom: 1rem;
+}
+
+.home-diagnostic-chat-copy h2 {
+  max-width: 11.4ch;
+  font-size: clamp(3.25rem, 5.6vw, 5.75rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.home-diagnostic-chat-copy p {
+  max-width: 28rem;
+  margin-top: 1.15rem;
+  font-size: clamp(0.98rem, 1.06vw, 1.12rem);
+  line-height: 1.58;
+}
+
+.home-diagnostic-copy-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.home-diagnostic-copy-meta span {
+  border: 1px solid rgba(197, 187, 255, 0.2);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    rgba(14, 13, 28, 0.34);
+  color: rgba(247, 248, 255, 0.84);
+  padding: 0.52rem 0.72rem;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-diagnostic-summary {
+  grid-template-columns: 1fr;
+  max-width: 30rem;
+  margin-top: 1.35rem;
+}
+
+.home-diagnostic-summary div {
+  border-radius: 1.15rem;
+  padding: 0.82rem 0.9rem;
+}
+
+.home-diagnostic-summary strong {
+  font-size: 0.6rem;
+}
+
+.home-diagnostic-summary span {
+  overflow-wrap: anywhere;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.home-diagnostic-chat-panel {
+  align-self: center;
+  display: flex;
+  min-width: 0;
+  min-height: 520px;
+  max-height: 640px;
+  flex-direction: column;
+}
+
+.home-diagnostic-chat-thread {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 260px;
+  max-height: none;
+}
+
+.home-diagnostic-chat-actions {
+  flex: 0 0 auto;
+}
+
+.home-diagnostic-message {
+  width: min(86%, 31rem);
+}
+
+.home-diagnostic-message p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1180px) {
+  .home-diagnostic-chat-card {
+    grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  }
+
+  .home-diagnostic-chat-copy h2 {
+    font-size: clamp(3rem, 5.3vw, 4.8rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  .home-diagnostic-chat-card {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .home-diagnostic-chat-copy {
+    padding: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .home-diagnostic-chat-copy h2 {
+    max-width: 13.5ch;
+    font-size: clamp(2.65rem, 8vw, 4.15rem);
+  }
+
+  .home-diagnostic-chat-panel {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-diagnostic-chat-chapter > .home-section-inner {
+    padding-top: 3.2rem;
+    padding-bottom: 3.4rem;
+  }
+
+  .home-diagnostic-chat-card {
+    width: min(100%, 24.5rem);
+    margin-inline: auto;
+    border-radius: 1.55rem;
+    padding: 0.78rem;
+  }
+
+  .home-diagnostic-chat-copy {
+    padding: 0.9rem 0.85rem 0.25rem;
+  }
+
+  .home-diagnostic-chat-copy > span {
+    gap: 0.48rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+  }
+
+  .home-diagnostic-chat-copy > span::before {
+    width: 1.4rem;
+  }
+
+  .home-diagnostic-chat-copy h2 {
+    max-width: 100%;
+    font-size: clamp(2.12rem, 10.4vw, 2.74rem);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  .home-diagnostic-chat-copy p {
+    max-width: 100%;
+    margin-top: 0.85rem;
+    font-size: 0.92rem;
+    line-height: 1.52;
+  }
+
+  .home-diagnostic-copy-meta {
+    gap: 0.42rem;
+    margin-top: 0.85rem;
+  }
+
+  .home-diagnostic-copy-meta span {
+    padding: 0.44rem 0.56rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.07em;
+  }
+
+  .home-diagnostic-summary {
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .home-diagnostic-summary div {
+    border-radius: 1rem;
+    padding: 0.68rem 0.76rem;
+  }
+
+  .home-diagnostic-summary strong {
+    font-size: 0.54rem;
+  }
+
+  .home-diagnostic-summary span {
+    margin-top: 0.2rem;
+    font-size: 0.88rem;
+  }
+
+  .home-diagnostic-chat-panel {
+    min-height: 0;
+    border-radius: 1.25rem;
+  }
+
+  .home-diagnostic-chat-topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 0.72rem 0.78rem;
+  }
+
+  .home-diagnostic-chat-topbar strong {
+    font-size: 0.68rem;
+  }
+
+  .home-diagnostic-chat-topbar em {
+    font-size: 0.52rem;
+  }
+
+  .home-diagnostic-chat-thread {
+    min-height: 235px;
+    max-height: 300px;
+    padding: 0.78rem;
+  }
+
+  .home-diagnostic-message {
+    width: min(94%, 24rem);
+  }
+
+  .home-diagnostic-message > span {
+    font-size: 0.54rem;
+  }
+
+  .home-diagnostic-message p {
+    border-radius: 1rem;
+    padding: 0.72rem 0.78rem;
+    font-size: 0.8rem;
+    line-height: 1.44;
+  }
+
+  .home-diagnostic-chat-actions {
+    padding: 0.76rem;
+  }
+
+  .home-diagnostic-options {
+    gap: 0.42rem;
+  }
+
+  .home-diagnostic-options button,
+  .home-diagnostic-send {
+    min-height: 2.65rem;
+    border-radius: 999px;
+    padding: 0.68rem 0.78rem;
+    font-size: 0.78rem;
+  }
+
+  .home-diagnostic-details textarea {
+    min-height: 8rem;
+    font-size: 0.86rem;
+  }
+}
