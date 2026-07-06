@@ -93,6 +93,8 @@ function HomePage() {
                     type="button"
                     className={`home-liquid-card home-pain-card ${activePain === item.key ? "is-active" : ""}`}
                     key={item.label}
+                    onMouseEnter={() => setActivePain(item.key)}
+                    onFocus={() => setActivePain(item.key)}
                     onClick={() => setActivePain(item.key)}
                     aria-pressed={activePain === item.key}
                   >
@@ -113,7 +115,7 @@ function HomePage() {
                 </div>
                 <HomeDiagnosticDemo active={activePain} />
                 <div className="home-diagnostic-caption">
-                  <span>Raiz encontrada</span>
+                  <span><i />Raiz encontrada</span>
                   <strong>{diagnosticCaption[activePain]}</strong>
                 </div>
               </div>
