@@ -3671,7 +3671,7 @@
   }
 
   .home-pain-chapter .home-section-inner {
-    padding-top: 11.2rem;
+    padding-top: 8.4rem;
   }
 
   .home-section-heading > span,
@@ -3682,7 +3682,7 @@
   }
 
   .home-diagnosis-grid {
-    gap: 1.2rem;
+    gap: 1rem;
   }
 
   .home-pain-chapter .home-section-heading h2 {
@@ -3696,7 +3696,7 @@
 
   .home-pain-card {
     min-height: 0;
-    padding: 1rem;
+    padding: 0.92rem;
   }
 
   .home-diagnostic-orbit {
@@ -3725,11 +3725,11 @@
   }
 
   .home-specialist-layout > .noise-overlay {
-    min-height: 420px;
+    min-height: 360px;
   }
 
   .home-specialist-panel {
-    padding: 1.15rem;
+    padding: 1.1rem;
   }
 
   .home-edgar-proof span {
@@ -5638,5 +5638,270 @@
 @media (prefers-reduced-motion: reduce) {
   .goable-footer-shell::before {
     animation: none !important;
+  }
+}
+
+/* ============ Home stability pass ============ */
+.home-premium-page,
+.home-premium-page section {
+  min-width: 0;
+}
+
+.home-section-motion-waves,
+.home-method-liquid-bg,
+.home-event-glass-mark,
+.home-diagnostic-chat-bg,
+.goable-footer-glass,
+.hero-dark-aura,
+.hero-wave-field {
+  max-width: none;
+}
+
+.home-diagnostic-panel,
+.home-product-window,
+.home-event-photo-grid,
+.home-specialist-panel,
+.home-liquid-card,
+.home-method2-card,
+.home-diagnostic-chat-card,
+.goable-footer-shell {
+  transform-style: flat;
+}
+
+.home-event-card,
+.home-pain-card,
+.home-method2-card,
+.home-specialist-cards article {
+  min-width: 0;
+}
+
+.home-event-card p,
+.home-pain-card p,
+.home-specialist-cards p,
+.home-method2-card p,
+.home-diagnostic-chat-copy p {
+  text-wrap: pretty;
+}
+
+.home-connect-chapter {
+  overflow: clip;
+}
+
+.home-diagnostic-chat-copy h2 {
+  text-wrap: balance;
+}
+
+@media (max-width: 1023px) {
+  .home-method-chapter,
+  .home-connect-chapter {
+    margin-top: -2.8rem;
+    border-radius: 2.5rem 2.5rem 0 0;
+  }
+
+  .home-diagnostic-chat-chapter > .home-section-inner {
+    padding-top: clamp(4rem, 8vw, 5.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-premium-page {
+    --home-type-hero: 2rem;
+    --home-type-section: 2rem;
+    overflow: clip;
+  }
+
+  .home-section-inner {
+    padding-block: 3.8rem;
+  }
+
+  .home-section-heading {
+    gap: 0.78rem;
+  }
+
+  .home-section-heading h2,
+  .home-method2-title,
+  .home-diagnostic-chat-copy h2 {
+    max-width: min(100%, 12.5ch);
+    font-size: var(--home-type-section);
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+  }
+
+  .home-section-heading p,
+  .home-method2-lead,
+  .home-diagnostic-chat-copy p {
+    max-width: 22rem;
+    font-size: 0.96rem;
+    line-height: 1.58;
+  }
+
+  .home-pain-chapter .home-section-inner {
+    padding-top: 7.4rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .home-pain-chapter .home-section-heading h2 {
+    max-width: min(100%, 12ch);
+  }
+
+  .home-diagnostic-panel {
+    border-radius: 1.55rem;
+    padding: 0.85rem;
+  }
+
+  .home-diagnostic-panel .relative.w-full {
+    min-height: 0;
+  }
+
+  .home-product-window {
+    border-radius: 1.2rem;
+  }
+
+  .home-product-topbar {
+    gap: 0.5rem;
+    padding: 0.72rem;
+  }
+
+  .home-product-topbar strong,
+  .home-product-topbar em {
+    font-size: 0.58rem;
+  }
+
+  .home-kanban-demo,
+  .home-chat-demo,
+  .home-dash-demo,
+  .home-ops-demo {
+    padding: 0.72rem;
+  }
+
+  .home-chat-bubble,
+  .home-kanban-card,
+  .home-kanban-moving-card,
+  .home-ops-row {
+    border-radius: 1rem;
+  }
+
+  .home-method2 {
+    padding-block: 3.2rem;
+    gap: 1.65rem;
+  }
+
+  .home-method2-track {
+    gap: 0.68rem;
+    padding-left: 3.35rem;
+  }
+
+  .home-method2-card {
+    border-radius: 1.1rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .home-method2-card h3 {
+    font-size: 1.04rem;
+  }
+
+  .home-method2-card p {
+    margin-top: 0.42rem;
+    font-size: 0.9rem;
+    line-height: 1.42;
+  }
+
+  .home-method2-step {
+    min-height: 0;
+  }
+
+  .home-method2-num {
+    left: -3.25rem;
+    width: 2.45rem;
+    height: 2.45rem;
+  }
+
+  .home-method2-track::before {
+    left: 1.22rem;
+    top: 2.2rem;
+    bottom: 2.2rem;
+  }
+
+  .home-method2-title {
+    max-width: min(100%, 12.8ch);
+  }
+
+  .home-specialist-chapter .home-section-inner,
+  .home-connect-chapter .home-section-inner {
+    padding-top: 3.7rem;
+    padding-bottom: 3.9rem;
+  }
+
+  .home-specialist-layout {
+    gap: 1rem;
+  }
+
+  .home-specialist-panel h3 {
+    font-size: clamp(1.55rem, 9vw, 2.15rem);
+    line-height: 0.98;
+  }
+
+  .home-specialist-cards {
+    gap: 0.75rem;
+  }
+
+  .home-specialist-cards article {
+    padding: 0.95rem;
+  }
+
+  .home-connect-layout {
+    gap: 1.2rem;
+  }
+
+  .home-event-list {
+    gap: 0.8rem;
+  }
+
+  .home-event-card {
+    border-radius: 1.35rem;
+    padding: 0.85rem;
+  }
+
+  .home-event-photo-grid .grid {
+    gap: 0.55rem;
+  }
+
+  .home-diagnostic-chat-chapter > .home-section-inner {
+    padding-top: 3.6rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .home-diagnostic-chat-card {
+    gap: 1rem;
+    border-radius: 1.55rem;
+    padding: 0.85rem;
+  }
+
+  .home-diagnostic-chat-copy {
+    padding: 0.95rem 0.65rem 0;
+  }
+
+  .home-diagnostic-chat-copy h2 {
+    max-width: min(100%, 13ch);
+    font-size: clamp(2rem, 9.2vw, 2.35rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .home-diagnostic-chat-thread {
+    height: 280px;
+  }
+
+  .home-diagnostic-summary div {
+    border-radius: 1rem;
+    padding: 0.78rem 0.85rem;
+  }
+
+  .home-diagnostic-message p {
+    padding: 0.78rem 0.85rem;
+  }
+
+  .goable-footer {
+    padding-top: 2.2rem;
   }
 }
