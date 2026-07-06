@@ -57,7 +57,7 @@ export const COPY: Record<string, string> = {
   COPY_SPECIALIST_4_NAME: "Brayan Souza",
   COPY_SPECIALIST_4_LINE: "Gestão e processos para escalar com controle.",
 
-  COPY_HOME_CONNECT_TITLE: "Conect.AI é onde a IA sai do abstrato",
+  COPY_HOME_CONNECT_TITLE: "Aprenda como usar IA no seu negócio",
   COPY_HOME_PROOF_TITLE: "A Goable já saiu do slide",
   COPY_HOME_THESIS_TITLE: "Clareza para transformar",
   COPY_HOME_THESIS_SUB:

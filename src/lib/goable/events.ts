@@ -4,7 +4,7 @@ export const eventData = {
   business: {
     key: "business" as const,
     name: "Conect.AI Empresários",
-    date: "24/07/2026",
+    date: "23/07/2026",
     time: "",
     location: "Instituto Caldeira, Porto Alegre",
     price: "R$ 3.900 por participante",
@@ -28,7 +28,7 @@ export const eventData = {
   gov: {
     key: "gov" as const,
     name: "Conect.AI GOV",
-    date: "23/07/2026",
+    date: "21/07/2026",
     time: "",
     location: "Instituto Caldeira, Porto Alegre",
     price: "R$ 3.900 por participante",

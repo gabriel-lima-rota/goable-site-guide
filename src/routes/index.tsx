@@ -59,9 +59,9 @@ const specialistCards = [
 ];
 
 const eventCards = [
+  ["GOV", "21/07", "IA aplicada à gestão pública", "/conect-ai/gov"],
   ["MED", "22/07", "IA aplicada à prática médica", "/conect-ai/med"],
-  ["GOV", "23/07", "IA aplicada à gestão pública", "/conect-ai/gov"],
-  ["Empresários", "24/07", "IA aplicada à empresa real", "/conect-ai/business"],
+  ["Empresários", "23/07", "IA aplicada à empresa real", "/conect-ai/business"],
 ];
 
 function HomePage() {
@@ -177,7 +177,7 @@ function HomePage() {
                   <span>Conect.AI</span>
                   <Slot id="COPY_HOME_CONNECT_TITLE" as="h2" />
                   <p>
-                    O evento mostra IA com gente, contexto e operação na mesa. A experiência existe para transformar curiosidade em direção prática.
+                    Aprenda como usar IA no seu negócio, acelerar resultados e viver a nova era com direção prática.
                   </p>
                 </div>
                 <div className="home-event-list">

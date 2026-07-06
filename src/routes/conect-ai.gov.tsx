@@ -17,10 +17,10 @@ import { Glass3D } from "@/components/goable/Glass3D";
 export const Route = createFileRoute("/conect-ai/gov")({
   head: () => ({
     meta: [
-      { title: "Conect.AI GOV | 23/07/2026" },
+      { title: "Conect.AI GOV | 21/07/2026" },
       { name: "description", content: "IA aplicada à gestão pública. Realização Goable AI." },
       { property: "og:title", content: "Conect.AI GOV" },
-      { property: "og:description", content: "23/07/2026 · Instituto Caldeira · Porto Alegre" },
+      { property: "og:description", content: "21/07/2026 · Instituto Caldeira · Porto Alegre" },
     ],
   }),
   component: GovPage,

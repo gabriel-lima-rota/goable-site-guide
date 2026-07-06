@@ -18,10 +18,10 @@ import { Glass3D } from "@/components/goable/Glass3D";
 export const Route = createFileRoute("/conect-ai/business")({
   head: () => ({
     meta: [
-      { title: "Conect.AI Empresários | 24/07/2026" },
+      { title: "Conect.AI Empresários | 23/07/2026" },
       { name: "description", content: "IA aplicada para empresários. Instituto Caldeira, Porto Alegre." },
       { property: "og:title", content: "Conect.AI Empresários" },
-      { property: "og:description", content: "24/07/2026 · Instituto Caldeira · Porto Alegre" },
+      { property: "og:description", content: "23/07/2026 · Instituto Caldeira · Porto Alegre" },
     ],
   }),
   component: BusinessPage,

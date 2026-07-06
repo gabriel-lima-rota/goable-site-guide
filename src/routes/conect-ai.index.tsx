@@ -143,7 +143,7 @@ function ConectAiIndex() {
   );
 }
 
-const heroEditions: EventKey[] = ["med", "gov", "business"];
+const heroEditions: EventKey[] = ["gov", "med", "business"];
 const editionAccent: Record<EventKey, string> = {
   business: "#6D4DFF",
   med: "#00995D",

@@ -23,7 +23,7 @@ const themes: Record<EventKey, { tone: "violet" | "med" | "gov"; accent: string;
   },
 };
 
-export function EditionCards({ keys = ["business", "med", "gov"] as EventKey[] }: { keys?: EventKey[] }) {
+export function EditionCards({ keys = ["gov", "med", "business"] as EventKey[] }: { keys?: EventKey[] }) {
   return (
     <div className="grid gap-5 md:grid-cols-3">
       {keys.map((k) => {
