@@ -1,16 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AppShell, Section } from "@/components/goable/AppShell";
-import { HeroEditorial } from "@/components/goable/HeroEditorial";
-import { SectionHeader } from "@/components/goable/SectionHeader";
-import { MethodTimeline } from "@/components/goable/MethodTimeline";
-import { SpecialistBand } from "@/components/goable/SpecialistBand";
-import { PhotoFeature } from "@/components/goable/PhotoFeature";
-import { SolutionCards } from "@/components/goable/SolutionCards";
+import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
 import { Slot } from "@/components/goable/Slot";
-import { EventPhotoSlot } from "@/components/goable/EventPhotoSlot";
-import { photos, glass } from "@/lib/goable/assets";
-import { Glass3D } from "@/components/goable/Glass3D";
+import { SpecialistBand } from "@/components/goable/SpecialistBand";
+import { glass, gradientGlass, photos } from "@/lib/goable/assets";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -27,194 +20,162 @@ export const Route = createFileRoute("/sobre")({
 function SobrePage() {
   return (
     <AppShell>
-      <HeroEditorial
-        eyebrow="Sobre a Goable"
-        h1Slot="COPY_ABOUT_HERO_H1"
-        subSlot="COPY_ABOUT_HERO_SUB"
-        primaryLabel="Contato"
-        visual={<AboutHeroVisual />}
-      />
+      <div className="about-premium-page">
+        <section className="about-hero">
+          <div className="about-hero-bg" aria-hidden />
+          <div className="about-hero-inner">
+            <div className="about-hero-copy">
+              <span>Sobre a Goable</span>
+              <Slot id="COPY_ABOUT_HERO_H1" as="h1" />
+              <Slot id="COPY_ABOUT_HERO_SUB" as="p" />
+              <div className="about-hero-actions">
+                <CTAButton variant="primary" size="lg">Contato</CTAButton>
+                <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI</CTAButton>
+              </div>
+            </div>
+            <div className="about-hero-visual">
+              <img className="about-hero-photo" src={photos.edgarBackdrop} alt="" />
+              <img className="about-hero-g" src={glass.gSymbol} alt="" aria-hidden />
+              <div className="about-hero-card">
+                <strong>Entender antes de aplicar</strong>
+                <span>IA, processo, dados e especialistas no mesmo desenho.</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <Section bg="white">
-        <SectionHeader eyebrow="Tese" titleSlot="COPY_ABOUT_THESIS_TITLE" subSlot="COPY_ABOUT_THESIS_BODY" />
-      </Section>
-
-      <Section>
-        <SectionHeader eyebrow="Como trabalhamos" titleSlot="COPY_ABOUT_METHOD_TITLE" />
-        <div className="mt-12">
-          <MethodTimeline
-            steps={[
-              {
-                title: "Dor real",
-                desc: "Entendemos o problema como ele acontece, não como aparece no organograma.",
-              },
-              {
-                title: "Processo real",
-                desc: "Mapeamos fluxo, dado, rotina, exceção e impacto.",
-              },
-              {
-                title: "Sistema certo",
-                desc: "Desenhamos uma solução para a empresa, não para uma apresentação.",
-              },
-              {
-                title: "Execução prática",
-                desc: "Implementamos com clareza, medição e melhoria contínua.",
-              },
-            ]}
-          />
-        </div>
-      </Section>
-
-      <Section bg="white">
-        <SectionHeader eyebrow="Liderança" titleSlot="COPY_ABOUT_EDGAR_TITLE" subSlot="COPY_ABOUT_EDGAR_BODY" />
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <EventPhotoSlot assetName="COMBO_STUDIOS-591.jpg" aspect="4/5" caption="Edgar Abreu · Liderança Goable AI" />
-          <div>
-            <Slot id="COPY_ABOUT_EDGAR_BIO" as="p" className="text-base text-muted-foreground max-w-lg" />
-            <div className="mt-6 flex flex-wrap gap-2">
-              {["Estratégia", "IA aplicada", "Educação", "Palco"].map((c) => (
-                <span key={c} className="rounded-md border border-[var(--border)] bg-white px-3 py-1.5 text-xs text-[var(--goable-black)]">
-                  {c}
-                </span>
+        <section className="about-thesis-section">
+          <div className="about-section-inner">
+            <div className="about-thesis-card">
+              <div>
+                <span className="about-eyebrow">Tese</span>
+                <Slot id="COPY_ABOUT_THESIS_TITLE" as="h2" />
+              </div>
+              <Slot id="COPY_ABOUT_THESIS_BODY" as="p" />
+            </div>
+            <div className="about-thesis-grid">
+              {[
+                ["01", "Raiz", "Primeiro entendemos a dor real, não a ferramenta da moda."],
+                ["02", "Desenho", "Depois conectamos processo, dado, rotina e decisão."],
+                ["03", "Sistema", "Só então a IA entra para operar com clareza."],
+              ].map(([num, title, body]) => (
+                <article className="about-liquid-card" key={num}>
+                  <span>{num}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
               ))}
             </div>
           </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section>
-        <SectionHeader eyebrow="Especialistas" titleSlot="COPY_ABOUT_SPECIALISTS_TITLE" />
-        <div className="mt-12">
-          <SpecialistBand />
-        </div>
-      </Section>
-
-      <Section bg="white">
-        <SectionHeader eyebrow="No palco" titleSlot="COPY_ABOUT_STAGE_TITLE" />
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <EventPhotoSlot assetName="COMBO_STUDIOS-644.jpg" aspect="21/9" caption="Goable AI · Palco principal" />
-          <div className="grid grid-cols-2 gap-4 self-center">
-            {[
-              { k: "Edições", v: "COPY_ABOUT_STAT_1" },
-              { k: "Participantes", v: "COPY_ABOUT_STAT_2" },
-              { k: "Especialistas", v: "COPY_ABOUT_STAT_3" },
-              { k: "Setores", v: "COPY_ABOUT_STAT_4" },
-            ].map((s) => (
-              <div key={s.k} className="rounded-lg border border-[var(--border)] bg-white p-5">
-                <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{s.k}</div>
-                <div className="mt-2 text-2xl font-semibold text-[var(--goable-black)]">
-                  <Slot id={s.v} />
-                </div>
-              </div>
-            ))}
+        <section className="about-method-section">
+          <div className="about-section-inner">
+            <div className="about-section-heading">
+              <span>Como trabalhamos</span>
+              <Slot id="COPY_ABOUT_METHOD_TITLE" as="h2" />
+            </div>
+            <div className="about-method-grid">
+              {[
+                ["Diagnóstico", "Entendemos o problema como ele acontece na operação."],
+                ["Arquitetura", "Mapeamos fluxos, dados, regras, pessoas e exceções."],
+                ["Sistema certo", "Desenhamos a solução que cabe na empresa real."],
+                ["Execução", "Implementamos, medimos e ajustamos com o time."],
+              ].map(([title, body], index) => (
+                <article className="about-method-step" key={title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section>
-        <SectionHeader eyebrow="Frentes de atuação" titleSlot="COPY_ABOUT_CASES_TITLE" />
-        <div className="mt-12">
-          <SolutionCards
-            slotPrefix="COPY_ABOUT_CASE"
-            items={[
-              { key: "EDU", label: "Educação" },
-              { key: "HEALTH", label: "Saúde" },
-              { key: "FIN", label: "Mercado financeiro" },
-              { key: "GOV", label: "Governo" },
-            ]}
-          />
-        </div>
-      </Section>
+        <section className="about-leadership-section">
+          <div className="about-section-inner about-leadership-grid">
+            <div className="about-leadership-photo">
+              <img src={photos.edgarSmile} alt="Edgar Abreu" />
+            </div>
+            <div className="about-leadership-panel">
+              <span>CEO e Founder</span>
+              <Slot id="COPY_ABOUT_EDGAR_TITLE" as="h2" />
+              <Slot id="COPY_ABOUT_EDGAR_BODY" as="p" />
+              <Slot id="COPY_ABOUT_EDGAR_BIO" as="p" />
+              <div className="about-chip-row">
+                {["Estratégia", "IA aplicada", "Educação", "Execução"].map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <Section bg="dark">
-        <div className="text-center max-w-2xl mx-auto">
-          <Slot id="COPY_ABOUT_FINAL_CTA_TITLE" as="h2" className="goable-section-title text-[var(--soft-white)]" />
-          <div className="mt-8">
+        <section className="about-specialists-section">
+          <div className="about-section-inner">
+            <div className="about-section-heading">
+              <span>Especialistas</span>
+              <Slot id="COPY_ABOUT_SPECIALISTS_TITLE" as="h2" />
+            </div>
+            <SpecialistBand />
+          </div>
+        </section>
+
+        <section className="about-stage-section">
+          <div className="about-section-inner about-stage-grid">
+            <div className="about-stage-media">
+              <img src={photos.palco} alt="Palco Goable AI" />
+            </div>
+            <div className="about-stage-content">
+              <span className="about-eyebrow">No palco</span>
+              <Slot id="COPY_ABOUT_STAGE_TITLE" as="h2" />
+              <div className="about-stat-grid">
+                {[
+                  { k: "IA", v: "COPY_ABOUT_STAT_1" },
+                  { k: "Sistemas", v: "COPY_ABOUT_STAT_2" },
+                  { k: "Time", v: "COPY_ABOUT_STAT_3" },
+                  { k: "Entrega", v: "COPY_ABOUT_STAT_4" },
+                ].map((s) => (
+                  <article key={s.k}>
+                    <span>{s.k}</span>
+                    <strong><Slot id={s.v} /></strong>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="about-cases-section">
+          <div className="about-section-inner">
+            <div className="about-section-heading">
+              <span>Frentes de atuação</span>
+              <Slot id="COPY_ABOUT_CASES_TITLE" as="h2" />
+            </div>
+            <div className="about-cases-grid">
+              {[
+                ["Educação", "COPY_ABOUT_CASE_EDU"],
+                ["Saúde", "COPY_ABOUT_CASE_HEALTH"],
+                ["Mercado financeiro", "COPY_ABOUT_CASE_FIN"],
+                ["Governo", "COPY_ABOUT_CASE_GOV"],
+              ].map(([label, slot]) => (
+                <article className="about-liquid-card" key={label}>
+                  <h3>{label}</h3>
+                  <Slot id={slot} as="p" />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="about-final-section">
+          <div className="about-final-card">
+            <img src={gradientGlass.foldViolet} alt="" aria-hidden />
+            <Slot id="COPY_ABOUT_FINAL_CTA_TITLE" as="h2" />
             <CTAButton variant="primary" size="lg">Contato</CTAButton>
           </div>
-        </div>
-      </Section>
+        </section>
+      </div>
     </AppShell>
-  );
-}
-
-function AboutHeroVisual() {
-  return (
-    <div className="relative h-full w-full">
-      {/* Editorial photo frame */}
-      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-card-lg)] shadow-[0_40px_100px_-40px_rgba(7,10,18,0.35)]">
-        <img
-          src={photos.edgarBackdrop}
-          alt=""
-          className="h-full w-full object-cover"
-          style={{ animation: "goable-parallax-drift 22s ease-in-out infinite alternate" }}
-        />
-        {/* Tint for editorial mood */}
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(7,10,18,0.10) 0%, rgba(7,10,18,0.55) 100%)",
-          }}
-        />
-        {/* Subtle conect wave texture as brand imprint */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${glass.conectWave})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            mixBlendMode: "screen",
-          }}
-        />
-      </div>
-
-      {/* Floating 3D glass object (brand imprint, not decoration) */}
-      <Glass3D
-        variant="ring"
-        size={180}
-        opacity={0.55}
-        rotate={-8}
-        className="pointer-events-none absolute -right-8 -top-6 hidden md:block"
-      />
-
-      {/* Glass identity panel, connected to the photo */}
-      <div className="absolute -bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-[320px]">
-        <div className="glass-strong lit-top-border rounded-[var(--radius-card-lg)] p-4 md:p-5">
-          <div className="flex items-center justify-between">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.24em] text-[var(--deep-violet)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--strategic-violet)] pulse-dot" />
-              Goable AI
-            </div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
-              Desde 2019
-            </div>
-          </div>
-          <div className="mt-3 grid grid-cols-2 gap-3">
-            <div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                Base
-              </div>
-              <div className="mt-1 text-sm font-semibold text-[var(--goable-black)]">
-                Porto Alegre
-              </div>
-            </div>
-            <div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                Palco
-              </div>
-              <div className="mt-1 text-sm font-semibold text-[var(--goable-black)]">
-                Instituto Caldeira
-              </div>
-            </div>
-          </div>
-          <div className="mt-3 border-t border-[var(--border)]/60 pt-3 text-[12px] leading-relaxed text-muted-foreground">
-            Tese da marca: entender antes de aplicar.
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
