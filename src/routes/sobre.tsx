@@ -18,6 +18,33 @@ export const Route = createFileRoute("/sobre")({
 });
 
 function SobrePage() {
+  const heroStats = [
+    ["6+", "anos aplicando IA em negócios"],
+    ["8+", "áreas com especialistas"],
+    ["400k+", "alunos impactados em educação"],
+    ["50k+", "profissionais no ecossistema"],
+  ];
+
+  const specialistProof = [
+    ["Marketing e vendas", "SDR, aquisição, funil e atendimento com IA aplicada."],
+    ["People e cultura", "Entrevistas, rotina de time e conhecimento organizacional."],
+    ["Financeiro e FP&A", "Indicadores, análise e decisão em linguagem natural."],
+    ["Gestão e processos", "Rotina, performance, operação e governança."],
+    ["Legal e compliance", "Leitura de risco, segurança e critérios de aplicação."],
+    ["Relacionamento", "Jornadas, base ativa e experiência do cliente."],
+    ["Eventos e marca", "Experiências presenciais que tiram a IA do discurso."],
+    ["Tecnologia", "Arquitetura, integrações e sistemas sob medida."],
+  ];
+
+  const cases = [
+    ["Educação", "Aplicações com IA, RAG e atendimento para escalar aprendizagem sem perder contexto."],
+    ["WhatsApp", "Fluxos de captação e relacionamento para transformar conversa em jornada."],
+    ["Mercado financeiro", "Palcos, comunidades e sistemas para quem precisa decidir com clareza."],
+    ["Licitações", "IA aplicada a leitura, organização e oportunidade em processos complexos."],
+    ["Saúde", "Rotinas, dados e atendimento com responsabilidade, segurança e critério."],
+    ["Governo", "Processos públicos, análise de informação e serviços mais organizados."],
+  ];
+
   return (
     <AppShell>
       <div className="about-premium-page">
@@ -31,6 +58,14 @@ function SobrePage() {
               <div className="about-hero-actions">
                 <CTAButton variant="primary" size="lg">Contato</CTAButton>
                 <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI</CTAButton>
+              </div>
+              <div className="about-hero-stats" aria-label="Números da Goable">
+                {heroStats.map(([value, label]) => (
+                  <article key={label}>
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </article>
+                ))}
               </div>
             </div>
             <div className="about-hero-visual">
@@ -103,7 +138,7 @@ function SobrePage() {
               <Slot id="COPY_ABOUT_EDGAR_BODY" as="p" />
               <Slot id="COPY_ABOUT_EDGAR_BIO" as="p" />
               <div className="about-chip-row">
-                {["Estratégia", "IA aplicada", "Educação", "Execução"].map((item) => (
+                {["Harvard", "AI Bank Summit", "Educação", "Execução"].map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
@@ -118,6 +153,14 @@ function SobrePage() {
               <Slot id="COPY_ABOUT_SPECIALISTS_TITLE" as="h2" />
             </div>
             <SpecialistBand />
+            <div className="about-proof-specialists">
+              {specialistProof.map(([area, line]) => (
+                <article key={area}>
+                  <span>{area}</span>
+                  <p>{line}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -153,15 +196,10 @@ function SobrePage() {
               <Slot id="COPY_ABOUT_CASES_TITLE" as="h2" />
             </div>
             <div className="about-cases-grid">
-              {[
-                ["Educação", "COPY_ABOUT_CASE_EDU"],
-                ["Saúde", "COPY_ABOUT_CASE_HEALTH"],
-                ["Mercado financeiro", "COPY_ABOUT_CASE_FIN"],
-                ["Governo", "COPY_ABOUT_CASE_GOV"],
-              ].map(([label, slot]) => (
+              {cases.map(([label, body]) => (
                 <article className="about-liquid-card" key={label}>
                   <h3>{label}</h3>
-                  <Slot id={slot} as="p" />
+                  <p>{body}</p>
                 </article>
               ))}
             </div>

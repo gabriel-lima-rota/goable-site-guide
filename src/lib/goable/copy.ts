@@ -67,22 +67,22 @@ export const COPY: Record<string, string> = {
 
   // Sobre
   COPY_ABOUT_HERO_H1:
-    "A Goable transforma problemas reais em sistemas inteligentes",
+    "Autoridade real em IA aplicada a empresas brasileiras",
   COPY_ABOUT_HERO_SUB:
-    "Antes de falar em IA, entendemos operação, pessoas, dados e decisões. Só depois desenhamos tecnologia para resolver a raiz.",
-  COPY_ABOUT_THESIS_TITLE: "Tecnologia só importa quando melhora a operação",
+    "A Goable transforma gargalos reais em sistemas inteligentes com IA. Unimos especialistas, método e execução para criar tecnologia que nasce da operação.",
+  COPY_ABOUT_THESIS_TITLE: "IA só importa quando muda a rotina da empresa",
   COPY_ABOUT_THESIS_BODY:
-    "Ferramenta sem contexto vira custo. Sistema com clareza vira vantagem.",
+    "Não começamos por ferramenta. Começamos pela dor, pelo processo e pelo que precisa funcionar melhor.",
   COPY_ABOUT_METHOD_TITLE:
     "Começamos pela raiz. Terminamos com sistema funcionando.",
   COPY_ABOUT_EDGAR_TITLE: "Edgar Abreu lidera a visão estratégica da Goable",
   COPY_ABOUT_EDGAR_BODY:
     "Com atuação em educação, mercado financeiro e IA aplicada, Edgar conecta estratégia, negócio e execução para tirar a inteligência artificial do discurso e colocar dentro da operação.",
   COPY_ABOUT_EDGAR_BIO:
-    "Edgar lidera a Goable com uma visão simples: IA só vale quando melhora a vida real da operação. A empresa conecta estratégia, especialistas e tecnologia para criar sistemas para empresas que não cabem em soluções genéricas.",
-  COPY_ABOUT_SPECIALISTS_TITLE: "Um time multidisciplinar para dores diferentes",
+    "A Goable nasce da visão de que IA precisa ser aplicada com método, contexto e responsabilidade. O time junta especialistas de áreas diferentes para desenhar sistemas que resolvem a raiz do problema.",
+  COPY_ABOUT_SPECIALISTS_TITLE: "Para cada dor, o especialista certo",
   COPY_ABOUT_STAGE_TITLE: "IA aplicada diante de quem decide",
-  COPY_ABOUT_CASES_TITLE: "Visão, produto e execução no mesmo lugar",
+  COPY_ABOUT_CASES_TITLE: "Projetos que mostram IA fora do slide",
   COPY_ABOUT_FINAL_CTA_TITLE: "Vamos entender o que trava sua operação?",
 
   COPY_ABOUT_CASE_EDU:
