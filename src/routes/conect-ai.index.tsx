@@ -55,9 +55,9 @@ function StageFigure({ kind }: { kind: string }) {
 
       {kind === "gov" ? (
         <g className="cai-figure">
-          <circle cx="66" cy="33" r="10" />
-          <rect x="61.5" y="42" width="9" height="7" rx="3.5" />
-          <path d="M 47 62 C 47 55 53 50.5 61 50 L 71 50 C 76.5 50.5 80 52 82.5 55.5 L 95.5 35.5 C 97.5 32.5 101 33 102.2 35.8 C 103.2 38.2 102 40.5 99.8 42 L 88.5 60.5 C 87.2 63.5 86.5 66 86.5 70 L 86.5 104 L 46.5 104 L 46.5 70 C 46.5 67 46.6 64 47 62 Z" />
+          <circle cx="70" cy="31" r="10" />
+          <rect x="65.5" y="40" width="9" height="7" rx="3.5" />
+          <path d="M 54 60 C 54 53 60 48.5 68 48 L 72 48 C 80 48.5 86 53 86 60 L 96 99 L 44 99 Z" />
           <path className="cai-prop" d="M 42 102 L 98 102 L 106 170 L 34 170 Z" />
           <rect className="cai-prop-lip" x="38" y="97" width="64" height="7" rx="2.5" />
           <path className="cai-accent-stroke" d="M 88 97 C 88 88 84 84 79 82" />
