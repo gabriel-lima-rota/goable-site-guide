@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Target, Blocks, Users, Compass } from "lucide-react";
+import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -105,6 +105,10 @@ const deliverables: Array<[string, string, string]> = [
   ["05", "Governança e segurança", "Orientações sobre LGPD, dados sensíveis, níveis de acesso e uso responsável da tecnologia."],
   ["06", "Roteiro de implementação", "Próximos passos estruturados, com prioridades e visão dos ganhos nos próximos 30, 60 e 90 dias."],
 ];
+
+const faces = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => img(`conect-face-${n}.jpg`));
+
+const venueFacts = ["Porto Alegre · RS", "Dia completo, 9h às 18h", "100% presencial"];
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -297,6 +301,84 @@ function ConectAiIndex() {
                   <h3>{title}</h3>
                   <p>{body}</p>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PROVA SOCIAL */}
+        <section className="cai-social">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Prova social</span>
+              <h2 className="sb-h2">A 1ª edição não terminou em aplauso. Terminou em NPS 9,71.</h2>
+              <p className="sb-lead sb-lead-light">
+                Mais de 40 empresas, uma sala cheia de decisores e uma nota que fala por si.
+              </p>
+            </div>
+
+            <div className="cai-faces" data-reveal>
+              {faces.map((src, i) => (
+                <span className="cai-face" key={src}>
+                  <img src={src} alt={`Participante da 1ª edição do Conect.AI ${i + 1}`} loading="lazy" />
+                </span>
+              ))}
+              <span className="cai-face-more">+40 empresas</span>
+            </div>
+
+            <div className="cai-testi" data-reveal>
+              <div className="cai-testi-who">
+                <span className="cai-testi-mono" aria-hidden>VP</span>
+                <span className="cai-testi-name">
+                  <strong>Valdecir Pressi</strong>
+                  <span>CFO · participante da 1ª edição</span>
+                </span>
+              </div>
+              <a
+                className="cai-testi-link"
+                href="https://www.linkedin.com/posts/valdecirpressi_goableai-conectai-cfo-ugcPost-7472818144198180864-4AvH/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Linkedin className="sb-ic" aria-hidden /> Ler o depoimento no LinkedIn
+                <ArrowUpRight className="sb-ic" aria-hidden />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* INSTITUTO CALDEIRA */}
+        <section className="cai-venue">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">O ambiente</span>
+              <h2 className="sb-h2 sb-h2-dark">No Instituto Caldeira, o maior hub de inovação do Sul.</h2>
+              <p className="sb-lead">
+                O Conect.AI acontece dentro de um dos principais ambientes de tecnologia,
+                empreendedorismo e transformação do país, em Porto Alegre.
+              </p>
+            </div>
+
+            <div className="cai-venue-grid" data-reveal>
+              <figure className="cai-venue-figure cai-venue-figure-lg">
+                <img src={img("caldeira-campus.jpg")} alt="Campus Caldeira, Instituto Caldeira em Porto Alegre" loading="lazy" />
+                <figcaption>
+                  <strong>Campus Caldeira</strong>
+                  <span>Hub de inovação no coração de Porto Alegre</span>
+                </figcaption>
+              </figure>
+              <figure className="cai-venue-figure">
+                <img src={img("caldeira-sala.jpg")} alt="Sala de imersão do Conect.AI no Instituto Caldeira" loading="lazy" />
+                <figcaption>
+                  <strong>Sala da imersão</strong>
+                  <span>Formato reduzido, foco em construção</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="cai-venue-facts" data-reveal>
+              {venueFacts.map((f) => (
+                <span key={f}>{f}</span>
               ))}
             </div>
           </div>
