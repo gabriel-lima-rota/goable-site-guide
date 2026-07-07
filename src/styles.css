@@ -10054,7 +10054,7 @@
 }
 .cai-stage {
   position: relative;
-  height: 190px;
+  height: 216px;
   overflow: hidden;
   border-radius: 1.7rem 1.7rem 0 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -10164,6 +10164,92 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cai-cone, .cai-pool, .cai-figure, .cai-motes circle, .cai-stage-glyph {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   CONECT.AI palcos v2 — figuras desenvolvidas (politico/medico/empresario)
+   ========================================================================== */
+.cai-figure {
+  animation-duration: 6.5s;
+}
+@keyframes cai-sway {
+  0%, 100% { transform: rotate(-1.1deg) translateY(0); }
+  50% { transform: rotate(1.1deg) translateY(-2px); }
+}
+.cai-prop {
+  fill: #0b0d18;
+  stroke: color-mix(in oklab, var(--cai-accent) 32%, transparent);
+  stroke-width: 0.8;
+}
+.cai-prop-lip {
+  fill: color-mix(in oklab, var(--cai-accent) 26%, #0d1020);
+  stroke: none;
+}
+.cai-accent {
+  fill: var(--cai-accent);
+  stroke: none;
+}
+.cai-accent-stroke {
+  fill: none;
+  stroke: var(--cai-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.cai-carve {
+  fill: color-mix(in oklab, var(--cai-accent) 10%, #07080f);
+  stroke: none;
+}
+.cai-emblem {
+  fill: none;
+  stroke: color-mix(in oklab, var(--cai-accent) 55%, transparent);
+  stroke-width: 1.2;
+  animation: cai-emblem 3s ease-in-out infinite;
+}
+@keyframes cai-emblem {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+.cai-crowd ellipse {
+  fill: #04050b;
+  opacity: 0.96;
+}
+@keyframes cai-mote {
+  0% { transform: translateY(-8px); opacity: 0; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.4; }
+  100% { transform: translateY(126px); opacity: 0; }
+}
+.cai-stage-live {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(7, 8, 15, 0.55);
+  color: rgba(247, 248, 255, 0.85);
+  padding: 0.32rem 0.66rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.cai-stage-live i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--cai-accent);
+  animation: cai-chip-pulse 2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cai-emblem, .cai-stage-live i {
     animation: none;
   }
 }

@@ -47,22 +47,64 @@ const glyphFor: Record<string, typeof Landmark> = {
   business: TrendingUp,
 };
 
-function StageFigure() {
+function StageFigure({ kind }: { kind: string }) {
   return (
-    <svg className="cai-stage-svg" viewBox="0 0 120 160" preserveAspectRatio="xMidYMax meet" aria-hidden>
-      <polygon className="cai-cone" points="60,-14 106,160 14,160" />
-      <ellipse className="cai-pool" cx="60" cy="150" rx="40" ry="7" />
-      <g className="cai-figure">
-        <circle cx="60" cy="46" r="15" />
-        <rect x="52" y="58" width="16" height="18" rx="7" />
-        <path d="M30 160 C 30 104, 44 80, 60 80 C 76 80, 90 104, 90 160 Z" />
-      </g>
+    <svg className="cai-stage-svg" viewBox="0 0 140 170" preserveAspectRatio="xMidYMax meet" aria-hidden>
+      <polygon className="cai-cone" points="70,-16 124,170 16,170" />
+      <ellipse className="cai-pool" cx="70" cy="158" rx="46" ry="7" />
+
+      {kind === "gov" ? (
+        <g className="cai-figure">
+          <circle cx="66" cy="33" r="10" />
+          <rect x="61.5" y="42" width="9" height="7" rx="3.5" />
+          <path d="M 47 62 C 47 55 53 50.5 61 50 L 71 50 C 76.5 50.5 80 52 82.5 55.5 L 95.5 35.5 C 97.5 32.5 101 33 102.2 35.8 C 103.2 38.2 102 40.5 99.8 42 L 88.5 60.5 C 87.2 63.5 86.5 66 86.5 70 L 86.5 104 L 46.5 104 L 46.5 70 C 46.5 67 46.6 64 47 62 Z" />
+          <path className="cai-prop" d="M 42 102 L 98 102 L 106 170 L 34 170 Z" />
+          <rect className="cai-prop-lip" x="38" y="97" width="64" height="7" rx="2.5" />
+          <path className="cai-accent-stroke" d="M 88 97 C 88 88 84 84 79 82" />
+          <circle className="cai-accent" cx="77.5" cy="81" r="2.6" />
+          <circle className="cai-emblem" cx="70" cy="130" r="7" />
+        </g>
+      ) : null}
+
+      {kind === "med" ? (
+        <g className="cai-figure">
+          <circle cx="70" cy="33" r="10" />
+          <rect x="65.5" y="42" width="9" height="7" rx="3.5" />
+          <path d="M 51 62 C 51 55 57 50.5 65 50 L 75 50 C 83 50.5 89 55 89 62 L 93 106 L 97 170 L 43 170 L 47 106 Z" />
+          <path className="cai-carve" d="M 70 50 L 64 64 L 69 110 L 70 122 L 71 110 L 76 64 Z" />
+          <path className="cai-accent-stroke" d="M 62 53 C 60 64 62 73 70 77 M 78 53 C 80 64 78 73 70 77 M 70 77 L 70 86" />
+          <circle className="cai-accent" cx="70" cy="90" r="3.4" />
+          <g transform="rotate(8 90 102)">
+            <rect className="cai-prop" x="83" y="92" width="15" height="20" rx="2" />
+            <rect className="cai-prop-lip" x="87" y="89.5" width="7" height="4" rx="1.5" />
+          </g>
+        </g>
+      ) : null}
+
+      {kind === "business" ? (
+        <g className="cai-figure">
+          <circle cx="66" cy="33" r="10" />
+          <rect x="61.5" y="42" width="9" height="7" rx="3.5" />
+          <path d="M 48 62 C 48 55 54 50.5 62 50 L 72 50 C 80 50.5 84 55 84.5 62 L 86 98 L 79 98 L 79.5 168 L 69.5 168 L 68.5 116 L 63.5 116 L 62.5 168 L 52.5 168 L 53 98 L 46 98 Z" />
+          <path className="cai-accent" d="M 67 50.5 L 63.8 54.5 L 66 76 L 67 80 L 68 76 L 70.2 54.5 Z" />
+          <rect className="cai-prop" x="86" y="108" width="24" height="17" rx="3" />
+          <path className="cai-accent-stroke" d="M 94 108 q 4 -7 9 0" />
+        </g>
+      ) : null}
+
       <g className="cai-motes">
-        <circle cx="52" cy="30" r="1.3" />
-        <circle cx="67" cy="30" r="1" />
-        <circle cx="60" cy="30" r="1.5" />
-        <circle cx="73" cy="30" r="1.1" />
-        <circle cx="47" cy="30" r="1" />
+        <circle cx="60" cy="28" r="1.3" />
+        <circle cx="76" cy="28" r="1" />
+        <circle cx="68" cy="28" r="1.5" />
+        <circle cx="83" cy="28" r="1.1" />
+        <circle cx="54" cy="28" r="1" />
+      </g>
+
+      <g className="cai-crowd">
+        <ellipse cx="14" cy="178" rx="17" ry="15" />
+        <ellipse cx="50" cy="182" rx="19" ry="16" />
+        <ellipse cx="88" cy="180" rx="18" ry="15" />
+        <ellipse cx="124" cy="178" rx="17" ry="15" />
       </g>
     </svg>
   );
@@ -391,7 +433,8 @@ function ConectAiIndex() {
                     <span className="cai-edition-bar" aria-hidden />
                     <span className="cai-edition-shine" aria-hidden />
                     <div className="cai-stage" aria-hidden>
-                      <StageFigure />
+                      <StageFigure kind={ed.key} />
+                      <span className="cai-stage-live"><i /> No palco em {ed.day}</span>
                       <span className="cai-stage-glyph"><Glyph aria-hidden /></span>
                     </div>
                     <div className="cai-edition-body">
