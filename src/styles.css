@@ -9861,3 +9861,155 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   CONECT.AI overview — camada criativa (identidade de IA + motions)
+   ========================================================================== */
+
+/* Chip "empresa de IA" */
+.cai-ai-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(184, 168, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(109, 77, 255, 0.14);
+  color: #e7e0ff;
+  padding: 0.42rem 0.82rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+.cai-ai-chip i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6d4dff, #38e6e6);
+  animation: cai-chip-pulse 2s ease-in-out infinite;
+}
+@keyframes cai-chip-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 230, 230, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(56, 230, 230, 0); }
+}
+
+/* Palavra que gira no titulo */
+.cai-rot {
+  display: inline-block;
+  position: relative;
+}
+.cai-rot-word {
+  display: inline-block;
+  background: linear-gradient(100deg, #a99bff, #38e6e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cai-rot-in 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes cai-rot-in {
+  0% { opacity: 0; transform: translateY(0.35em) rotateX(-40deg); filter: blur(6px); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Malha neural (carimbo de IA) */
+.cai-neural {
+  position: absolute;
+  z-index: -1;
+  bottom: 6%;
+  left: 2%;
+  width: min(320px, 30vw);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.cai-neural-link {
+  stroke: rgba(184, 168, 255, 0.5);
+  stroke-width: 0.4;
+  stroke-dasharray: 4 3;
+  animation: cai-link-flow 3.4s linear infinite;
+}
+.cai-neural-node {
+  fill: #a99bff;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cai-neural-pulse 2.6s ease-in-out infinite;
+}
+@keyframes cai-neural-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+@keyframes cai-link-flow {
+  to { stroke-dashoffset: -14; }
+}
+
+/* Letreiro de IA */
+.cai-marquee {
+  overflow: hidden;
+  background: var(--sb-ink);
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.95rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.cai-marquee-row {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: cai-marquee-scroll 30s linear infinite;
+}
+.cai-marquee-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-left: 2.2rem;
+  color: rgba(247, 248, 255, 0.56);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.cai-marquee-row span::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6d4dff, #38e6e6);
+  flex: none;
+}
+.cai-marquee:hover .cai-marquee-row {
+  animation-play-state: paused;
+}
+@keyframes cai-marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* Brilho + stagger nas edicoes */
+.cai-edition-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.13) 48%, transparent 64%);
+  transform: translateX(-120%);
+  transition: transform 0.85s cubic-bezier(0.16, 0.7, 0.3, 1);
+}
+.cai-edition:hover .cai-edition-shine {
+  transform: translateX(120%);
+}
+@media (min-width: 1024px) {
+  .cai-editions-grid .cai-edition:nth-child(2) {
+    margin-top: -1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cai-ai-chip i,
+  .cai-marquee-row,
+  .cai-neural-node,
+  .cai-neural-link {
+    animation: none;
+  }
+  .cai-edition-shine {
+    display: none;
+  }
+}

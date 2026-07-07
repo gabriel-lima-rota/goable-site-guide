@@ -23,11 +23,22 @@ const WHATSAPP = "https://wa.me/555185458646?text=Ol%C3%A1!%20Quero%20participar
 
 const heroFacts = ["21 a 23 de julho", "9h às 18h", "Instituto Caldeira", "Porto Alegre"];
 
-const proof = [
-  ["9,71", "NPS da 1ª edição"],
-  ["97%", "de satisfação"],
-  ["100%", "participariam de novo"],
-  ["40+", "empresas presentes"],
+const proof: Array<{ value: number; decimals?: number; prefix?: string; suffix?: string; label: string }> = [
+  { value: 9.71, decimals: 2, label: "NPS da 1ª edição" },
+  { value: 97, suffix: "%", label: "de satisfação" },
+  { value: 100, suffix: "%", label: "participariam de novo" },
+  { value: 40, suffix: "+", label: "empresas presentes" },
+];
+
+const marquee = [
+  "Agentes de IA",
+  "Automação",
+  "RAG",
+  "Diagnóstico ao vivo",
+  "Sistemas sob medida",
+  "IA aplicada à operação",
+  "Governança e LGPD",
+  "Construção na prática",
 ];
 
 type Edition = {
@@ -188,6 +199,77 @@ function onHeroLeave(e: React.PointerEvent<HTMLElement>) {
   e.currentTarget.style.setProperty("--sb-py", "0px");
 }
 
+function RotatingWord({ words }: { words: string[] }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setInterval(() => setI((v) => (v + 1) % words.length), 2200);
+    return () => window.clearInterval(t);
+  }, [words.length]);
+  return (
+    <span className="cai-rot">
+      <span key={i} className="cai-rot-word">{words[i]}</span>
+    </span>
+  );
+}
+
+function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: number; decimals?: number; prefix?: string; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      setDisplay(value);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            io.unobserve(entry.target);
+            const dur = 1500;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / dur, 1);
+              setDisplay(value * (1 - Math.pow(1 - p, 3)));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+  const formatted = decimals > 0 ? display.toFixed(decimals).replace(".", ",") : Math.round(display).toString();
+  return <span ref={ref}>{prefix}{formatted}{suffix}</span>;
+}
+
+function NeuralMotif({ className }: { className?: string }) {
+  const nodes = [
+    [14, 30], [30, 62], [26, 14], [52, 40], [50, 82], [72, 20], [78, 58], [92, 38],
+  ];
+  const links = [[0, 1], [0, 2], [2, 3], [1, 3], [3, 4], [3, 5], [5, 6], [3, 6], [6, 7], [5, 7]];
+  return (
+    <svg className={className} viewBox="0 0 100 96" fill="none" aria-hidden preserveAspectRatio="xMidYMid meet">
+      {links.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
+          className="cai-neural-link"
+          style={{ animationDelay: `${i * 0.35}s` }}
+        />
+      ))}
+      {nodes.map(([x, y], i) => (
+        <circle key={i} cx={x} cy={y} r={1.8} className="cai-neural-node" style={{ animationDelay: `${i * 0.28}s` }} />
+      ))}
+    </svg>
+  );
+}
+
 function ConectAiIndex() {
   const ref = useReveal();
 
@@ -201,12 +283,13 @@ function ConectAiIndex() {
           <div className="cai-wave" aria-hidden />
           <img className="cai-shape cai-shape-1" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
           <img className="cai-shape cai-shape-2" src={img("goable-4d.png")} alt="" aria-hidden draggable={false} />
+          <NeuralMotif className="cai-neural" />
 
           <div className="cai-hero-inner">
             <div className="cai-hero-copy" data-reveal>
-              <span className="sb-eyebrow sb-eyebrow-dark">Conect.AI 2026</span>
+              <span className="cai-ai-chip"><i aria-hidden /> Imersão de IA aplicada · Goable AI</span>
               <h1 className="cai-hero-h1">
-                Três dias para tirar a IA do discurso e colocar na sua <span className="sb-hl">operação</span>.
+                Três dias para tirar a IA do <RotatingWord words={["discurso", "slide", "achismo"]} /> e colocar na sua <span className="sb-hl">operação</span>.
               </h1>
               <p className="cai-hero-sub">
                 Em julho de 2026 o Conect.AI volta em três edições: gestão pública, medicina e
@@ -237,14 +320,23 @@ function ConectAiIndex() {
           </div>
 
           <div className="cai-proof" data-reveal>
-            {proof.map(([value, label]) => (
-              <article key={label}>
-                <strong>{value}</strong>
-                <span>{label}</span>
+            {proof.map((p) => (
+              <article key={p.label}>
+                <strong><CountUp value={p.value} decimals={p.decimals} prefix={p.prefix} suffix={p.suffix} /></strong>
+                <span>{p.label}</span>
               </article>
             ))}
           </div>
         </section>
+
+        {/* LETREIRO DE IA */}
+        <div className="cai-marquee" aria-hidden>
+          <div className="cai-marquee-row">
+            {[...marquee, ...marquee].map((m, i) => (
+              <span key={i}>{m}</span>
+            ))}
+          </div>
+        </div>
 
         {/* AS 3 EDIÇÕES */}
         <section className="cai-editions" id="edicoes">
@@ -268,6 +360,7 @@ function ConectAiIndex() {
                   key={ed.key}
                 >
                   <span className="cai-edition-bar" aria-hidden />
+                  <span className="cai-edition-shine" aria-hidden />
                   <div className="cai-edition-top">
                     <span className="cai-edition-badge">{ed.badge}</span>
                     <span className="cai-edition-date">
