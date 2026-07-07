@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MessageCircle, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { MessageCircle, Instagram, Linkedin, ArrowUpRight, ArrowDown } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
-import { ContactChatSimulation, type ContactDraft } from "@/components/goable/ContactChatSimulation";
+import { HomeDiagnosticChat } from "@/components/goable/HomeDiagnosticChat";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
       { title: "Contato | Goable AI" },
-      { name: "description", content: "Conte o que trava sua operação. A Goable entende o contexto antes de sugerir qualquer caminho." },
+      { name: "description", content: "Comece com um diagnóstico, não com um formulário. A Goable entende sua operação antes de propor qualquer caminho." },
       { property: "og:title", content: "Contato | Goable AI" },
-      { property: "og:description", content: "Conte o que trava sua operação. A Goable entende o contexto antes de sugerir qualquer caminho." },
+      { property: "og:description", content: "Comece com um diagnóstico, não com um formulário. A Goable entende sua operação antes de propor qualquer caminho." },
     ],
   }),
   component: ContatoPage,
 });
 
+const img = (file: string) => `/goable-assets/${file}`;
+
+const heroMeta = ["4 perguntas", "2 minutos", "sem compromisso"];
+
 const steps = [
-  ["01", "Você conta a dor", "No chat aqui do lado ou no WhatsApp, do jeito que for mais fácil. Sem formulário longo."],
-  ["02", "A gente diagnostica", "O time entende área, urgência e contexto da operação. Sem custo e sem compromisso."],
-  ["03", "Você recebe um caminho", "Uma leitura clara do que pode virar agente, automação ou sistema na sua empresa."],
+  ["01", "Diagnóstico", "A gente entra na sua operação e encontra onde ela realmente trava. Especialistas investigando, não achismo."],
+  ["02", "Arquitetura", "Desenhamos o mapa: processos, dados, regras e o sistema certo para a sua realidade."],
+  ["03", "Construção", "Construímos os agentes, automações e integrações, testados dentro da sua operação."],
+  ["04", "Operação", "Colocamos para rodar com o seu time, medimos e ajustamos até virar rotina."],
 ];
 
 const channels = [
@@ -56,70 +61,76 @@ function useReveal() {
   return ref;
 }
 
+function onHeroPointer(e: React.PointerEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--sb-px", `${((e.clientX - r.left) / r.width - 0.5) * 24}px`);
+  e.currentTarget.style.setProperty("--sb-py", `${((e.clientY - r.top) / r.height - 0.5) * 18}px`);
+}
+function onHeroLeave(e: React.PointerEvent<HTMLElement>) {
+  e.currentTarget.style.setProperty("--sb-px", "0px");
+  e.currentTarget.style.setProperty("--sb-py", "0px");
+}
+
 function ContatoPage() {
   const ref = useReveal();
-  const [draft, setDraft] = useState<ContactDraft>({ nome: "", empresa: "", whatsapp: "", interesse: "" });
-  const [hoverInterest, setHoverInterest] = useState<string | null>(null);
-  const previewInterest = draft.interesse || hoverInterest || "";
-  const filled = Boolean(draft.nome || draft.empresa || draft.whatsapp || previewInterest);
 
   return (
     <AppShell>
-      <div className="sb-page ct-page" ref={ref}>
-        {/* HERO com chat */}
-        <section className="sb-hero ct-hero" id="conversa">
-          <div className="sb-hero-grid" aria-hidden />
-          <div className="sb-hero-inner ct-hero-inner">
-            <div className="ct-hero-copy" data-reveal>
-              <span className="sb-eyebrow sb-eyebrow-dark">Contato</span>
-              <h1 className="sb-hero-h1 ct-hero-h1">
-                Comece com <span className="sb-hl">uma conversa</span>. Não com um formulário genérico.
-              </h1>
-              <p className="sb-hero-sub">
-                Conte o que trava sua operação. A Goable entende o contexto antes de sugerir qualquer
-                caminho e volta com clareza, não com proposta pronta.
-              </p>
+      <div className="sb-page ct2-page" ref={ref}>
+        {/* HERO com formas */}
+        <section className="ct2-hero" onPointerMove={onHeroPointer} onPointerLeave={onHeroLeave}>
+          <div className="ct2-grid" aria-hidden />
+          <div className="ct2-aura" aria-hidden />
+          <div className="ct2-wave" aria-hidden />
+          <img className="ct2-shape ct2-shape-1" src={img("goable-4d.png")} alt="" aria-hidden draggable={false} />
+          <img className="ct2-shape ct2-shape-2" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
+          <img className="ct2-shape ct2-shape-3" src={img("goable-3d.png")} alt="" aria-hidden draggable={false} />
 
-              <div className="ct-crm" data-reveal>
-                <div className="ct-crm-top">
-                  <span className="ct-crm-label">CRM Goable</span>
-                  <span className={`ct-crm-status ${filled ? "is-on" : ""}`}>
-                    <i aria-hidden />
-                    {filled ? "Recebido" : "Aguardando"}
-                  </span>
-                </div>
-                <div className="ct-crm-grid">
-                  <CrmField label="Nome" value={draft.nome} />
-                  <CrmField label="Empresa" value={draft.empresa} />
-                  <CrmField label="WhatsApp" value={draft.whatsapp} />
-                  <CrmField label="Interesse" value={previewInterest} ghost={!draft.interesse && Boolean(hoverInterest)} />
-                </div>
-                <p className="ct-crm-note">Cada conversa vira um lead com contexto no CRM da Goable.</p>
-              </div>
+          <div className="ct2-hero-inner" data-reveal>
+            <span className="sb-eyebrow sb-eyebrow-dark">Contato</span>
+            <h1 className="ct2-hero-h1">
+              A conversa começa entendendo a sua <span className="sb-hl">operação</span>.
+            </h1>
+            <p className="ct2-hero-sub">
+              Antes de qualquer proposta, a Goable faz um diagnóstico do que trava a sua empresa.
+              Comece agora, são quatro perguntas rápidas.
+            </p>
+            <div className="ct2-hero-meta">
+              {heroMeta.map((m) => (
+                <span key={m}>{m}</span>
+              ))}
             </div>
-
-            <div className="ct-chat" data-reveal>
-              <ContactChatSimulation
-                origin="/contato"
-                draft={draft}
-                onDraftChange={setDraft}
-                onInterestHover={setHoverInterest}
-              />
-            </div>
+            <a className="ct2-scroll-cue" href="#diagnostico">
+              <span>Começar o diagnóstico</span>
+              <ArrowDown className="ct2-scroll-ic" aria-hidden />
+            </a>
           </div>
         </section>
 
-        {/* O QUE ACONTECE DEPOIS */}
-        <section className="sb-thesis ct-process">
+        {/* DIAGNÓSTICO GUIADO (ideia de contato da home) */}
+        <div id="diagnostico" className="ct2-diag">
+          <HomeDiagnosticChat />
+        </div>
+
+        {/* PASSO A PASSO */}
+        <section className="ct2-steps-section">
+          <img className="ct2-step-shape" src={img("goable-gradient-glass-21.png")} alt="" aria-hidden draggable={false} />
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow">Depois da conversa</span>
-              <h2 className="sb-h2 sb-h2-dark">Da sua dor até uma proposta de sistema.</h2>
+              <span className="sb-eyebrow">Como vamos fazer</span>
+              <h2 className="sb-h2 sb-h2-dark">Do diagnóstico ao sistema rodando, em quatro passos.</h2>
+              <p className="sb-lead">
+                Depois que a gente entende o seu cenário, o caminho é claro. Sem pacote pronto, sem
+                promessa de palco.
+              </p>
             </div>
-            <div className="ct-steps">
+
+            <div className="ct2-rail">
+              <span className="ct2-rail-line" aria-hidden />
               {steps.map(([num, title, body], i) => (
-                <article className="ct-step" data-reveal style={{ transitionDelay: `${i * 90}ms` }} key={num}>
-                  <span className="ct-step-num">{num}</span>
+                <article className="ct2-step" data-reveal style={{ transitionDelay: `${i * 90}ms` }} key={num}>
+                  <span className="ct2-step-dot" aria-hidden />
+                  <span className="ct2-step-num">{num}</span>
                   <h3>{title}</h3>
                   <p>{body}</p>
                 </article>
@@ -129,7 +140,7 @@ function ContatoPage() {
         </section>
 
         {/* CANAIS DIRETOS */}
-        <section className="sb-cases ct-channels">
+        <section className="sb-cases ct2-channels">
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark">Canais diretos</span>
@@ -163,24 +174,12 @@ function ContatoPage() {
             <span className="sb-eyebrow sb-eyebrow-dark">Vamos começar</span>
             <h2 className="sb-h2">Qual problema da sua empresa precisa virar sistema?</h2>
             <div className="sb-final-actions">
-              <CTAButton variant="primary" size="lg" href="#conversa">Começar a conversa</CTAButton>
+              <CTAButton variant="primary" size="lg" href="#diagnostico">Fazer o diagnóstico</CTAButton>
               <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer o Conect.AI 2026</CTAButton>
             </div>
           </div>
         </section>
       </div>
     </AppShell>
-  );
-}
-
-function CrmField({ label, value, ghost = false }: { label: string; value: string; ghost?: boolean }) {
-  const filled = Boolean(value);
-  return (
-    <div className="ct-crm-field">
-      <span className="ct-crm-field-label">{label}</span>
-      <span className={`ct-crm-field-value ${filled ? (ghost ? "is-ghost" : "is-filled") : ""}`}>
-        {filled ? value : "aguardando"}
-      </span>
-    </div>
   );
 }
