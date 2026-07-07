@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Linkedin } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
 
@@ -35,13 +36,65 @@ const heroStats = [
 
 const setores = ["Educação", "Bancário", "Jurídico", "Eventos", "Atendimento"];
 
-const thesisPains = [
-  ["Leads sem resposta", "A oportunidade esfria antes do primeiro retorno."],
-  ["Tarefas manuais", "O time gasta hora no que a máquina faz em segundos."],
-  ["Dados espalhados", "A informação existe, mas ninguém decide com ela."],
-  ["Atendimento lento", "A demanda cresce mais rápido que a equipe."],
-  ["Processo sem padrão", "Cada pessoa executa de um jeito e o resultado varia."],
-  ["Decisão no escuro", "Sem número claro, tudo vira achismo."],
+type Stat = {
+  area: string;
+  value: number;
+  decimals?: number;
+  prefix?: string;
+  suffix: string;
+  label: string;
+  find: string;
+  source: string;
+  variant?: "hero" | "wide";
+  meter?: number;
+};
+
+const stats: Stat[] = [
+  {
+    area: "Operação",
+    value: 70,
+    prefix: "até ",
+    suffix: "%",
+    label: "Trabalho manual demais",
+    find: "do tempo do time é gasto em tarefas que a IA já consegue automatizar.",
+    source: "McKinsey, 2023",
+    variant: "hero",
+    meter: 70,
+  },
+  {
+    area: "Vendas",
+    value: 21,
+    suffix: "×",
+    label: "Lead que demora, lead que morre",
+    find: "mais chance de qualificar um lead respondendo em 5 minutos em vez de 30.",
+    source: "Lead Response Management Study, MIT e InsideSales",
+    variant: "wide",
+  },
+  {
+    area: "Dados",
+    value: 1.8,
+    decimals: 1,
+    suffix: "h",
+    label: "Informação espalhada",
+    find: "por dia é o que cada pessoa perde só procurando informação na empresa.",
+    source: "McKinsey",
+  },
+  {
+    area: "Atendimento",
+    value: 69,
+    suffix: "%",
+    label: "Atendimento desconectado",
+    find: "dos clientes trocam de fornecedor depois de um atendimento desconectado.",
+    source: "MuleSoft",
+  },
+  {
+    area: "Gestão",
+    value: 23,
+    suffix: "×",
+    label: "Decisão no achismo",
+    find: "mais chance de conquistar clientes quando a empresa decide guiada por dados.",
+    source: "McKinsey Global Institute",
+  },
 ];
 
 const method = [
@@ -195,6 +248,50 @@ function useReveal() {
   return ref;
 }
 
+function StatNumber({ value, decimals = 0, prefix = "", suffix = "" }: { value: number; decimals?: number; prefix?: string; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      setDisplay(value);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            io.unobserve(entry.target);
+            const dur = 1500;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / dur, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setDisplay(value * eased);
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value]);
+  const formatted =
+    decimals > 0 ? display.toFixed(decimals).replace(".", ",") : Math.round(display).toString();
+  return (
+    <span ref={ref}>
+      {prefix}
+      {formatted}
+      {suffix}
+    </span>
+  );
+}
+
 function SobrePage() {
   const ref = useReveal();
 
@@ -270,20 +367,46 @@ function SobrePage() {
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow">Nossa tese</span>
-              <h2 className="sb-h2 sb-h2-dark">IA que não muda a rotina é só custo.</h2>
+              <h2 className="sb-h2 sb-h2-dark">O gargalo mais caro é o que a empresa não enxerga.</h2>
               <p className="sb-lead">
-                Ferramenta da moda não resolve empresa. O valor aparece quando a IA entra num
-                problema concreto e a operação fica mais rápida, mais barata ou mais previsível.
+                Toda operação tem travas que ninguém mede. Os números abaixo mostram o tamanho delas.
+                Investigar antes de agir é o que separa a IA que resolve da IA que vira custo.
               </p>
             </div>
-            <div className="sb-pain-grid">
-              {thesisPains.map(([title, body], i) => (
-                <article className="sb-pain-card" data-reveal style={{ transitionDelay: `${i * 55}ms` }} key={title}>
-                  <span className="sb-pain-dot" aria-hidden />
-                  <h3>{title}</h3>
-                  <p>{body}</p>
+
+            <div className="sb-stat-bento">
+              {stats.map((s, i) => (
+                <article
+                  className={`sb-stat ${s.variant === "hero" ? "sb-stat-hero" : ""} ${s.variant === "wide" ? "sb-stat-wide" : ""}`}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 70}ms`, ...(s.meter ? ({ "--meter": `${s.meter}%` } as CSSProperties) : {}) }}
+                  key={s.label}
+                >
+                  <span className="sb-stat-area">{s.area}</span>
+                  <div className="sb-stat-num">
+                    <StatNumber value={s.value} decimals={s.decimals} prefix={s.prefix} suffix={s.suffix} />
+                  </div>
+                  {s.meter ? (
+                    <div className="sb-stat-meter" aria-hidden>
+                      <i />
+                    </div>
+                  ) : null}
+                  <h3 className="sb-stat-label">{s.label}</h3>
+                  <p className="sb-stat-find">{s.find}</p>
+                  <span className="sb-stat-src">{s.source}</span>
                 </article>
               ))}
+            </div>
+
+            <div className="sb-invest" data-reveal>
+              <div className="sb-invest-copy">
+                <strong>Não sabe qual é o seu maior gargalo?</strong>
+                <p>
+                  A maioria dos gestores não sabe. Por isso a Goable coloca especialistas para
+                  investigar, medir e encontrar o seu antes de propor qualquer solução.
+                </p>
+              </div>
+              <CTAButton variant="primary" size="lg" to="/contato">Investigar minha operação</CTAButton>
             </div>
           </div>
         </section>
