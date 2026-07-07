@@ -40,7 +40,7 @@
       {
         "name": "list_conect_ai_events",
         "title": "List Conect.AI events",
-        "description": "Returns the list of upcoming Goable Conect.AI event editions (Empresários, MED, GOV) with dates and URLs.",
+        "description": "Returns the list of upcoming Goable Conect.AI event editions (GOV, MED, Empresários) with dates and URLs.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
