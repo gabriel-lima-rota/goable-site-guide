@@ -10253,3 +10253,262 @@
     animation: none;
   }
 }
+
+/* ==========================================================================
+   CONECT.AI — upgrade das demais secoes (impressionantes)
+   ========================================================================== */
+
+/* POR QUE: palavra fantasma + neural */
+.cai-why {
+  isolation: isolate;
+}
+.cai-why-ghost {
+  position: absolute;
+  top: 0.5rem;
+  right: -1rem;
+  z-index: -1;
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(184, 168, 255, 0.14);
+  user-select: none;
+  pointer-events: none;
+  animation: cai-ghost-drift 14s ease-in-out infinite alternate;
+}
+@keyframes cai-ghost-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-3rem); }
+}
+.cai-neural-why {
+  position: absolute;
+  bottom: 4%;
+  right: 3%;
+  width: min(280px, 26vw);
+  opacity: 0.35;
+  z-index: -1;
+  pointer-events: none;
+}
+.cai-why-card {
+  position: relative;
+  overflow: hidden;
+}
+.cai-why-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sb-lav), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+.cai-why-card:hover::after {
+  transform: scaleX(1);
+}
+.cai-why-card:hover .cai-why-ic {
+  transform: translateY(-3px) rotate(-6deg) scale(1.06);
+  box-shadow: 0 10px 30px -12px rgba(109, 77, 255, 0.7);
+}
+.cai-why-ic {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ENTREGAS: pulso de dados */
+.cai-deliver-card {
+  position: relative;
+}
+.cai-deliver-pulse {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1rem;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(109, 77, 255, 0.12);
+  overflow: hidden;
+}
+.cai-deliver-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6d4dff, #38e6e6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s cubic-bezier(0.16, 0.7, 0.3, 1) 0.25s;
+}
+.cai-deliver-card.is-in .cai-deliver-pulse::before {
+  transform: scaleX(1);
+}
+.cai-deliver-card {
+  padding-bottom: 2.2rem;
+}
+.cai-deliver-card:hover .cai-deliver-num {
+  background: linear-gradient(122deg, #6d4dff, #38e6e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* PROVA SOCIAL: flashes de plateia + rostos flutuando */
+.cai-flash {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  animation: cai-flash 7s ease-out infinite;
+}
+.cai-flash-1 { top: 22%; left: 12%; animation-delay: 1s; }
+.cai-flash-2 { top: 62%; left: 82%; animation-delay: 3.4s; }
+.cai-flash-3 { top: 38%; left: 56%; animation-delay: 5.6s; }
+@keyframes cai-flash {
+  0%, 96%, 100% { opacity: 0; box-shadow: none; }
+  97% { opacity: 0.95; box-shadow: 0 0 22px 8px rgba(255, 255, 255, 0.5); }
+  98.5% { opacity: 0.25; box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.25); }
+}
+.cai-face {
+  animation: cai-face-bob 4.4s ease-in-out infinite;
+}
+@keyframes cai-face-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.cai-face:hover {
+  transform: translateY(-6px) scale(1.06);
+  animation-play-state: paused;
+  z-index: 2;
+}
+
+/* CALDEIRA: ken burns + pin */
+.cai-venue-figure img {
+  animation: cai-kenburns 18s ease-in-out infinite alternate;
+}
+.cai-venue-figure:nth-child(2) img {
+  animation-delay: 4s;
+}
+@keyframes cai-kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+.cai-venue-figure:hover img {
+  animation-play-state: paused;
+}
+.cai-venue-figure figcaption strong::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6d4dff, #38e6e6);
+  box-shadow: 0 0 0 0 rgba(56, 230, 230, 0.5);
+  animation: cai-chip-pulse 2.4s ease-in-out infinite;
+}
+
+/* FAQ: numeracao + barra viva */
+.cai-faq-num {
+  font-style: normal;
+  margin-right: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(122deg, #a99bff, #38e6e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cai-faq-item {
+  position: relative;
+}
+.cai-faq-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #6d4dff, #38e6e6);
+  transform: scaleY(0);
+  transition: transform 0.35s ease;
+}
+.cai-faq-item.is-open::before {
+  transform: scaleY(1);
+}
+
+/* INSCRICAO: refletores + contagem regressiva */
+.cai-enroll-cone {
+  position: absolute;
+  top: -30%;
+  width: 34%;
+  height: 130%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in oklab, #6d4dff 34%, transparent), transparent 72%);
+  filter: blur(26px);
+  opacity: 0.5;
+  animation: cai-cone 5s ease-in-out infinite;
+}
+.cai-enroll-cone-l {
+  left: -4%;
+  transform: rotate(16deg);
+}
+.cai-enroll-cone-r {
+  right: -4%;
+  transform: rotate(-16deg);
+  animation-delay: 1.4s;
+}
+.cai-count {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+.cai-count-unit {
+  min-width: 4.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  padding: 0.7rem 0.6rem 0.6rem;
+  backdrop-filter: blur(12px);
+}
+.cai-count-unit strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #fff, #a99bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cai-count-unit em {
+  display: block;
+  margin-top: 0.1rem;
+  font-style: normal;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .cai-count { flex-wrap: wrap; }
+  .cai-why-ghost { font-size: 4.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cai-why-ghost, .cai-flash, .cai-face, .cai-venue-figure img,
+  .cai-enroll-cone, .cai-venue-figure figcaption strong::before {
+    animation: none;
+  }
+}

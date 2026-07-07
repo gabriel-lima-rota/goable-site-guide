@@ -217,7 +217,7 @@ function FaqList() {
             aria-expanded={open === i}
             onClick={() => setOpen(open === i ? -1 : i)}
           >
-            <span>{q}</span>
+            <span><i className="cai-faq-num">{String(i + 1).padStart(2, "0")}</i>{q}</span>
             <ChevronDown aria-hidden />
           </button>
           <div className="cai-faq-a">
@@ -336,6 +336,37 @@ function NeuralMotif({ className }: { className?: string }) {
         <circle key={i} cx={x} cy={y} r={1.8} className="cai-neural-node" style={{ animationDelay: `${i * 0.28}s` }} />
       ))}
     </svg>
+  );
+}
+
+function Countdown() {
+  const target = new Date("2026-07-21T09:00:00-03:00").getTime();
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    setNow(Date.now());
+    const i = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(i);
+  }, []);
+  const t = now === null ? null : Math.max(0, target - now);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const units: Array<[string, string]> =
+    t === null
+      ? [["--", "dias"], ["--", "horas"], ["--", "min"], ["--", "seg"]]
+      : [
+          [pad(Math.floor(t / 86400000)), "dias"],
+          [pad(Math.floor(t / 3600000) % 24), "horas"],
+          [pad(Math.floor(t / 60000) % 60), "min"],
+          [pad(Math.floor(t / 1000) % 60), "seg"],
+        ];
+  return (
+    <div className="cai-count" role="timer" aria-label="Contagem regressiva para o Conect.AI">
+      {units.map(([v, l]) => (
+        <span className="cai-count-unit" key={l}>
+          <strong>{v}</strong>
+          <em>{l}</em>
+        </span>
+      ))}
+    </div>
   );
 }
 
@@ -476,6 +507,8 @@ function ConectAiIndex() {
 
         {/* POR QUE */}
         <section className="cai-why">
+          <span className="cai-why-ghost" aria-hidden>AO VIVO</span>
+          <NeuralMotif className="cai-neural cai-neural-why" />
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark">Por que existe</span>
@@ -513,6 +546,7 @@ function ConectAiIndex() {
                   <span className="cai-deliver-num">{num}</span>
                   <h3>{title}</h3>
                   <p>{body}</p>
+                  <span className="cai-deliver-pulse" aria-hidden />
                 </article>
               ))}
             </div>
@@ -521,6 +555,9 @@ function ConectAiIndex() {
 
         {/* PROVA SOCIAL */}
         <section className="cai-social">
+          <span className="cai-flash cai-flash-1" aria-hidden />
+          <span className="cai-flash cai-flash-2" aria-hidden />
+          <span className="cai-flash cai-flash-3" aria-hidden />
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark">Prova social</span>
@@ -532,7 +569,7 @@ function ConectAiIndex() {
 
             <div className="cai-faces" data-reveal>
               {faces.map((src, i) => (
-                <span className="cai-face" key={src}>
+                <span className="cai-face" style={{ animationDelay: `${(i % 5) * 0.55}s` }} key={src}>
                   <img src={src} alt={`Participante da 1ª edição do Conect.AI ${i + 1}`} loading="lazy" />
                 </span>
               ))}
@@ -612,8 +649,11 @@ function ConectAiIndex() {
         <section className="cai-enroll">
           <div className="cai-enroll-card" data-reveal>
             <div className="cai-enroll-glow" aria-hidden />
+            <span className="cai-enroll-cone cai-enroll-cone-l" aria-hidden />
+            <span className="cai-enroll-cone cai-enroll-cone-r" aria-hidden />
             <span className="sb-eyebrow sb-eyebrow-dark">Garanta sua vaga</span>
             <h2 className="sb-h2">A 1ª edição esgotou. Escolha a sua edição e fale com a equipe.</h2>
+            <Countdown />
             <div className="cai-enroll-pick">
               {editions.map((ed) => (
                 <a
