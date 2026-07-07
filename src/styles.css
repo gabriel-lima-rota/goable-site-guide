@@ -10013,3 +10013,35 @@
     display: none;
   }
 }
+
+/* ==========================================================================
+   CONECT.AI edicoes — padrao/alinhamento entre os 3 cards
+   ========================================================================== */
+.cai-edition-badge {
+  max-width: none;
+  white-space: nowrap;
+}
+@media (min-width: 1024px) {
+  .cai-edition-top {
+    min-height: 2.7rem;
+    align-items: center;
+  }
+  .cai-edition-name {
+    min-height: 2.6rem;
+  }
+  .cai-edition-tag {
+    min-height: 3.1rem;
+  }
+  .cai-edition-aud {
+    min-height: 2.7rem;
+  }
+  .cai-edition-focus {
+    min-height: 3.7rem;
+    align-content: flex-start;
+  }
+  .cai-edition-note {
+    min-height: 2.4rem;
+    display: flex;
+    align-items: flex-end;
+  }
+}

@@ -74,7 +74,7 @@ const editions: Edition[] = [
   {
     key: "med",
     accent: "#00995D",
-    badge: "Realização Faculdade Unimed",
+    badge: "1ª edição",
     name: "Conect",
     dot: "MED",
     tagline: "IA aplicada à prática médica e à rotina do consultório.",
@@ -82,13 +82,13 @@ const editions: Edition[] = [
     weekday: "quarta-feira",
     audience: "Médicos, sócios de clínicas e gestores médicos.",
     focus: ["Operação clínica", "Planos e faturamento", "Gestão do consultório"],
-    note: "Exclusivo para médicos · cortesia por convite.",
+    note: "Com Faculdade Unimed · cortesia por convite.",
     href: "/conect-ai/med",
   },
   {
     key: "business",
     accent: "#3E7BFA",
-    badge: "2ª edição · última turma de 2026",
+    badge: "2ª edição",
     name: "Conect",
     dot: "Business",
     tagline: "IA aplicada à operação empresarial, do comercial ao financeiro.",
@@ -96,7 +96,7 @@ const editions: Edition[] = [
     weekday: "quinta-feira",
     audience: "Empresários, founders, C-levels e gestores decisores.",
     focus: ["Operação e processos", "Comercial e receita", "Gestão e financeiro"],
-    note: "R$ 3.900 · próxima edição só em 2027.",
+    note: "R$ 3.900 · última turma de 2026.",
     href: "/conect-ai/business",
   },
 ];
