@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight, ChevronDown, Landmark, Stethoscope, TrendingUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -40,6 +40,33 @@ const marquee = [
   "Governança e LGPD",
   "Construção na prática",
 ];
+
+const glyphFor: Record<string, typeof Landmark> = {
+  gov: Landmark,
+  med: Stethoscope,
+  business: TrendingUp,
+};
+
+function StageFigure() {
+  return (
+    <svg className="cai-stage-svg" viewBox="0 0 120 160" preserveAspectRatio="xMidYMax meet" aria-hidden>
+      <polygon className="cai-cone" points="60,-14 106,160 14,160" />
+      <ellipse className="cai-pool" cx="60" cy="150" rx="40" ry="7" />
+      <g className="cai-figure">
+        <circle cx="60" cy="46" r="15" />
+        <rect x="52" y="58" width="16" height="18" rx="7" />
+        <path d="M30 160 C 30 104, 44 80, 60 80 C 76 80, 90 104, 90 160 Z" />
+      </g>
+      <g className="cai-motes">
+        <circle cx="52" cy="30" r="1.3" />
+        <circle cx="67" cy="30" r="1" />
+        <circle cx="60" cy="30" r="1.5" />
+        <circle cx="73" cy="30" r="1.1" />
+        <circle cx="47" cy="30" r="1" />
+      </g>
+    </svg>
+  );
+}
 
 type Edition = {
   key: string;
@@ -345,47 +372,56 @@ function ConectAiIndex() {
               <span className="sb-eyebrow">As três edições</span>
               <h2 className="sb-h2 sb-h2-dark">Escolha a edição do seu mundo.</h2>
               <p className="sb-lead">
-                Mesmo método, mesmo palco no Instituto Caldeira. Muda o contexto: cada edição fala a
-                língua de quem decide naquele setor.
+                Mesmo método, mesmo palco no Instituto Caldeira. Muda quem sobe nele: cada edição
+                fala a língua de quem decide naquele setor.
               </p>
             </div>
 
             <div className="cai-editions-grid">
-              {editions.map((ed, i) => (
-                <Link
-                  to={ed.href}
-                  className="cai-edition"
-                  data-reveal
-                  style={{ transitionDelay: `${i * 90}ms`, "--cai-accent": ed.accent } as CSSProperties}
-                  key={ed.key}
-                >
-                  <span className="cai-edition-bar" aria-hidden />
-                  <span className="cai-edition-shine" aria-hidden />
-                  <div className="cai-edition-top">
-                    <span className="cai-edition-badge">{ed.badge}</span>
-                    <span className="cai-edition-date">
-                      <strong>{ed.day}</strong>
-                      <em>{ed.weekday}</em>
-                    </span>
-                  </div>
-                  <h3 className="cai-edition-name">
-                    {ed.name}<span className="cai-edition-dot">.</span>{ed.dot}
-                  </h3>
-                  <p className="cai-edition-tag">{ed.tagline}</p>
-                  <p className="cai-edition-aud">{ed.audience}</p>
-                  <div className="cai-edition-focus">
-                    {ed.focus.map((f) => (
-                      <span key={f}>{f}</span>
-                    ))}
-                  </div>
-                  <div className="cai-edition-foot">
-                    <span className="cai-edition-note">{ed.note}</span>
-                    <span className="cai-edition-cta">
-                      Conhecer <ArrowRight className="sb-ic" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+              {editions.map((ed, i) => {
+                const Glyph = glyphFor[ed.key];
+                return (
+                  <Link
+                    to={ed.href}
+                    className="cai-edition cai-edition-staged"
+                    data-reveal
+                    style={{ transitionDelay: `${i * 90}ms`, "--cai-accent": ed.accent } as CSSProperties}
+                    key={ed.key}
+                  >
+                    <span className="cai-edition-bar" aria-hidden />
+                    <span className="cai-edition-shine" aria-hidden />
+                    <div className="cai-stage" aria-hidden>
+                      <StageFigure />
+                      <span className="cai-stage-glyph"><Glyph aria-hidden /></span>
+                    </div>
+                    <div className="cai-edition-body">
+                      <div className="cai-edition-top">
+                        <span className="cai-edition-badge">{ed.badge}</span>
+                        <span className="cai-edition-date">
+                          <strong>{ed.day}</strong>
+                          <em>{ed.weekday}</em>
+                        </span>
+                      </div>
+                      <h3 className="cai-edition-name">
+                        {ed.name}<span className="cai-edition-dot">.</span>{ed.dot}
+                      </h3>
+                      <p className="cai-edition-tag">{ed.tagline}</p>
+                      <p className="cai-edition-aud">{ed.audience}</p>
+                      <div className="cai-edition-focus">
+                        {ed.focus.map((f) => (
+                          <span key={f}>{f}</span>
+                        ))}
+                      </div>
+                      <div className="cai-edition-foot">
+                        <span className="cai-edition-note">{ed.note}</span>
+                        <span className="cai-edition-cta">
+                          Conhecer <ArrowRight className="sb-ic" aria-hidden />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
 
             <p className="cai-editions-hint" data-reveal>
