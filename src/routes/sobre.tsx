@@ -1,65 +1,225 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowUpRight, Linkedin } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
-import { Slot } from "@/components/goable/Slot";
-import { SpecialistBand } from "@/components/goable/SpecialistBand";
-import { glass, gradientGlass, photos } from "@/lib/goable/assets";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
-      { title: "Sobre | Goable AI" },
-      { name: "description", content: "Método, liderança e execução real da Goable AI." },
-      { property: "og:title", content: "Sobre | Goable AI" },
-      { property: "og:description", content: "Método, liderança e execução real da Goable AI." },
+      { title: "Sobre a Goable AI · Sistemas com IA para empresas" },
+      {
+        name: "description",
+        content:
+          "A Goable cria sistemas com IA para empresas venderem mais, reduzirem custos e padronizarem processos. Conheça a tese, o time e os cases.",
+      },
+      { property: "og:title", content: "Sobre a Goable AI · Sistemas com IA para empresas" },
+      {
+        property: "og:description",
+        content:
+          "A Goable cria sistemas com IA para empresas venderem mais, reduzirem custos e padronizarem processos. Conheça a tese, o time e os cases.",
+      },
     ],
   }),
   component: SobrePage,
 });
 
+const img = (file: string) => `/goable-assets/${file}`;
+
+const heroStats = [
+  ["6+", "Cases entregues"],
+  ["8+", "Setores atendidos"],
+  ["400k+", "Downloads"],
+  ["50k+", "Participantes"],
+];
+
+const setores = ["Educação", "Bancário", "Jurídico", "Eventos", "Atendimento"];
+
+const thesisPains = [
+  ["Leads sem resposta", "A oportunidade esfria antes do primeiro retorno."],
+  ["Tarefas manuais", "O time gasta hora no que a máquina faz em segundos."],
+  ["Dados espalhados", "A informação existe, mas ninguém decide com ela."],
+  ["Atendimento lento", "A demanda cresce mais rápido que a equipe."],
+  ["Processo sem padrão", "Cada pessoa executa de um jeito e o resultado varia."],
+  ["Decisão no escuro", "Sem número claro, tudo vira achismo."],
+];
+
+const method = [
+  [
+    "01",
+    "Dor",
+    "Identificamos a dor real",
+    "Onde a empresa perde venda, tempo, dinheiro ou padrão. Investigação de campo, não suposição.",
+  ],
+  [
+    "02",
+    "Processo",
+    "Mapeamos o processo real",
+    "Pessoas, dados, regras, ferramentas e retrabalho. A operação como ela é, não como o organograma diz.",
+  ],
+  [
+    "03",
+    "Sistema",
+    "Entregamos o sistema rodando",
+    "Agentes, automações e integrações construídos, testados e operados pelo time da empresa.",
+  ],
+];
+
+const founderBullets = [
+  "IA aplicada a negócios e operações reais",
+  "Especialização em Inteligência Artificial em Harvard",
+  "Referência em educação e mercado financeiro",
+  "Idealizador do AI Bank Summit, o maior evento de IA do setor financeiro",
+  "Mais de 400 mil pessoas alcançadas pelos produtos que liderou",
+];
+
+const stages = [
+  { src: img("palco-conecta-cvp.jpg"), tag: "Conecta CVP Experience", note: "Caixa Seguridade" },
+  { src: img("palco-ea26.jpg"), tag: "Encontro de Administradores", note: "EA26, IA aplicada a negócios" },
+];
+
+const experts: Array<{ name: string; area: string; line: string; url: string; accent: string }> = [
+  { name: "Gabriel Rota", area: "Marketing e Vendas", line: "1º no Brasil a colocar um SDR de IA vendendo no WhatsApp.", url: "https://www.linkedin.com/in/gabriel-rota-27281411b/", accent: "#FF3EA5" },
+  { name: "Priscila Niffa", area: "People e Cultura", line: "1ª no Brasil a entrevistar candidatos com avatar de IA.", url: "https://www.linkedin.com/in/priscila-niffa/", accent: "#6D4DFF" },
+  { name: "Vinicius Rohers", area: "Financeiro e FP&A", line: "Faz o dado financeiro responder em linguagem natural.", url: "https://www.linkedin.com/in/vinicius-rohers/", accent: "#244EAE" },
+  { name: "Brayan Souza", area: "Gestão e Processos", line: "CEO de edtech com mais de R$40MM em faturamento.", url: "https://www.linkedin.com/in/brayan-souza-cfp/", accent: "#00A67E" },
+  { name: "Giuliano Tamagno", area: "Legal e Compliance", line: "Criador do Licita Pro AI, a maior IA para licitações do país.", url: "https://www.linkedin.com/in/giuliano-tamagno-6ab591124/", accent: "#F5A524" },
+  { name: "Renan Matos", area: "Relacionamento com Cliente", line: "Relaciona mais de 120k alunos ativos com IA integrada.", url: "https://www.linkedin.com/in/renan-matos/", accent: "#38B6E6" },
+  { name: "Diego Vinhas", area: "Eventos e Marca", line: "Produtor de grandes experiências de marca no Brasil.", url: "https://www.linkedin.com/in/diego-vian-vinhas/", accent: "#E6428A" },
+  { name: "Rodrigo Caixeta", area: "TI e Tecnologia", line: "Referência nacional em arquitetura de IA.", url: "https://www.linkedin.com/in/rodrigo-caixeta/", accent: "#6D4DFF" },
+];
+
+type CaseLink = { label: string; url: string };
+type CaseItem = {
+  img: string;
+  tag: string;
+  meta: string;
+  title: string;
+  body: string;
+  tech: string;
+  result: string;
+  bullets: string[];
+  links: CaseLink[];
+};
+
+const cases: CaseItem[] = [
+  {
+    img: img("case-app-certificacoes.png"),
+    tag: "1º do Brasil",
+    meta: "Cursos Edgar Abreu · Educação · 2023",
+    title: "O primeiro app educacional com IA e RAG do Brasil.",
+    body: "App de estudos para certificações financeiras com IA de recuperação aumentada. O aluno pergunta sobre o próprio conteúdo do curso e recebe resposta na hora.",
+    tech: "App móvel com IA e RAG",
+    result: "Mais de 400 mil downloads",
+    bullets: ["Nota 5.0 na App Store e 4.9 no Google Play", "Pioneiro em RAG educacional no Brasil, em 2023"],
+    links: [
+      { label: "App Store", url: "https://apps.apple.com/us/app/certifica%C3%A7%C3%B5es-edgar-abreu/id1630023032" },
+      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.fouru.certificacoesEdgarAbreu" },
+    ],
+  },
+  {
+    img: img("case-unimed-whatsapp.png"),
+    tag: "Inédito no Brasil",
+    meta: "Faculdade Unimed · Educação e Saúde · 2025",
+    title: "A primeira pós-graduação vendida por IA no WhatsApp.",
+    body: "Agente de IA que atua como SDR: qualifica o lead médico, tira dúvidas e conduz a matrícula da pós em IA, direto no WhatsApp, sem triagem humana.",
+    tech: "Agente de IA para vendas no WhatsApp",
+    result: "Qualificação e matrícula 24 por 7",
+    bullets: ["SDR de IA na linha de frente da venda", "Atendimento contínuo, sem fila e sem horário"],
+    links: [{ label: "Ver curso", url: "https://www.faculdadeunimed.edu.br/cursos/pos-graduacao/ia-para-medicos/" }],
+  },
+  {
+    img: img("case-ai-bank-summit.jpg"),
+    tag: "O maior do país",
+    meta: "AI Bank Summit · Eventos e Mercado Financeiro · 2025",
+    title: "O maior evento de IA do mercado financeiro do Brasil.",
+    body: "Concepção, estrutura e realização do AI Bank Summit, com palestrantes de referência global e nacional e audiência massiva em todo o país.",
+    tech: "Evento e infraestrutura de IA",
+    result: "Mais de 50 mil participantes online",
+    bullets: ["Palcos com nomes globais e nacionais", "Cobertura da Jovem Pan e da imprensa do setor"],
+    links: [
+      {
+        label: "Cobertura Jovem Pan",
+        url: "https://jovempan.com.br/conteudo-patrocinado/ai-bank-summit-2025-lideres-globais-e-brasileiros-discutem-futuro-da-inteligencia-artificial-no-setor-financeiro.html",
+      },
+    ],
+  },
+  {
+    img: img("case-loterias-chat-ia.png"),
+    tag: "Projeto público",
+    meta: "Universidades Loterias Caixa · Governo e Educação · 2024",
+    title: "IA com RAG para suporte educacional na plataforma da Caixa.",
+    body: "Chat IA com RAG dentro do app das Universidades Loterias Caixa. O aluno estuda, tira dúvidas e consulta materiais por curso ou em suporte geral.",
+    tech: "Chat IA com RAG em app mobile",
+    result: "Suporte por curso em tempo real",
+    bullets: ["IA treinada no conteúdo de cada curso", "Assistência integrada, dentro e fora das aulas"],
+    links: [],
+  },
+  {
+    img: img("case-licita-pro.png"),
+    tag: "GovTech",
+    meta: "Licita Pro AI · Governo e Jurídico · 2024",
+    title: "IA que protege prefeituras com segurança jurídica.",
+    body: "Plataforma de IA para análise de editais, pesquisa de preço, construção de contratos e emissão de pareceres. Gera conformidade e protege o gestor público.",
+    tech: "Plataforma SaaS com IA",
+    result: "Editais, preços e pareceres analisados por IA",
+    bullets: ["Pesquisa de preço e parecer jurídico por IA", "Governança e segurança jurídica para o município"],
+    links: [{ label: "Conhecer a ferramenta", url: "https://licita.4ubusiness.tech/" }],
+  },
+];
+
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
 function SobrePage() {
-  const heroStats = [
-    ["6+", "anos aplicando IA em negócios"],
-    ["8+", "áreas com especialistas"],
-    ["400k+", "alunos impactados em educação"],
-    ["50k+", "profissionais no ecossistema"],
-  ];
-
-  const specialistProof = [
-    ["Marketing e vendas", "SDR, aquisição, funil e atendimento com IA aplicada."],
-    ["People e cultura", "Entrevistas, rotina de time e conhecimento organizacional."],
-    ["Financeiro e FP&A", "Indicadores, análise e decisão em linguagem natural."],
-    ["Gestão e processos", "Rotina, performance, operação e governança."],
-    ["Legal e compliance", "Leitura de risco, segurança e critérios de aplicação."],
-    ["Relacionamento", "Jornadas, base ativa e experiência do cliente."],
-    ["Eventos e marca", "Experiências presenciais que tiram a IA do discurso."],
-    ["Tecnologia", "Arquitetura, integrações e sistemas sob medida."],
-  ];
-
-  const cases = [
-    ["Educação", "Aplicações com IA, RAG e atendimento para escalar aprendizagem sem perder contexto."],
-    ["WhatsApp", "Fluxos de captação e relacionamento para transformar conversa em jornada."],
-    ["Mercado financeiro", "Palcos, comunidades e sistemas para quem precisa decidir com clareza."],
-    ["Licitações", "IA aplicada a leitura, organização e oportunidade em processos complexos."],
-    ["Saúde", "Rotinas, dados e atendimento com responsabilidade, segurança e critério."],
-    ["Governo", "Processos públicos, análise de informação e serviços mais organizados."],
-  ];
+  const ref = useReveal();
 
   return (
     <AppShell>
-      <div className="about-premium-page">
-        <section className="about-hero">
-          <div className="about-hero-bg" aria-hidden />
-          <div className="about-hero-inner">
-            <div className="about-hero-copy">
-              <span>Sobre a Goable</span>
-              <Slot id="COPY_ABOUT_HERO_H1" as="h1" />
-              <Slot id="COPY_ABOUT_HERO_SUB" as="p" />
-              <div className="about-hero-actions">
-                <CTAButton variant="primary" size="lg">Contato</CTAButton>
-                <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI</CTAButton>
+      <div className="sb-page" ref={ref}>
+        {/* HERO */}
+        <section className="sb-hero">
+          <div className="sb-hero-grid" aria-hidden />
+          <div className="sb-hero-inner">
+            <div className="sb-hero-copy" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Sobre a Goable AI</span>
+              <h1 className="sb-hero-h1">
+                Autoridade real em <span className="sb-hl">IA aplicada</span> à operação das empresas.
+              </h1>
+              <p className="sb-hero-sub">
+                A Goable encontra a raiz do problema e constrói o sistema com IA que a empresa
+                precisa de verdade. Time especialista, método próprio e execução que chega ao
+                operacional.
+              </p>
+              <div className="sb-hero-actions">
+                <CTAButton variant="primary" size="lg" to="/contato">Fazer diagnóstico</CTAButton>
+                <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI 2026</CTAButton>
               </div>
-              <div className="about-hero-stats" aria-label="Números da Goable">
+              <div className="sb-hero-stats">
                 {heroStats.map(([value, label]) => (
                   <article key={label}>
                     <strong>{value}</strong>
@@ -67,35 +227,43 @@ function SobrePage() {
                   </article>
                 ))}
               </div>
+              <div className="sb-hero-sectors">
+                <span className="sb-hero-sectors-label">Setores</span>
+                {setores.map((s) => (
+                  <span key={s} className="sb-sector-chip">{s}</span>
+                ))}
+              </div>
             </div>
-            <div className="about-hero-visual">
-              <img className="about-hero-photo" src={photos.edgarBackdrop} alt="" />
-              <img className="about-hero-g" src={glass.gSymbol} alt="" aria-hidden />
-              <div className="about-hero-card">
-                <strong>Entender antes de aplicar</strong>
-                <span>IA, processo, dados e especialistas no mesmo desenho.</span>
+
+            <div className="sb-hero-visual" data-reveal>
+              <div className="sb-hero-photo-wrap">
+                <img src={img("palco-conecta-cvp.jpg")} alt="Edgar Abreu, fundador da Goable, em palco apresentando IA aplicada" loading="eager" />
+                <div className="sb-hero-photo-glow" aria-hidden />
+              </div>
+              <div className="sb-hero-tag">
+                <span className="sb-hero-tag-kicker">Fundador no palco</span>
+                <strong>Edgar Abreu</strong>
+                <span className="sb-hero-tag-note">Fundador · Goable AI</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="about-thesis-section">
-          <div className="about-section-inner">
-            <div className="about-thesis-card">
-              <div>
-                <span className="about-eyebrow">Tese</span>
-                <Slot id="COPY_ABOUT_THESIS_TITLE" as="h2" />
-              </div>
-              <Slot id="COPY_ABOUT_THESIS_BODY" as="p" />
+        {/* TESE */}
+        <section className="sb-thesis">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">Nossa tese</span>
+              <h2 className="sb-h2 sb-h2-dark">IA que não muda a rotina é só custo.</h2>
+              <p className="sb-lead">
+                Ferramenta da moda não resolve empresa. O valor aparece quando a IA entra num
+                problema concreto e a operação fica mais rápida, mais barata ou mais previsível.
+              </p>
             </div>
-            <div className="about-thesis-grid">
-              {[
-                ["01", "Raiz", "Primeiro entendemos a dor real, não a ferramenta da moda."],
-                ["02", "Desenho", "Depois conectamos processo, dado, rotina e decisão."],
-                ["03", "Sistema", "Só então a IA entra para operar com clareza."],
-              ].map(([num, title, body]) => (
-                <article className="about-liquid-card" key={num}>
-                  <span>{num}</span>
+            <div className="sb-pain-grid">
+              {thesisPains.map(([title, body], i) => (
+                <article className="sb-pain-card" data-reveal style={{ transitionDelay: `${i * 55}ms` }} key={title}>
+                  <span className="sb-pain-dot" aria-hidden />
                   <h3>{title}</h3>
                   <p>{body}</p>
                 </article>
@@ -104,113 +272,177 @@ function SobrePage() {
           </div>
         </section>
 
-        <section className="about-method-section">
-          <div className="about-section-inner">
-            <div className="about-section-heading">
-              <span>Como trabalhamos</span>
-              <Slot id="COPY_ABOUT_METHOD_TITLE" as="h2" />
+        {/* METODO */}
+        <section className="sb-method">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Como trabalhamos</span>
+              <h2 className="sb-h2">Começamos pela dor. Terminamos com o sistema rodando.</h2>
             </div>
-            <div className="about-method-grid">
-              {[
-                ["Diagnóstico", "Entendemos o problema como ele acontece na operação."],
-                ["Arquitetura", "Mapeamos fluxos, dados, regras, pessoas e exceções."],
-                ["Sistema certo", "Desenhamos a solução que cabe na empresa real."],
-                ["Execução", "Implementamos, medimos e ajustamos com o time."],
-              ].map(([title, body], index) => (
-                <article className="about-method-step" key={title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+            <div className="sb-method-grid">
+              {method.map(([num, kicker, title, body], i) => (
+                <article className="sb-method-step" data-reveal style={{ transitionDelay: `${i * 90}ms` }} key={num}>
+                  <div className="sb-method-top">
+                    <span className="sb-method-num">{num}</span>
+                    <span className="sb-method-kicker">{kicker}</span>
+                  </div>
                   <h3>{title}</h3>
                   <p>{body}</p>
+                  <span className="sb-method-line" aria-hidden />
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="about-leadership-section">
-          <div className="about-section-inner about-leadership-grid">
-            <div className="about-leadership-photo">
-              <img src={photos.edgarSmile} alt="Edgar Abreu" />
-            </div>
-            <div className="about-leadership-panel">
-              <span>CEO e Founder</span>
-              <Slot id="COPY_ABOUT_EDGAR_TITLE" as="h2" />
-              <Slot id="COPY_ABOUT_EDGAR_BODY" as="p" />
-              <Slot id="COPY_ABOUT_EDGAR_BIO" as="p" />
-              <div className="about-chip-row">
-                {["Harvard", "AI Bank Summit", "Educação", "Execução"].map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
+        {/* FUNDADOR */}
+        <section className="sb-founder">
+          <div className="sb-inner sb-founder-grid">
+            <div className="sb-founder-media" data-reveal>
+              <img src={img("combo-studios-611.jpg")} alt="Edgar Abreu, fundador e CEO da Goable AI" loading="lazy" />
+              <div className="sb-founder-badge">
+                <span>Fundador e CEO</span>
+                <strong>Harvard · AI Specialization</strong>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="about-specialists-section">
-          <div className="about-section-inner">
-            <div className="about-section-heading">
-              <span>Especialistas</span>
-              <Slot id="COPY_ABOUT_SPECIALISTS_TITLE" as="h2" />
-            </div>
-            <SpecialistBand />
-            <div className="about-proof-specialists">
-              {specialistProof.map(([area, line]) => (
-                <article key={area}>
-                  <span>{area}</span>
-                  <p>{line}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="about-stage-section">
-          <div className="about-section-inner about-stage-grid">
-            <div className="about-stage-media">
-              <img src={photos.palco} alt="Palco Goable AI" />
-            </div>
-            <div className="about-stage-content">
-              <span className="about-eyebrow">No palco</span>
-              <Slot id="COPY_ABOUT_STAGE_TITLE" as="h2" />
-              <div className="about-stat-grid">
-                {[
-                  { k: "IA", v: "COPY_ABOUT_STAT_1" },
-                  { k: "Sistemas", v: "COPY_ABOUT_STAT_2" },
-                  { k: "Time", v: "COPY_ABOUT_STAT_3" },
-                  { k: "Entrega", v: "COPY_ABOUT_STAT_4" },
-                ].map((s) => (
-                  <article key={s.k}>
-                    <span>{s.k}</span>
-                    <strong><Slot id={s.v} /></strong>
-                  </article>
+            <div className="sb-founder-panel" data-reveal>
+              <span className="sb-eyebrow">Fundador</span>
+              <h2 className="sb-h2 sb-h2-dark">Liderança com experiência real em IA aplicada a negócios.</h2>
+              <p className="sb-founder-name">Edgar Abreu</p>
+              <p className="sb-founder-bio">
+                Edgar lidera a estratégia da Goable conectando IA, negócios, educação e mercado
+                financeiro. Sob a liderança dele, a inteligência artificial vira sistema dentro da
+                empresa, não promessa de palco.
+              </p>
+              <ul className="sb-founder-list">
+                {founderBullets.map((b) => (
+                  <li key={b}><span aria-hidden /> {b}</li>
                 ))}
-              </div>
+              </ul>
+              <a className="sb-linkedin-link" href="https://www.linkedin.com/in/profedgarabreu/" target="_blank" rel="noreferrer">
+                <Linkedin className="sb-ic" aria-hidden /> LinkedIn de Edgar Abreu
+              </a>
             </div>
           </div>
         </section>
 
-        <section className="about-cases-section">
-          <div className="about-section-inner">
-            <div className="about-section-heading">
-              <span>Frentes de atuação</span>
-              <Slot id="COPY_ABOUT_CASES_TITLE" as="h2" />
+        {/* NO PALCO */}
+        <section className="sb-stage">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">No palco</span>
+              <h2 className="sb-h2">Levamos IA aplicada para os maiores palcos do país.</h2>
             </div>
-            <div className="about-cases-grid">
-              {cases.map(([label, body]) => (
-                <article className="about-liquid-card" key={label}>
-                  <h3>{label}</h3>
-                  <p>{body}</p>
+            <div className="sb-stage-grid">
+              {stages.map((s, i) => (
+                <figure className="sb-stage-card" data-reveal style={{ transitionDelay: `${i * 90}ms` }} key={s.tag}>
+                  <img src={s.src} alt={`${s.tag}, ${s.note}`} loading="lazy" />
+                  <figcaption>
+                    <strong>{s.tag}</strong>
+                    <span>{s.note}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ESPECIALISTAS */}
+        <section className="sb-experts">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">O time</span>
+              <h2 className="sb-h2 sb-h2-dark">Um especialista para cada dor. Nenhuma solução genérica.</h2>
+              <p className="sb-lead">
+                A Goable junta gente de áreas diferentes para atacar cada problema pelo ângulo certo.
+                Vendas, finanças, jurídico, tecnologia, cultura e eventos no mesmo time.
+              </p>
+            </div>
+            <div className="sb-experts-grid">
+              {experts.map((e, i) => (
+                <article className="sb-expert-card" data-reveal style={{ transitionDelay: `${(i % 4) * 55}ms` }} key={e.name}>
+                  <span className="sb-expert-rail" aria-hidden style={{ background: `linear-gradient(180deg, ${e.accent}, transparent)` }} />
+                  <div className="sb-expert-mono" style={{ background: `linear-gradient(135deg, ${e.accent}, color-mix(in oklab, ${e.accent} 45%, #0b0b18))` }}>
+                    {e.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                  </div>
+                  <span className="sb-expert-area" style={{ color: e.accent }}>{e.area}</span>
+                  <h3>{e.name}</h3>
+                  <p>{e.line}</p>
+                  <a className="sb-expert-link" href={e.url} target="_blank" rel="noreferrer" aria-label={`LinkedIn de ${e.name}`}>
+                    <Linkedin className="sb-ic" aria-hidden /> LinkedIn
+                  </a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="about-final-section">
-          <div className="about-final-card">
-            <img src={gradientGlass.foldViolet} alt="" aria-hidden />
-            <Slot id="COPY_ABOUT_FINAL_CTA_TITLE" as="h2" />
-            <CTAButton variant="primary" size="lg">Contato</CTAButton>
+        {/* CASES */}
+        <section className="sb-cases">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Cases</span>
+              <h2 className="sb-h2">Prova, não promessa.</h2>
+              <p className="sb-lead sb-lead-light">
+                Sistemas, agentes e plataformas em operação real. Cada um foi o primeiro ou o maior no
+                que se propôs.
+              </p>
+            </div>
+            <div className="sb-cases-list">
+              {cases.map((c, i) => (
+                <article className={`sb-case ${i % 2 === 1 ? "sb-case-rev" : ""}`} data-reveal key={c.title}>
+                  <div className="sb-case-media">
+                    <img src={c.img} alt={c.title} loading="lazy" />
+                    <span className="sb-case-media-glow" aria-hidden />
+                  </div>
+                  <div className="sb-case-body">
+                    <div className="sb-case-tags">
+                      <span className="sb-case-tag">{c.tag}</span>
+                      <span className="sb-case-meta">{c.meta}</span>
+                    </div>
+                    <h3>{c.title}</h3>
+                    <p className="sb-case-desc">{c.body}</p>
+                    <div className="sb-case-metrics">
+                      <div>
+                        <span>Tecnologia</span>
+                        <strong>{c.tech}</strong>
+                      </div>
+                      <div>
+                        <span>Resultado</span>
+                        <strong>{c.result}</strong>
+                      </div>
+                    </div>
+                    <ul className="sb-case-bullets">
+                      {c.bullets.map((b) => (
+                        <li key={b}><span aria-hidden /> {b}</li>
+                      ))}
+                    </ul>
+                    {c.links.length ? (
+                      <div className="sb-case-links">
+                        {c.links.map((l) => (
+                          <a key={l.label} href={l.url} target="_blank" rel="noreferrer" className="sb-case-link">
+                            {l.label} <ArrowUpRight className="sb-ic" aria-hidden />
+                          </a>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA FINAL */}
+        <section className="sb-final">
+          <div className="sb-final-card" data-reveal>
+            <div className="sb-final-glow" aria-hidden />
+            <span className="sb-eyebrow sb-eyebrow-dark">Próximo passo</span>
+            <h2 className="sb-h2">Qual gargalo da sua empresa vai virar sistema primeiro?</h2>
+            <div className="sb-final-actions">
+              <CTAButton variant="primary" size="lg" to="/contato">Fazer diagnóstico gratuito</CTAButton>
+              <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer o Conect.AI 2026</CTAButton>
+            </div>
           </div>
         </section>
       </div>
