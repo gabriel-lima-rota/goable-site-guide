@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Target, Blocks, Users, Compass } from "lucide-react";
 import { useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -88,6 +88,22 @@ const editions: Edition[] = [
     note: "R$ 3.900 · próxima edição só em 2027.",
     href: "/conect-ai/business",
   },
+];
+
+const whyCards: Array<[typeof Target, string, string]> = [
+  [Target, "Começa pelo problema certo", "Antes de falar em ferramenta, a gente entende onde a sua operação realmente trava."],
+  [Blocks, "Construção, não teoria", "Você sai com aplicações de IA montadas na prática, em cima da sua realidade."],
+  [Users, "Especialistas que aplicam", "Quem conduz vive IA aplicada a negócios reais, não é guru de palco."],
+  [Compass, "Direção, não hype", "No fim do dia você tem um plano e prioridades claras, não um monte de buzzword."],
+];
+
+const deliverables: Array<[string, string, string]> = [
+  ["01", "Diagnóstico das oportunidades", "Um mapa dos principais pontos de perda: retrabalho, processos lentos, informação dispersa e rotinas que podem ganhar eficiência."],
+  ["02", "Mapa de aplicação por setor", "Leitura prática de onde a IA entra no seu contexto, seja licitação, consultório ou operação comercial."],
+  ["03", "Construção ao vivo", "Você participa da montagem de aplicações de IA na prática, com a sua operação na mesa."],
+  ["04", "Plano de automação", "Direcionamento sobre quais rotinas automatizar primeiro, com prioridade para ganho real e baixo risco."],
+  ["05", "Governança e segurança", "Orientações sobre LGPD, dados sensíveis, níveis de acesso e uso responsável da tecnologia."],
+  ["06", "Roteiro de implementação", "Próximos passos estruturados, com prioridades e visão dos ganhos nos próximos 30, 60 e 90 dias."],
 ];
 
 function useReveal() {
@@ -241,7 +257,52 @@ function ConectAiIndex() {
           </div>
         </section>
 
-        {/* CTA (fecha a Parte 1) */}
+        {/* POR QUE */}
+        <section className="cai-why">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Por que existe</span>
+              <h2 className="sb-h2">Não é palestra sobre IA. É a sua operação virando sistema, ao vivo.</h2>
+              <p className="sb-lead sb-lead-light">
+                A maioria dos eventos de IA termina em inspiração e planilha de anotações. O Conect.AI
+                termina com aplicação, prioridade e próximo passo.
+              </p>
+            </div>
+            <div className="cai-why-grid">
+              {whyCards.map(([Icon, title, body], i) => (
+                <article className="cai-why-card" data-reveal style={{ transitionDelay: `${i * 70}ms` }} key={title}>
+                  <span className="cai-why-ic"><Icon aria-hidden /></span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* O QUE VOCÊ LEVA */}
+        <section className="cai-deliver">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">As entregas</span>
+              <h2 className="sb-h2 sb-h2-dark">Você entra com dúvidas. Sai com um plano.</h2>
+              <p className="sb-lead">
+                Independente da edição, todo mundo sai do dia com as mesmas seis entregas na mão.
+              </p>
+            </div>
+            <div className="cai-deliver-grid">
+              {deliverables.map(([num, title, body], i) => (
+                <article className="cai-deliver-card" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }} key={num}>
+                  <span className="cai-deliver-num">{num}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA final */}
         <section className="sb-final">
           <div className="sb-final-card" data-reveal>
             <div className="sb-final-glow" aria-hidden />

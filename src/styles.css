@@ -9360,3 +9360,130 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   CONECT.AI overview — Parte 2 (por que + entregas)
+   ========================================================================== */
+.cai-why {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(109, 77, 255, 0.12), transparent 34%),
+    var(--sb-ink-2);
+}
+.cai-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+.cai-why-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  padding: 1.5rem 1.4rem;
+  backdrop-filter: blur(18px) saturate(1.08);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.cai-why-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(184, 168, 255, 0.4);
+  box-shadow: 0 40px 90px -64px rgba(109, 77, 255, 0.6);
+}
+.cai-why-ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(184, 168, 255, 0.3);
+  background: rgba(109, 77, 255, 0.16);
+  color: var(--sb-lav);
+}
+.cai-why-ic svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+.cai-why-card h3 {
+  margin: 1.1rem 0 0;
+  color: #fff;
+  font-size: 1.22rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+.cai-why-card p {
+  margin: 0.5rem 0 0;
+  color: rgba(247, 248, 255, 0.68);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cai-deliver {
+  position: relative;
+  overflow: hidden;
+  background: var(--sb-light);
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+}
+.cai-deliver-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.cai-deliver-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(109, 77, 255, 0.12);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(109, 77, 255, 0.07), transparent 42%),
+    linear-gradient(150deg, #ffffff, #f4f3ff);
+  box-shadow: 0 30px 90px -78px rgba(7, 10, 18, 0.5);
+  padding: 1.6rem 1.5rem 1.5rem;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.cai-deliver-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(109, 77, 255, 0.3);
+  box-shadow: 0 44px 100px -70px rgba(109, 77, 255, 0.5);
+}
+.cai-deliver-num {
+  display: block;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(122deg, #6d4dff, #3b1d78);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cai-deliver-card h3 {
+  margin: 0.6rem 0 0;
+  color: var(--sb-ink);
+  font-size: 1.2rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+.cai-deliver-card p {
+  margin: 0.45rem 0 0;
+  color: rgba(29, 35, 51, 0.66);
+  font-size: 0.92rem;
+  line-height: 1.52;
+}
+
+@media (max-width: 1023px) {
+  .cai-why-grid,
+  .cai-deliver-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .cai-why-grid,
+  .cai-deliver-grid {
+    grid-template-columns: 1fr;
+  }
+}
