@@ -8481,7 +8481,7 @@
 }
 
 .sb-stat {
-  grid-column: span 4;
+  grid-column: span 3;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -8500,8 +8500,8 @@
   border-color: rgba(109, 77, 255, 0.32);
   box-shadow: 0 46px 100px -68px rgba(109, 77, 255, 0.55);
 }
-.sb-stat-hero { grid-column: span 7; }
-.sb-stat-wide { grid-column: span 5; }
+.sb-stat-hero { grid-column: span 6; }
+.sb-stat-wide { grid-column: span 6; }
 
 .sb-stat-area {
   color: var(--sb-violet);
@@ -8512,7 +8512,7 @@
 }
 .sb-stat-num {
   margin-top: 0.5rem;
-  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-size: clamp(2.1rem, 3.6vw, 3.1rem);
   font-weight: 950;
   line-height: 0.92;
   letter-spacing: -0.045em;
@@ -8522,8 +8522,11 @@
   color: transparent;
   font-variant-numeric: tabular-nums;
 }
+.sb-stat-hero .sb-stat-num,
+.sb-stat-wide .sb-stat-num {
+  font-size: clamp(3.2rem, 6vw, 5.4rem);
+}
 .sb-stat-hero .sb-stat-num {
-  font-size: clamp(3.6rem, 7.5vw, 6.2rem);
   background: linear-gradient(122deg, #6d4dff 0%, #38e6e6 120%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -8553,8 +8556,9 @@
   font-weight: 850;
   letter-spacing: -0.01em;
 }
-.sb-stat-hero .sb-stat-label {
-  font-size: 1.4rem;
+.sb-stat-hero .sb-stat-label,
+.sb-stat-wide .sb-stat-label {
+  font-size: 1.35rem;
 }
 .sb-stat-find {
   margin: 0.4rem 0 0;

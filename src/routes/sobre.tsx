@@ -95,6 +95,15 @@ const stats: Stat[] = [
     find: "mais chance de conquistar clientes quando a empresa decide guiada por dados.",
     source: "McKinsey Global Institute",
   },
+  {
+    area: "Processos",
+    value: 30,
+    prefix: "até ",
+    suffix: "%",
+    label: "Processo sem padrão",
+    find: "da receita se perde por ano com ineficiências e gargalos que a empresa nem enxerga.",
+    source: "IDC",
+  },
 ];
 
 const method = [
