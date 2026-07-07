@@ -132,12 +132,12 @@ const editions: Edition[] = [
     badge: "1ª edição",
     name: "Conect",
     dot: "GOV",
-    tagline: "IA na prática para gestão pública, licitações e processos municipais.",
+    tagline: "O dia em que a sua gestão sai na frente com IA.",
     day: "21 jul",
     weekday: "terça-feira",
-    audience: "Prefeitos, secretários e lideranças municipais.",
-    focus: ["Licitações e compras", "Processos administrativos", "Dados para decisão"],
-    note: "Cortesia por convite exclusivo.",
+    audience: "Para prefeitos, secretários e quem decide o rumo do município.",
+    focus: ["Aplicações ao vivo", "Casos reais de gestão", "Networking entre líderes"],
+    note: "Vagas limitadas · acesso por convite.",
     href: "/conect-ai/gov",
   },
   {
@@ -146,12 +146,12 @@ const editions: Edition[] = [
     badge: "1ª edição",
     name: "Conect",
     dot: "MED",
-    tagline: "IA aplicada à prática médica e à rotina do consultório.",
+    tagline: "O dia em que o consultório começa a trabalhar para você.",
     day: "22 jul",
     weekday: "quarta-feira",
-    audience: "Médicos, sócios de clínicas e gestores médicos.",
-    focus: ["Operação clínica", "Planos e faturamento", "Gestão do consultório"],
-    note: "Com Faculdade Unimed · cortesia por convite.",
+    audience: "Para médicos e sócios de clínicas que querem o tempo de volta.",
+    focus: ["Construção orientada", "IA na rotina clínica", "Com a Faculdade Unimed"],
+    note: "Turma reduzida · acesso por convite.",
     href: "/conect-ai/med",
   },
   {
@@ -160,12 +160,12 @@ const editions: Edition[] = [
     badge: "2ª edição",
     name: "Conect",
     dot: "Business",
-    tagline: "IA aplicada à operação empresarial, do comercial ao financeiro.",
+    tagline: "O dia em que a sua operação vira máquina.",
     day: "23 jul",
     weekday: "quinta-feira",
-    audience: "Empresários, founders, C-levels e gestores decisores.",
-    focus: ["Operação e processos", "Comercial e receita", "Gestão e financeiro"],
-    note: "R$ 3.900 · última turma de 2026.",
+    audience: "Para empresários e C-levels que lideram e querem escala.",
+    focus: ["Aplicações ao vivo", "Assistente da sua empresa", "Sala fechada de decisores"],
+    note: "Última turma de 2026 · poucas vagas.",
     href: "/conect-ai/business",
   },
 ];
@@ -458,7 +458,7 @@ function ConectAiIndex() {
                       <div className="cai-edition-foot">
                         <span className="cai-edition-note">{ed.note}</span>
                         <span className="cai-edition-cta">
-                          Conhecer <ArrowRight className="sb-ic" aria-hidden />
+                          Quero estar nesse palco <ArrowRight className="sb-ic" aria-hidden />
                         </span>
                       </div>
                     </div>
