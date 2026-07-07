@@ -9684,3 +9684,180 @@
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   CONECT.AI overview — Parte 4 (FAQ + inscricao)
+   ========================================================================== */
+.cai-faq {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(109, 77, 255, 0.12), transparent 34%),
+    var(--sb-ink-2);
+}
+.cai-faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.7rem;
+}
+.cai-faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.cai-faq-item.is-open {
+  border-color: rgba(184, 168, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+.cai-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding: 1.15rem 1.4rem;
+}
+.cai-faq-q svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  color: var(--sb-lav);
+  transition: transform 0.3s ease;
+}
+.cai-faq-item.is-open .cai-faq-q svg {
+  transform: rotate(180deg);
+}
+.cai-faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.cai-faq-item.is-open .cai-faq-a {
+  grid-template-rows: 1fr;
+}
+.cai-faq-a > div {
+  overflow: hidden;
+}
+.cai-faq-a p {
+  margin: 0;
+  padding: 0 1.4rem 1.25rem;
+  color: rgba(247, 248, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cai-enroll {
+  background: var(--sb-ink);
+  padding: clamp(3rem, 7vw, 6rem) 1rem;
+}
+.cai-enroll-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(100%, 1000px);
+  margin-inline: auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: clamp(1.8rem, 5vw, 3rem);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    rgba(17, 18, 36, 0.9);
+  padding: clamp(2.2rem, 6vw, 4rem);
+  text-align: center;
+}
+.cai-enroll-glow {
+  position: absolute;
+  inset: -40% 20% auto -10%;
+  height: 120%;
+  z-index: -1;
+  background: radial-gradient(circle at 80% 12%, rgba(109, 77, 255, 0.32), transparent 42%);
+  animation: goable-bg-breathe 9s ease-in-out infinite;
+}
+.cai-enroll-card .sb-eyebrow {
+  justify-content: center;
+}
+.cai-enroll-card .sb-h2 {
+  max-width: 760px;
+  margin: 0.9rem auto 0;
+}
+.cai-enroll-pick {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  max-width: 720px;
+  margin: 1.9rem auto 0;
+}
+.cai-enroll-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  border: 1px solid color-mix(in oklab, var(--cai-accent) 45%, transparent);
+  border-radius: 1.2rem;
+  background: color-mix(in oklab, var(--cai-accent) 14%, transparent);
+  padding: 1rem 1.1rem;
+  color: #fff;
+  text-align: left;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.cai-enroll-btn:hover {
+  transform: translateY(-4px);
+  background: color-mix(in oklab, var(--cai-accent) 24%, transparent);
+  border-color: color-mix(in oklab, var(--cai-accent) 70%, transparent);
+}
+.cai-enroll-name {
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.cai-enroll-name b {
+  color: color-mix(in oklab, var(--cai-accent) 72%, white);
+}
+.cai-enroll-day {
+  font-size: 0.78rem;
+  color: rgba(247, 248, 255, 0.68);
+}
+.cai-enroll-btn svg {
+  position: absolute;
+  top: 0.95rem;
+  right: 0.95rem;
+  width: 1rem;
+  height: 1rem;
+  color: color-mix(in oklab, var(--cai-accent) 72%, white);
+  opacity: 0.75;
+}
+.cai-enroll-note {
+  margin: 1.4rem 0 0;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.82rem;
+}
+.cai-enroll-alt {
+  margin: 0.6rem 0 0;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.9rem;
+}
+.cai-enroll-alt a {
+  color: var(--sb-lav);
+  font-weight: 700;
+}
+.cai-enroll-alt a:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .cai-enroll-pick {
+    grid-template-columns: 1fr;
+  }
+}

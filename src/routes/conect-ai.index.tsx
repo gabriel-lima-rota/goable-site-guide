@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
 import { CTAButton } from "@/components/goable/CTAButton";
@@ -109,6 +109,47 @@ const deliverables: Array<[string, string, string]> = [
 const faces = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => img(`conect-face-${n}.jpg`));
 
 const venueFacts = ["Porto Alegre · RS", "Dia completo, 9h às 18h", "100% presencial"];
+
+const faqItems: Array<[string, string]> = [
+  ["Para quem é o Conect.AI?", "Cada edição fala com um público. GOV para lideranças municipais, MED para médicos e gestores de clínicas, Business para empresários, founders e C-levels."],
+  ["Preciso entender de tecnologia?", "Não. O foco é negócio, processo e decisão. A parte técnica fica com a Goable."],
+  ["Vou sair com uma solução pronta?", "Você sai com direção, um diagnóstico das oportunidades e um roteiro de implementação. A construção do sistema evolui depois, com o time Goable."],
+  ["É presencial? Onde acontece?", "Sim, 100% presencial, no Instituto Caldeira, em Porto Alegre, das 9h às 18h."],
+  ["Qual é o investimento?", "Conect.GOV e Conect.MED são cortesia por convite exclusivo (valor de R$ 3.900). Conect.Business é R$ 3.900 por participante, última turma de 2026."],
+  ["Posso participar de mais de uma edição?", "Pode. Fale com a equipe pelo WhatsApp e a gente organiza a sua participação."],
+  ["Como garanto minha vaga?", "As vagas são limitadas e por confirmação. Responda pelo WhatsApp e a equipe retorna com disponibilidade e próximos passos."],
+];
+
+function waFor(dot: string, day: string) {
+  const msg = `Olá! Quero participar do Conect.${dot} (${day}).`;
+  return `https://wa.me/555185458646?text=${encodeURIComponent(msg)}`;
+}
+
+function FaqList() {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="cai-faq-list">
+      {faqItems.map(([q, a], i) => (
+        <div className={`cai-faq-item ${open === i ? "is-open" : ""}`} key={q} data-reveal>
+          <button
+            type="button"
+            className="cai-faq-q"
+            aria-expanded={open === i}
+            onClick={() => setOpen(open === i ? -1 : i)}
+          >
+            <span>{q}</span>
+            <ChevronDown aria-hidden />
+          </button>
+          <div className="cai-faq-a">
+            <div>
+              <p>{a}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -384,16 +425,43 @@ function ConectAiIndex() {
           </div>
         </section>
 
-        {/* CTA final */}
-        <section className="sb-final">
-          <div className="sb-final-card" data-reveal>
-            <div className="sb-final-glow" aria-hidden />
-            <span className="sb-eyebrow sb-eyebrow-dark">Vagas limitadas</span>
-            <h2 className="sb-h2">A 1ª edição esgotou. Garanta a sua na próxima.</h2>
-            <div className="sb-final-actions">
-              <CTAButton variant="primary" size="lg" href={WHATSAPP}>Falar no WhatsApp</CTAButton>
-              <CTAButton variant="glass" size="lg" to="/contato">Fazer um diagnóstico antes</CTAButton>
+        {/* FAQ */}
+        <section className="cai-faq">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Perguntas rápidas</span>
+              <h2 className="sb-h2">Antes de garantir sua vaga.</h2>
             </div>
+            <FaqList />
+          </div>
+        </section>
+
+        {/* INSCRIÇÃO */}
+        <section className="cai-enroll">
+          <div className="cai-enroll-card" data-reveal>
+            <div className="cai-enroll-glow" aria-hidden />
+            <span className="sb-eyebrow sb-eyebrow-dark">Garanta sua vaga</span>
+            <h2 className="sb-h2">A 1ª edição esgotou. Escolha a sua edição e fale com a equipe.</h2>
+            <div className="cai-enroll-pick">
+              {editions.map((ed) => (
+                <a
+                  className="cai-enroll-btn"
+                  style={{ "--cai-accent": ed.accent } as CSSProperties}
+                  href={waFor(ed.dot, ed.day)}
+                  target="_blank"
+                  rel="noreferrer"
+                  key={ed.key}
+                >
+                  <span className="cai-enroll-name">Conect<b>.{ed.dot}</b></span>
+                  <span className="cai-enroll-day">{ed.day} · {ed.weekday}</span>
+                  <ArrowUpRight aria-hidden />
+                </a>
+              ))}
+            </div>
+            <p className="cai-enroll-note">Vagas limitadas · participação por confirmação de disponibilidade.</p>
+            <p className="cai-enroll-alt">
+              Prefere entender sua operação antes? <Link to="/contato">Fazer um diagnóstico</Link>
+            </p>
           </div>
         </section>
       </div>
