@@ -1,253 +1,259 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AppShell, Section } from "@/components/goable/AppShell";
-import { HeroEditorial } from "@/components/goable/HeroEditorial";
-import { SectionHeader } from "@/components/goable/SectionHeader";
-import { PainPointGrid } from "@/components/goable/PainPointGrid";
-import { MethodTimeline } from "@/components/goable/MethodTimeline";
-import { PhotoGalleryEditorial } from "@/components/goable/PhotoGalleryEditorial";
-import { EditionCards } from "@/components/goable/EditionCards";
-import { CTAButton } from "@/components/goable/CTAButton";
-import { Slot } from "@/components/goable/Slot";
-import { AnimatedMeshBackground } from "@/components/goable/AnimatedMeshBackground";
-import { Glass3D } from "@/components/goable/Glass3D";
-import { photos, glass } from "@/lib/goable/assets";
-import { eventData, type EventKey } from "@/lib/goable/events";
 import { Link } from "@tanstack/react-router";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react";
+import type { CSSProperties } from "react";
+import { AppShell } from "@/components/goable/AppShell";
+import { CTAButton } from "@/components/goable/CTAButton";
 
 export const Route = createFileRoute("/conect-ai/")({
   head: () => ({
     meta: [
-      { title: "Conect.AI | Goable" },
-      { name: "description", content: "IA aplicada em problemas reais. Empresários, MED e GOV." },
-      { property: "og:title", content: "Conect.AI | Goable" },
-      { property: "og:description", content: "IA aplicada em problemas reais." },
+      { title: "Conect.AI 2026 · 3 edições em julho | Goable AI" },
+      { name: "description", content: "Três imersões práticas de IA no Instituto Caldeira, Porto Alegre: Conect.GOV (21/07), Conect.MED (22/07 · Faculdade Unimed) e Conect.Business (23/07)." },
+      { property: "og:title", content: "Conect.AI 2026 · 3 edições em julho | Goable AI" },
+      { property: "og:description", content: "Gestão pública, medicina e empresas. Instituto Caldeira, Porto Alegre. A 1ª edição fechou com NPS 9,71." },
     ],
   }),
   component: ConectAiIndex,
 });
 
-function ConectAiIndex() {
-  return (
-    <AppShell>
-      <section className="relative overflow-hidden">
-        <AnimatedMeshBackground intensity="whisper" />
-        <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-24 md:pt-36 md:pb-28">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.25fr] lg:items-center">
-            <div>
-              <div className="fade-up inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-[var(--strategic-violet)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--strategic-violet)] pulse-dot" />
-                Conect.AI
-              </div>
-              <Slot id="COPY_CONNECT_HERO_H1" as="h1" className="goable-page-title fade-up-delay-1 mt-5 text-[var(--goable-black)]" />
-              <div className="mt-7 max-w-lg fade-up-delay-2">
-                <Slot id="COPY_CONNECT_HERO_SUB" as="p" className="text-lg text-muted-foreground" />
-              </div>
-              <div className="mt-3 max-w-lg fade-up-delay-2">
-                <Slot id="COPY_CONNECT_HERO_MICRO" as="p" className="text-sm text-muted-foreground" />
-              </div>
-              <div className="mt-9 flex flex-wrap gap-3 fade-up-delay-3">
-                <CTAButton variant="primary" size="lg">Falar com a Goable</CTAButton>
-                <CTAButton variant="ghost" size="lg" to="/conect-ai/business">Ver edições</CTAButton>
-              </div>
-              <div className="mt-8 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground fade-up-delay-3">
-                <span className="h-px w-8 bg-[var(--border)]" />
-                22, 23 e 24 de julho · Instituto Caldeira
-              </div>
-            </div>
+const img = (file: string) => `/goable-assets/${file}`;
+const WHATSAPP = "https://wa.me/555185458646?text=Ol%C3%A1!%20Quero%20participar%20de%20uma%20edi%C3%A7%C3%A3o%20do%20Conect.AI%202026.";
 
-            <div className="fade-up-delay-2 relative">
-              <ConnectHeroStage />
-            </div>
-          </div>
-        </div>
-      </section>
+const heroFacts = ["21 a 23 de julho", "9h às 18h", "Instituto Caldeira", "Porto Alegre"];
 
-      <Section bg="white">
-        <SectionHeader eyebrow="Por que existe" titleSlot="COPY_CONNECT_REASON_TITLE" />
-        <div className="mt-12">
-          <PainPointGrid
-            items={[
-              { slotProblem: "COPY_CONNECT_REASON_1_Q", slotAnswer: "COPY_CONNECT_REASON_1_A" },
-              { slotProblem: "COPY_CONNECT_REASON_2_Q", slotAnswer: "COPY_CONNECT_REASON_2_A" },
-              { slotProblem: "COPY_CONNECT_REASON_3_Q", slotAnswer: "COPY_CONNECT_REASON_3_A" },
-              { slotProblem: "COPY_CONNECT_REASON_4_Q", slotAnswer: "COPY_CONNECT_REASON_4_A" },
-            ]}
-          />
-        </div>
-      </Section>
+const proof = [
+  ["9,71", "NPS da 1ª edição"],
+  ["97%", "de satisfação"],
+  ["100%", "participariam de novo"],
+  ["40+", "empresas presentes"],
+];
 
-      <Section>
-        <SectionHeader eyebrow="Para quem é" titleSlot="COPY_CONNECT_AUDIENCE_TITLE" />
-        <div className="mt-12 grid gap-4 md:grid-cols-4">
-          {[
-            { name: "Empresários", slot: "COPY_CONNECT_AUDIENCE_1_LINE" },
-            { name: "Gestão pública", slot: "COPY_CONNECT_AUDIENCE_2_LINE" },
-            { name: "Saúde", slot: "COPY_CONNECT_AUDIENCE_3_LINE" },
-            { name: "Operações", slot: "COPY_CONNECT_AUDIENCE_4_LINE" },
-          ].map((a) => (
-            <div key={a.name} className="rounded-lg border border-[var(--border)] bg-white p-6">
-              <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--strategic-violet)]">Público</div>
-              <div className="mt-2 text-lg font-semibold text-[var(--goable-black)]">{a.name}</div>
-              <Slot id={a.slot} as="p" className="mt-2 text-sm text-muted-foreground" />
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section bg="white">
-        <SectionHeader eyebrow="Experiência" titleSlot="COPY_CONNECT_EXPERIENCE_TITLE" />
-        <div className="mt-12">
-          <MethodTimeline
-            steps={[
-              { title: "Dores reais", desc: "O ponto de partida é o problema que trava a operação." },
-              { title: "Leitura estratégica", desc: "Especialistas mostram onde a IA faz sentido e onde não faz." },
-              { title: "Construção ao vivo", desc: "Você vê possibilidades reais tomando forma." },
-              { title: "Próximo passo", desc: "Sua empresa sai com direção para diagnóstico e implementação." },
-            ]}
-          />
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeader eyebrow="Prova visual" titleSlot="COPY_CONNECT_PROOF_TITLE" />
-        {/* Transition: single Goable glass object bridging hero energy into the gallery */}
-        <div className="relative mt-12">
-          <Glass3D
-            variant="arch"
-            size={340}
-            opacity={0.55}
-            rotate={-6}
-            className="pointer-events-none absolute -top-24 right-0 hidden md:block"
-          />
-          <PhotoGalleryEditorial variant="editorial" />
-        </div>
-      </Section>
-
-      <Section bg="white">
-        <SectionHeader eyebrow="Edições" titleSlot="COPY_CONNECT_EDITIONS_TITLE" />
-        <div className="mt-12">
-          <EditionCards />
-        </div>
-      </Section>
-
-      <Section bg="dark">
-        <div className="text-center max-w-2xl mx-auto">
-          <Slot id="COPY_CONNECT_FINAL_CTA_TITLE" as="h2" className="goable-section-title text-[var(--soft-white)]" />
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <CTAButton variant="primary" size="lg">Falar com a Goable</CTAButton>
-            <CTAButton variant="ghost" size="lg" to="/conect-ai/business">Ver edições</CTAButton>
-          </div>
-        </div>
-      </Section>
-    </AppShell>
-  );
-}
-
-const heroEditions: EventKey[] = ["gov", "med", "business"];
-const editionAccent: Record<EventKey, string> = {
-  business: "#6D4DFF",
-  med: "#00995D",
-  gov: "#244EAE",
+type Edition = {
+  key: string;
+  accent: string;
+  badge: string;
+  name: string;
+  dot: string;
+  tagline: string;
+  day: string;
+  weekday: string;
+  audience: string;
+  focus: string[];
+  note: string;
+  href: string;
 };
 
-function ConnectHeroStage() {
+const editions: Edition[] = [
+  {
+    key: "gov",
+    accent: "#6D4DFF",
+    badge: "1ª edição",
+    name: "Conect",
+    dot: "GOV",
+    tagline: "IA na prática para gestão pública, licitações e processos municipais.",
+    day: "21 jul",
+    weekday: "terça-feira",
+    audience: "Prefeitos, secretários e lideranças municipais.",
+    focus: ["Licitações e compras", "Processos administrativos", "Dados para decisão"],
+    note: "Cortesia por convite exclusivo.",
+    href: "/conect-ai/gov",
+  },
+  {
+    key: "med",
+    accent: "#00995D",
+    badge: "Realização Faculdade Unimed",
+    name: "Conect",
+    dot: "MED",
+    tagline: "IA aplicada à prática médica e à rotina do consultório.",
+    day: "22 jul",
+    weekday: "quarta-feira",
+    audience: "Médicos, sócios de clínicas e gestores médicos.",
+    focus: ["Operação clínica", "Planos e faturamento", "Gestão do consultório"],
+    note: "Exclusivo para médicos · cortesia por convite.",
+    href: "/conect-ai/med",
+  },
+  {
+    key: "business",
+    accent: "#3E7BFA",
+    badge: "2ª edição · última turma de 2026",
+    name: "Conect",
+    dot: "Business",
+    tagline: "IA aplicada à operação empresarial, do comercial ao financeiro.",
+    day: "23 jul",
+    weekday: "quinta-feira",
+    audience: "Empresários, founders, C-levels e gestores decisores.",
+    focus: ["Operação e processos", "Comercial e receita", "Gestão e financeiro"],
+    note: "R$ 3.900 · próxima edição só em 2027.",
+    href: "/conect-ai/business",
+  },
+];
+
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+function onHeroPointer(e: React.PointerEvent<HTMLElement>) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--sb-px", `${((e.clientX - r.left) / r.width - 0.5) * 22}px`);
+  e.currentTarget.style.setProperty("--sb-py", `${((e.clientY - r.top) / r.height - 0.5) * 16}px`);
+}
+function onHeroLeave(e: React.PointerEvent<HTMLElement>) {
+  e.currentTarget.style.setProperty("--sb-px", "0px");
+  e.currentTarget.style.setProperty("--sb-py", "0px");
+}
+
+function ConectAiIndex() {
+  const ref = useReveal();
+
   return (
-    <div className="relative">
-      <Glass3D
-        variant="drop"
-        size={220}
-        opacity={0.32}
-        rotate={12}
-        className="pointer-events-none absolute -right-6 -top-10 hidden md:block"
-      />
-      <Glass3D
-        variant="ring"
-        size={160}
-        opacity={0.24}
-        rotate={-10}
-        className="pointer-events-none absolute -left-6 bottom-10 hidden md:block"
-      />
+    <AppShell>
+      <div className="sb-page cai-page" ref={ref}>
+        {/* HERO */}
+        <section className="cai-hero" onPointerMove={onHeroPointer} onPointerLeave={onHeroLeave}>
+          <div className="cai-grid" aria-hidden />
+          <div className="cai-aura" aria-hidden />
+          <div className="cai-wave" aria-hidden />
+          <img className="cai-shape cai-shape-1" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
+          <img className="cai-shape cai-shape-2" src={img("goable-4d.png")} alt="" aria-hidden draggable={false} />
 
-      {/* Editorial photo, protagonist */}
-      <div className="relative overflow-hidden rounded-[var(--radius-card-lg)] shadow-[0_50px_120px_-50px_rgba(7,10,18,0.45)]">
-        <img
-          src={photos.palco}
-          alt="Palco Conect.AI no Instituto Caldeira"
-          className="h-[520px] w-full object-cover md:h-[560px] lg:h-[600px]"
-          style={{ animation: "goable-parallax-drift 22s ease-in-out infinite alternate" }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(7,10,18,0.10) 0%, rgba(7,10,18,0.65) 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
-          style={{
-            backgroundImage: `url(${glass.conectWave})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            mixBlendMode: "screen",
-          }}
-        />
-
-        {/* Location cue */}
-        <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 backdrop-blur px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white">
-          <span className="h-1.5 w-1.5 rounded-full bg-white pulse-dot" />
-          Instituto Caldeira · Porto Alegre
-        </div>
-
-        {/* Edition dock overlay */}
-        <div className="absolute inset-x-4 bottom-4 md:inset-x-5 md:bottom-5">
-          <div className="glass-strong lit-top-border rounded-[var(--radius-card-lg)] p-4 md:p-5">
-            <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/80 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.24em] text-[var(--deep-violet)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--strategic-violet)] pulse-dot" />
-                Conect.AI 2026
+          <div className="cai-hero-inner">
+            <div className="cai-hero-copy" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark">Conect.AI 2026</span>
+              <h1 className="cai-hero-h1">
+                Três dias para tirar a IA do discurso e colocar na sua <span className="sb-hl">operação</span>.
+              </h1>
+              <p className="cai-hero-sub">
+                Em julho de 2026 o Conect.AI volta em três edições: gestão pública, medicina e
+                empresas. Um dia inteiro, presencial, construindo aplicações de IA na prática, não no
+                slide.
+              </p>
+              <div className="cai-hero-facts">
+                {heroFacts.map((f) => (
+                  <span key={f}>{f}</span>
+                ))}
               </div>
-              <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                três edições
+              <div className="cai-hero-actions">
+                <CTAButton variant="primary" size="lg" href={WHATSAPP}>Garantir presença</CTAButton>
+                <CTAButton variant="glass" size="lg" href="#edicoes">Ver as edições</CTAButton>
               </div>
             </div>
-            <div className="mt-3 grid gap-2 md:grid-cols-3">
-              {heroEditions.map((k) => {
-                const e = eventData[k];
-                const accent = editionAccent[k];
-                return (
-                  <Link
-                    key={k}
-                    to={e.path}
-                    className="group relative flex items-center justify-between gap-3 rounded-lg border border-[var(--border)] bg-white/85 px-3 py-2.5 card-lift"
-                  >
-                    <div className="min-w-0">
-                      <div
-                        className="text-[10px] font-medium uppercase tracking-[0.22em]"
-                        style={{ color: accent }}
-                      >
-                        {k === "business" ? "Empresários" : k.toUpperCase()}
-                      </div>
-                      <div className="mt-0.5 text-[11px] font-mono uppercase tracking-[0.16em] text-muted-foreground">
-                        {e.date}
-                      </div>
-                    </div>
-                    <span
-                      aria-hidden
-                      className="text-lg transition-transform group-hover:translate-x-0.5"
-                      style={{ color: accent }}
-                    >
-                      →
-                    </span>
-                  </Link>
-                );
-              })}
+
+            <div className="cai-hero-visual" data-reveal>
+              <div className="cai-hero-photo">
+                <img src={img("combo-studios-644.webp")} alt="Plateia do Conect.AI, 1ª edição em Porto Alegre" loading="eager" />
+                <div className="cai-hero-photo-glow" aria-hidden />
+              </div>
+              <div className="cai-hero-badge">
+                <span>1ª edição · Porto Alegre</span>
+                <strong>NPS 9,71</strong>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="cai-proof" data-reveal>
+            {proof.map(([value, label]) => (
+              <article key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* AS 3 EDIÇÕES */}
+        <section className="cai-editions" id="edicoes">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">As três edições</span>
+              <h2 className="sb-h2 sb-h2-dark">Escolha a edição do seu mundo.</h2>
+              <p className="sb-lead">
+                Mesmo método, mesmo palco no Instituto Caldeira. Muda o contexto: cada edição fala a
+                língua de quem decide naquele setor.
+              </p>
+            </div>
+
+            <div className="cai-editions-grid">
+              {editions.map((ed, i) => (
+                <Link
+                  to={ed.href}
+                  className="cai-edition"
+                  data-reveal
+                  style={{ transitionDelay: `${i * 90}ms`, "--cai-accent": ed.accent } as CSSProperties}
+                  key={ed.key}
+                >
+                  <span className="cai-edition-bar" aria-hidden />
+                  <div className="cai-edition-top">
+                    <span className="cai-edition-badge">{ed.badge}</span>
+                    <span className="cai-edition-date">
+                      <strong>{ed.day}</strong>
+                      <em>{ed.weekday}</em>
+                    </span>
+                  </div>
+                  <h3 className="cai-edition-name">
+                    {ed.name}<span className="cai-edition-dot">.</span>{ed.dot}
+                  </h3>
+                  <p className="cai-edition-tag">{ed.tagline}</p>
+                  <p className="cai-edition-aud">{ed.audience}</p>
+                  <div className="cai-edition-focus">
+                    {ed.focus.map((f) => (
+                      <span key={f}>{f}</span>
+                    ))}
+                  </div>
+                  <div className="cai-edition-foot">
+                    <span className="cai-edition-note">{ed.note}</span>
+                    <span className="cai-edition-cta">
+                      Conhecer <ArrowRight className="sb-ic" aria-hidden />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <p className="cai-editions-hint" data-reveal>
+              Tem interesse em mais de uma edição? Fale com a equipe e a gente organiza a sua
+              participação.
+            </p>
+          </div>
+        </section>
+
+        {/* CTA (fecha a Parte 1) */}
+        <section className="sb-final">
+          <div className="sb-final-card" data-reveal>
+            <div className="sb-final-glow" aria-hidden />
+            <span className="sb-eyebrow sb-eyebrow-dark">Vagas limitadas</span>
+            <h2 className="sb-h2">A 1ª edição esgotou. Garanta a sua na próxima.</h2>
+            <div className="sb-final-actions">
+              <CTAButton variant="primary" size="lg" href={WHATSAPP}>Falar no WhatsApp</CTAButton>
+              <CTAButton variant="glass" size="lg" to="/contato">Fazer um diagnóstico antes</CTAButton>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </AppShell>
   );
 }
