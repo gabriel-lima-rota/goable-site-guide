@@ -202,13 +202,29 @@ function SobrePage() {
     <AppShell>
       <div className="sb-page" ref={ref}>
         {/* HERO */}
-        <section className="sb-hero">
+        <section
+          className="sb-hero"
+          onPointerMove={(e) => {
+            const r = e.currentTarget.getBoundingClientRect();
+            e.currentTarget.style.setProperty("--sb-px", `${((e.clientX - r.left) / r.width - 0.5) * 20}px`);
+            e.currentTarget.style.setProperty("--sb-py", `${((e.clientY - r.top) / r.height - 0.5) * 16}px`);
+          }}
+          onPointerLeave={(e) => {
+            e.currentTarget.style.setProperty("--sb-px", "0px");
+            e.currentTarget.style.setProperty("--sb-py", "0px");
+          }}
+        >
           <div className="sb-hero-grid" aria-hidden />
+          <div className="sb-hero-aura" aria-hidden />
+          <div className="sb-hero-wave" aria-hidden />
+          <img className="sb-hero-orb" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
           <div className="sb-hero-inner">
             <div className="sb-hero-copy" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark">Sobre a Goable AI</span>
               <h1 className="sb-hero-h1">
-                Autoridade real em <span className="sb-hl">IA aplicada</span> à operação das empresas.
+                <span>Autoridade real em</span>
+                <span className="sb-hl">IA aplicada</span>
+                <span>à operação das empresas.</span>
               </h1>
               <p className="sb-hero-sub">
                 A Goable encontra a raiz do problema e constrói o sistema com IA que a empresa

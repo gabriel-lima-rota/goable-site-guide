@@ -8292,3 +8292,181 @@
     grid-template-columns: 1fr;
   }
 }
+/* ==========================================================================
+   SOBRE HERO v2 — H1 menor + fundo em movimento + criatividade
+   (override aditivo; regras mais abaixo vencem as anteriores)
+   ========================================================================== */
+
+/* H1 bem menor, com entrada linha a linha ------------------------------- */
+.sb-hero-h1 {
+  max-width: 17ch;
+  font-size: clamp(2.1rem, 3.4vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+.sb-hero-h1 > span {
+  display: block;
+  opacity: 0;
+  transform-origin: left center;
+  animation: goable-hero-line-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-shadow: 0 22px 66px rgba(109, 77, 255, 0.22);
+}
+.sb-hero-h1 > span:nth-child(1) { animation-delay: 0.08s; }
+.sb-hero-h1 > span:nth-child(2) { animation-delay: 0.22s; }
+.sb-hero-h1 > span:nth-child(3) { animation-delay: 0.36s; }
+
+@media (max-width: 640px) {
+  .sb-hero-h1 {
+    font-size: clamp(1.9rem, 8.4vw, 2.6rem);
+    max-width: 100%;
+  }
+}
+
+/* Destaque com gradiente que varre + brilho pulsante -------------------- */
+.sb-hero-h1 > span.sb-hl {
+  display: block;
+  width: fit-content;
+  color: transparent;
+  background: linear-gradient(94deg, #f4f6fa 0%, #a99bff 46%, #38e6e6 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: none;
+  animation:
+    goable-hero-line-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s forwards,
+    sb-hl-sweep 6.5s ease-in-out 1.3s infinite;
+}
+.sb-hero-h1 > span.sb-hl::after {
+  content: "";
+  position: absolute;
+  left: 0.02em;
+  right: 0.05em;
+  bottom: -0.04em;
+  height: 0.1em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(109, 77, 255, 0.02), rgba(109, 77, 255, 0.82), rgba(56, 230, 230, 0.6), rgba(109, 77, 255, 0.02));
+  filter: blur(0.4px);
+  opacity: 0.82;
+  animation: goable-highlight-breathe 5s ease-in-out 1.3s infinite;
+}
+@keyframes sb-hl-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Grid do fundo em deriva lenta ---------------------------------------- */
+.sb-hero-grid {
+  background-size: 96px 96px;
+  opacity: 0.6;
+  animation: goable-mesh-pan 26s linear infinite;
+}
+
+/* Aura viva atrás do conteúdo ------------------------------------------ */
+.sb-hero-aura {
+  position: absolute;
+  top: -12%;
+  left: 40%;
+  width: min(820px, 74vw);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 46% 44%, rgba(244, 246, 250, 0.14), transparent 26%),
+    radial-gradient(circle at 64% 54%, rgba(109, 77, 255, 0.32), transparent 48%),
+    radial-gradient(circle at 30% 70%, rgba(56, 230, 230, 0.14), transparent 48%);
+  filter: blur(62px);
+  opacity: 0.72;
+  translate: calc(var(--sb-px, 0px) * 0.5) calc(var(--sb-py, 0px) * 0.5);
+  transition: translate 0.5s ease;
+  animation: goable-parallax-drift 18s ease-in-out infinite;
+}
+
+/* Campo de ondas animado (assinatura de movimento) --------------------- */
+.sb-hero-wave {
+  position: absolute;
+  inset: 10% -18% auto -14%;
+  height: min(480px, 48svh);
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 240'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%236D4DFF' stop-opacity='0'/><stop offset='0.35' stop-color='%236D4DFF' stop-opacity='0.48'/><stop offset='0.62' stop-color='%2338E6E6' stop-opacity='0.36'/><stop offset='1' stop-color='%23FF3EA5' stop-opacity='0'/></linearGradient></defs><path d='M0 126 C 130 36 270 216 410 126 S 700 36 840 126 S 1070 216 1200 126' fill='none' stroke='url(%23g)' stroke-width='1.5'/><path d='M0 154 C 170 68 270 205 430 154 S 720 68 900 154 S 1090 205 1200 154' fill='none' stroke='url(%23g)' stroke-width='0.85' opacity='0.7'/><path d='M0 92 C 150 22 320 168 480 92 S 780 22 940 92 S 1110 168 1200 92' fill='none' stroke='url(%23g)' stroke-width='0.75' opacity='0.58'/></svg>");
+  background-repeat: repeat-x;
+  background-size: 920px 240px;
+  filter: blur(0.2px) drop-shadow(0 0 30px rgba(109, 77, 255, 0.28));
+  mask-image:
+    linear-gradient(90deg, transparent 0%, black 18%, black 76%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 26%, black 70%, transparent 100%);
+  animation:
+    goable-wave-rise 1.9s cubic-bezier(0.16, 1, 0.3, 1) both,
+    goable-wave-flow 18s ease-in-out 1.9s infinite alternate;
+}
+.sb-hero-wave::before,
+.sb-hero-wave::after {
+  content: "";
+  position: absolute;
+  inset: 28% 0 auto 0;
+  height: 240px;
+  background-image: inherit;
+  background-repeat: repeat-x;
+  background-size: 780px 240px;
+  opacity: 0.46;
+  filter: blur(1px);
+  transform: translateY(58px) scaleY(1.16);
+  animation: goable-wave-flow 24s ease-in-out infinite alternate-reverse;
+}
+.sb-hero-wave::after {
+  inset: auto 0 4% 0;
+  background-size: 1080px 240px;
+  opacity: 0.22;
+  filter: blur(2px);
+  transform: translateY(84px) scaleY(1.34);
+  animation-duration: 30s;
+}
+
+/* Objeto de vidro flutuando -------------------------------------------- */
+.sb-hero-orb {
+  position: absolute;
+  top: clamp(3.5rem, 12vh, 8rem);
+  right: clamp(-2.5rem, 3vw, 3rem);
+  width: min(300px, 32vw);
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+  filter: drop-shadow(0 34px 80px rgba(109, 77, 255, 0.42));
+  translate: calc(var(--sb-px, 0px) * -0.9) calc(var(--sb-py, 0px) * -0.9);
+  transition: translate 0.5s ease;
+  animation: goable-float-object 9s ease-in-out infinite;
+}
+
+/* Parallax suave no visual (foto) -------------------------------------- */
+.sb-hero-visual {
+  translate: calc(var(--sb-px, 0px) * 0.7) calc(var(--sb-py, 0px) * 0.7);
+  transition: translate 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-hero-grid,
+  .sb-hero-aura,
+  .sb-hero-wave,
+  .sb-hero-wave::before,
+  .sb-hero-wave::after,
+  .sb-hero-orb,
+  .sb-hero-h1 > span,
+  .sb-hero-h1 > span.sb-hl,
+  .sb-hero-h1 > span.sb-hl::after {
+    animation: none;
+  }
+  .sb-hero-h1 > span {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .sb-hero-orb {
+    width: 46vw;
+    opacity: 0.4;
+    top: 4.5rem;
+  }
+}
