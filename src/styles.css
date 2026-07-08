@@ -18743,7 +18743,7 @@ button.gov-btn-primary {
   padding: 1.6rem 1.6rem 1.4rem;
 }
 .gov-page .gov-proof article strong {
-  font-size: clamp(2.9rem, 5.6vw, 4.4rem) !important;
+  font-size: clamp(4.5rem, 8vw, 6.5rem) !important;
   font-weight: 950 !important;
   line-height: 0.88 !important;
   letter-spacing: -0.05em !important;
@@ -18754,6 +18754,7 @@ button.gov-btn-primary {
   color: #ffffff !important;
   text-shadow: 0 10px 40px rgba(47, 107, 237, 0.35);
 }
+
 .gov-page .gov-proof article span {
   margin-top: 0.55rem;
   font-size: 0.95rem;
