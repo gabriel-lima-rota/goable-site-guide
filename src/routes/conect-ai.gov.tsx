@@ -82,7 +82,7 @@ const venueFacts = ["Espaço Caldeira", "Porto Alegre · RS", "Dia completo · a
 
 const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
   { photo: img("conect-face-1.jpg"), name: "Lucas Arthur Schaelder", role: "Mirasul", text: "Agradeço imensamente pelo tratamento e cuidado do pessoal da organização. Gostei muito do evento dessa maneira mais dinâmica. Agradeço também o conhecimento transmitido, me ensinou muito e espero poder transmitir esse conhecimento da melhor maneira para a minha empresa." },
-  { photo: img("conect-face-2.jpg"), name: "Marcio (Vinicius)", role: "Sócio administrador", text: "soluções de negócios com inteligência artificial é uma realidade, queremos navegar nestes mares, obrigado por traduzir as minhas necessidades como empresa gerando esperança e ânimo para continuar gerando riqueza e agregando valor." },
+  { photo: img("conect-face-2.jpg"), name: "Marcio Vinicius", role: "Sócio · Marcio Brindes", text: "soluções de negócios com inteligência artificial é uma realidade, queremos navegar nestes mares, obrigado por traduzir as minhas necessidades como empresa gerando esperança e ânimo para continuar gerando riqueza e agregando valor." },
   { photo: img("conect-face-3.jpg"), name: "Diogo Frantz", role: "Gerente Comercial", text: "Obrigado pela oportunidade de fazer parte deste evento, deste seleto grupo, Edgar e sua equipe são profissionais e pessoas extraordinárias, acessíveis e disponíveis para achar a melhor solução de IA para cada necessidade." },
   { photo: img("conect-face-4.jpg"), name: "Maylon Dias", role: "STM Portaria Remota", text: "Edgar Abreu, com sua nova inovação empresarial Goable AI, demonstrou grande conhecimento com a tecnologia de fácil acesso elevando o empresário ao futuro e gerando menor custo ao final com a melhor tecnologia." },
   { photo: img("conect-face-5.jpg"), name: "Regis Dantas", role: "Sócio Diretor · NX Educação", text: "Parabéns ao Edgar e toda equipe da Goable que proporcionaram um ambiente de extremo aprendizado, colaboração, foi uma entrega fantástica, sem esconder o jogo e compartilhando conteúdo altamente aplicável." },
@@ -798,12 +798,12 @@ function GovPage() {
               </div>
               <div className="gov-venue-photos" data-reveal>
                 <figure className="gov-venue-fig gov-venue-fig-lg">
-                  <img src={img("caldeira-campus.jpg")} alt="Campus Caldeira, Instituto Caldeira em Porto Alegre" loading="lazy" />
-                  <figcaption><strong>Campus Caldeira</strong><span>Hub de inovação no coração de Porto Alegre</span></figcaption>
+                  <img src={img("caldeira-espaco.jpg")} alt="Espaço Caldeira, onde acontece o Conect.GOV" loading="lazy" />
+                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
                 </figure>
                 <figure className="gov-venue-fig">
-                  <img src={img("caldeira-sala.jpg")} alt="Espaço Caldeira, onde acontece o Conect.GOV" loading="lazy" />
-                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
+                  <img src={img("caldeira-campus.jpg")} alt="Instituto Caldeira, Porto Alegre" loading="lazy" />
+                  <figcaption><strong>Instituto Caldeira</strong><span>Hub de inovação em Porto Alegre</span></figcaption>
                 </figure>
               </div>
             </div>

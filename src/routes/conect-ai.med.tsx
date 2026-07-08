@@ -700,12 +700,12 @@ function MedPage() {
               </div>
               <div className="med2-venue-photos" data-reveal>
                 <figure className="med2-venue-fig med2-venue-fig-lg">
-                  <img src={img("caldeira-campus.jpg")} alt="Campus Caldeira, Instituto Caldeira em Porto Alegre" loading="lazy" />
-                  <figcaption><strong>Campus Caldeira</strong><span>Hub de inovação no coração de Porto Alegre</span></figcaption>
+                  <img src={img("caldeira-espaco.jpg")} alt="Espaço Caldeira, onde acontece o Conect.MED" loading="lazy" />
+                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
                 </figure>
                 <figure className="med2-venue-fig">
-                  <img src={img("caldeira-sala.jpg")} alt="Espaço Caldeira, onde acontece o Conect.MED" loading="lazy" />
-                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
+                  <img src={img("caldeira-campus.jpg")} alt="Instituto Caldeira, Porto Alegre" loading="lazy" />
+                  <figcaption><strong>Instituto Caldeira</strong><span>Hub de inovação em Porto Alegre</span></figcaption>
                 </figure>
               </div>
             </div>

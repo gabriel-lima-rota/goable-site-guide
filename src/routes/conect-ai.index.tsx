@@ -199,8 +199,8 @@ const testimonials: Array<{ photo: string; name: string; role: string; text: str
   },
   {
     photo: img("conect-face-2.jpg"),
-    name: "Marcio (Vinicius)",
-    role: "Sócio administrador",
+    name: "Marcio Vinicius",
+    role: "Sócio · Marcio Brindes",
     text: "soluções de negócios com inteligência artificial é uma realidade, queremos navegar nestes mares, obrigado por traduzir as minhas necessidades como empresa gerando esperança e ânimo para continuar gerando riqueza e agregando valor.",
   },
   {
