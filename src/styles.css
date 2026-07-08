@@ -13359,7 +13359,7 @@ button.med2-btn-primary {
   padding: 1.6rem 1.6rem 1.4rem;
 }
 .med2-page .med2-proof article strong {
-  font-size: clamp(2.9rem, 5.6vw, 4.4rem) !important;
+  font-size: clamp(4.5rem, 8vw, 6.5rem) !important;
   font-weight: 950 !important;
   line-height: 0.88 !important;
   letter-spacing: -0.05em !important;
@@ -13370,6 +13370,7 @@ button.med2-btn-primary {
   color: #ffffff !important;
   text-shadow: 0 10px 40px rgba(0, 153, 92, 0.35);
 }
+
 .med2-page .med2-proof article span {
   margin-top: 0.55rem;
   font-size: 0.95rem;
