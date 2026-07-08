@@ -238,11 +238,9 @@ function MedPage() {
               </h1>
               <p className="med2-sub">IA aplicada à <span className="med2-hl">prática médica</span>.</p>
               <p className="med2-desc">
-                Uma imersão presencial para médicos que desejam entender, com clareza e aplicação
-                prática, como a IA pode apoiar a rotina clínica, administrativa e estratégica do
-                consultório. Você identifica oportunidades reais, participa de construções orientadas
-                e sai com um plano objetivo para reduzir tarefas operacionais, ganhar tempo e
-                qualificar a experiência do paciente.
+                Uma imersão presencial para médicos: você identifica onde a IA apoia a rotina
+                clínica, administrativa e estratégica do consultório e sai com um plano objetivo
+                para ganhar tempo e qualificar a experiência do paciente.
               </p>
 
               <div className="med2-facts">
@@ -259,12 +257,16 @@ function MedPage() {
               </div>
             </div>
 
-            <div className="med2-hero-visual" data-reveal>
-              <div className="med2-hero-photo">
-                <img src={img("combo-studios-592.webp")} alt="Construção orientada ao vivo na 1ª edição do Conect" loading="eager" />
-                <div className="med2-hero-photo-glow" aria-hidden />
-              </div>
-              <div className="med2-hero-badge">
+            <div className="med2-hero-visual med2-hero-visual-cracha" data-reveal>
+              <span className="med2-cracha-glow" aria-hidden />
+              <img
+                className="med2-cracha"
+                src={img("conect-cracha-med.png")}
+                alt="Crachá do Conect.AI 26: Protagonistas do presente, realização Faculdade Unimed"
+                loading="eager"
+                draggable={false}
+              />
+              <div className="med2-hero-badge med2-hero-badge-cracha">
                 <span>Para quem é</span>
                 <strong>Médicos · Sócios de clínicas · Gestores médicos</strong>
               </div>

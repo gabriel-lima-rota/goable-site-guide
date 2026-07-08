@@ -12063,3 +12063,97 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* CONECT.MED — hero polish: logo sem cartela, cracha pendurado, numeros ---- */
+/* Logo: o SVG ja tem a cartela branca embutida, sem wrapper */
+.med2-page .med2-lockup-logo {
+  background: none;
+  padding: 0;
+  box-shadow: 0 16px 44px -18px rgba(0, 153, 92, 0.6);
+  border-radius: 0.7rem;
+}
+.med2-page .med2-lockup-logo img {
+  height: 44px;
+  border-radius: 0.7rem;
+}
+
+/* Cracha pendurado saindo do topo da pagina */
+.med2-hero-visual-cracha {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: calc(clamp(6.6rem, 9vw, 8.6rem) * -1);
+  min-height: 520px;
+}
+.med2-cracha-glow {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 80%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 121, 32, 0.32), rgba(244, 121, 32, 0.08) 46%, transparent 68%);
+  filter: blur(38px);
+  pointer-events: none;
+  animation: med2-glow-breathe 4.5s ease-in-out infinite;
+}
+@keyframes med2-glow-breathe {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+.med2-cracha {
+  position: relative;
+  z-index: 1;
+  width: min(330px, 72%);
+  height: auto;
+  transform-origin: 50% 0%;
+  animation: med2-cracha-sway 6.5s ease-in-out infinite;
+  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 34px rgba(244, 121, 32, 0.28));
+  translate: calc(var(--sb-px, 0px) * 0.5) 0;
+  transition: translate 0.5s ease;
+}
+@keyframes med2-cracha-sway {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(1.6deg); }
+}
+.med2-hero-badge-cracha {
+  position: relative;
+  margin-top: -1.4rem;
+  z-index: 2;
+  left: auto;
+  right: auto;
+  bottom: auto;
+}
+
+/* Numeros dos indicadores: mesmo padrao dos bullets de NPS do site */
+.med2-page .med2-proof strong {
+  display: block;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #fff, #7fe0b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 1023px) {
+  .med2-hero-visual-cracha {
+    margin-top: 0;
+    min-height: 0;
+  }
+  .med2-cracha {
+    width: min(280px, 64%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .med2-cracha, .med2-cracha-glow {
+    animation: none;
+  }
+}
