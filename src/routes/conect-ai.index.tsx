@@ -277,7 +277,9 @@ function RotatingWord({ words }: { words: string[] }) {
   }, [words.length]);
   return (
     <span className="cai-rot">
-      <span key={i} className="cai-rot-word">{words[i]}</span>
+      {words.map((w, idx) => (
+        <span key={w} className={`cai-rot-word ${idx === i ? "is-on" : ""}`}>{w}</span>
+      ))}
     </span>
   );
 }
@@ -403,7 +405,7 @@ function ConectAiIndex() {
               </div>
               <div className="cai-hero-actions">
                 <CTAButton variant="primary" size="lg" href={WHATSAPP}>Garantir presença</CTAButton>
-                <CTAButton variant="glass" size="lg" href="#edicoes">Ver as edições</CTAButton>
+                <a className="cai-hero-ghost" href="#edicoes">Ver as edições <ArrowRight aria-hidden /></a>
               </div>
             </div>
 
