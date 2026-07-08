@@ -333,13 +333,15 @@ function SobrePage() {
                 <span>à operação das empresas.</span>
               </h1>
               <p className="sb-hero-sub">
-                A Goable encontra a raiz do problema e constrói o sistema com IA que a empresa
-                precisa de verdade. Time especialista, método próprio e execução que chega ao
-                operacional.
+                A Goable desenvolve soluções de inteligência artificial sob medida para empresas,
+                instituições e governos que precisam transformar processos complexos em sistemas
+                mais inteligentes, rápidos e rastreáveis. Unimos diagnóstico operacional, estratégia
+                de dados e desenvolvimento de tecnologia própria para criar IA que funciona no dia a
+                dia da operação, não apenas em apresentações.
               </p>
               <div className="sb-hero-actions">
-                <CTAButton variant="primary" size="lg" to="/contato">Fazer diagnóstico</CTAButton>
-                <CTAButton variant="glass" size="lg" to="/conect-ai">Conhecer Conect.AI 2026</CTAButton>
+                <CTAButton variant="primary" size="lg" to="/contato">Solicitar diagnóstico</CTAButton>
+                <CTAButton variant="glass" size="lg" href="/#metodo">Conhecer a metodologia</CTAButton>
               </div>
               <div className="sb-hero-stats">
                 {heroStats.map(([value, label]) => (
@@ -491,6 +493,23 @@ function SobrePage() {
                   </figcaption>
                 </figure>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONECT.AI TEASER */}
+        <section className="sb-cai-teaser">
+          <div className="sb-inner">
+            <div className="sb-cai-teaser-card" data-reveal>
+              <div className="sb-cai-teaser-copy">
+                <span className="sb-eyebrow sb-eyebrow-dark">Conect.AI 2026</span>
+                <h2 className="sb-h2">Encontros presenciais de IA aplicada.</h2>
+                <p className="sb-lead sb-lead-light">
+                  Encontros presenciais da Goable para levar inteligência artificial aplicada a
+                  gestores públicos, médicos e empresários.
+                </p>
+              </div>
+              <CTAButton variant="primary" size="lg" to="/conect-ai">Conhecer os eventos</CTAButton>
             </div>
           </div>
         </section>

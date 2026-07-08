@@ -28,7 +28,7 @@ const steps: Array<[string, string, string]> = [
 
 export function MethodSection() {
   return (
-    <section className="home-method-chapter">
+    <section className="home-method-chapter" id="metodo">
       <div className="home-method-liquid-bg" aria-hidden>
         <img src={glass3d.loop} alt="" draggable={false} />
       </div>

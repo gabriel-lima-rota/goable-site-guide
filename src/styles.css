@@ -19209,3 +19209,32 @@ button.gov-btn-primary {
   justify-content: center;
   margin-top: clamp(2rem, 4vw, 3rem);
 }
+
+/* SOBRE — teaser Conect.AI abaixo do palco */
+.sb-cai-teaser {
+  background: var(--sb-ink);
+  padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+}
+.sb-cai-teaser-card {
+  width: min(100%, 1100px);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.4rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  border: 1px solid rgba(184, 168, 255, 0.28);
+  border-radius: clamp(1.4rem, 3vw, 2.2rem);
+  background:
+    radial-gradient(circle at 6% 10%, rgba(109, 77, 255, 0.2), transparent 44%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+}
+.sb-cai-teaser-copy {
+  min-width: 0;
+  flex: 1 1 22rem;
+}
+.sb-cai-teaser-copy .sb-h2 {
+  margin-top: 0.6rem;
+}
