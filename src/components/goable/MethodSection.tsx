@@ -45,12 +45,6 @@ export function MethodSection() {
               especialistas de cada área para guiar, personalizar e entregar
               sistemas que fazem sentido com velocidade.
             </p>
-            <div className="home-method2-cta">
-              <CTAButton variant="primary" size="lg" to="/contato">
-                Agende seu diagnóstico
-                <ArrowRight size={18} strokeWidth={2.25} />
-              </CTAButton>
-            </div>
           </div>
 
           <ol className="home-method2-track">
@@ -68,6 +62,13 @@ export function MethodSection() {
               </li>
             ))}
           </ol>
+
+          <div className="home-method2-cta home-method2-cta-after">
+            <CTAButton variant="primary" size="lg" to="/contato">
+              Agende seu diagnóstico
+              <ArrowRight size={18} strokeWidth={2.25} />
+            </CTAButton>
+          </div>
         </div>
       </div>
     </section>

@@ -115,7 +115,7 @@ function HomePage() {
                 </div>
                 <HomeDiagnosticDemo active={activePain} />
                 <div className="home-diagnostic-caption">
-                  <span><i />Raiz encontrada</span>
+                  <span><i />Gargalo mapeado</span>
                   <strong>{diagnosticCaption[activePain]}</strong>
                 </div>
               </div>
@@ -174,10 +174,12 @@ function HomePage() {
             <div className="home-connect-layout">
               <div>
                 <div className="home-section-heading">
-                  <span>Conect.AI</span>
+                  <span>Conect.AI · Eventos presenciais em Porto Alegre</span>
                   <Slot id="COPY_HOME_CONNECT_TITLE" as="h2" />
                   <p>
-                    Aprenda como usar IA no seu negócio, acelerar resultados e viver a nova era com direção prática.
+                    Imersões práticas e presenciais de IA em Porto Alegre. Participe para entender
+                    como aplicar inteligência artificial na sua área, acelerar processos e tomar
+                    decisões com mais clareza.
                   </p>
                 </div>
                 <div className="home-event-list">

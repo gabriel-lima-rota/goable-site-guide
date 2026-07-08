@@ -19194,3 +19194,18 @@ button.gov-btn-primary {
 }
 .gov-lockup-logo-camila img { height: 26px; }
 .gov-credit-camila { height: 30px; width: auto; opacity: 0.95; }
+
+/* HOME — ajustes: balões do Edgar centralizados + CTA do método depois do processo */
+.home-specialist-cards .home-liquid-card {
+  text-align: center;
+}
+.home-edgar-proof {
+  justify-content: center;
+  text-align: center;
+}
+.home-method2-cta-after {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
