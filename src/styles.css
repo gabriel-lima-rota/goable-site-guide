@@ -10811,7 +10811,7 @@
   position: absolute;
   top: 0.8rem;
   bottom: 1.4rem;
-  left: calc(4.4rem + 1rem - 1px);
+  left: calc(2.8rem + 1rem - 1px);
   width: 2px;
   border-radius: 999px;
   background: linear-gradient(180deg, #6d4dff, #38e6e6, #6d4dff, #38e6e6);
@@ -10825,7 +10825,7 @@
 .cai-tl-step {
   position: relative;
   display: grid;
-  grid-template-columns: 4.4rem 2rem minmax(0, 1fr);
+  grid-template-columns: 2.8rem 2rem minmax(0, 1fr);
   align-items: start;
   padding-bottom: 1rem;
 }
@@ -10925,13 +10925,13 @@
 
 @media (max-width: 640px) {
   .cai-tl-step {
-    grid-template-columns: 3.1rem 1.5rem minmax(0, 1fr);
+    grid-template-columns: 2.3rem 1.5rem minmax(0, 1fr);
   }
   .cai-timeline-rail {
-    left: calc(3.1rem + 0.75rem - 1px);
+    left: calc(2.3rem + 0.75rem - 1px);
   }
   .cai-tl-time {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

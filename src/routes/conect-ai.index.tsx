@@ -177,13 +177,13 @@ const whyCards: Array<[typeof Target, string, string]> = [
   [Compass, "Direção, não hype", "No fim do dia você tem um plano e prioridades claras, não um monte de buzzword."],
 ];
 
-const agenda: Array<{ time: string; title: string; body: string; hands?: boolean }> = [
-  { time: "09h", title: "Boas-vindas e diagnóstico", body: "A gente mapeia junto, na sua frente, os gargalos e as oportunidades reais da sua operação." },
-  { time: "10h", title: "Fundamentos aplicados de IA", body: "O que a IA já resolve hoje no seu setor, sem tecniquês e com exemplos concretos." },
-  { time: "12h", title: "Almoço e networking", body: "Conexão com outros decisores e com os especialistas, na mesa, sem crachá de plateia." },
-  { time: "13h30", title: "Construção orientada, ao vivo", body: "Aqui você põe a mão: monta as aplicações de IA para a sua realidade, guiado passo a passo. Não assiste, constrói.", hands: true },
-  { time: "17h", title: "Plano de implementação", body: "Você organiza prioridades e sai com um roteiro claro para os próximos 30, 60 e 90 dias." },
-  { time: "18h", title: "Encerramento e continuidade", body: "Materiais de apoio e a trilha para seguir aplicando com a Goable depois do evento." },
+const agenda: Array<{ title: string; body: string; hands?: boolean }> = [
+  { title: "Boas-vindas e diagnóstico", body: "A gente mapeia junto, na sua frente, os gargalos e as oportunidades reais da sua operação." },
+  { title: "Fundamentos aplicados de IA", body: "O que a IA já resolve hoje no seu setor, sem tecniquês e com exemplos concretos." },
+  { title: "Almoço e networking", body: "Conexão com outros decisores e com os especialistas, na mesa, sem crachá de plateia." },
+  { title: "Construção orientada, ao vivo", body: "Aqui você põe a mão: monta as aplicações de IA para a sua realidade, guiado passo a passo. Não assiste, constrói.", hands: true },
+  { title: "Plano de implementação", body: "Você organiza prioridades e sai com um roteiro claro para os próximos 30, 60 e 90 dias." },
+  { title: "Encerramento e continuidade", body: "Materiais de apoio e a trilha para seguir aplicando com a Goable depois do evento." },
 ];
 
 const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
@@ -606,9 +606,9 @@ function ConectAiIndex() {
                   className={`cai-tl-step ${s.hands ? "is-hands" : ""}`}
                   data-reveal
                   style={{ transitionDelay: `${i * 60}ms` }}
-                  key={s.time}
+                  key={s.title}
                 >
-                  <span className="cai-tl-time">{s.time}</span>
+                  <span className="cai-tl-time">{String(i + 1).padStart(2, "0")}</span>
                   <span className="cai-tl-dot" aria-hidden />
                   <div className="cai-tl-card">
                     {s.hands ? <span className="cai-tl-tag">Você põe a mão</span> : null}
