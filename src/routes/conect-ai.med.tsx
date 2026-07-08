@@ -80,31 +80,6 @@ const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
 
 const venueFacts = ["Porto Alegre · RS", "Dia completo · almoço incluso", "Turma reduzida", "100% presencial"];
 
-const partners: Array<{ role: string; roleColor: string; name: string; desc: string; logo?: string; dark?: boolean; textLogo?: boolean }> = [
-  {
-    role: "Realização",
-    roleColor: "#f47920",
-    name: "Faculdade Unimed",
-    desc: "Referência em educação continuada para profissionais da saúde no Brasil. Traz o rigor acadêmico e a curadoria de conteúdo para a formação.",
-    logo: "logo-faculdade-unimed.svg",
-  },
-  {
-    role: "Apoio técnico",
-    roleColor: "#6d4dff",
-    name: "Goable AI",
-    desc: "Responsável pela metodologia Conect.AI, pela construção ao vivo dos sistemas e pela trilha prática do dia.",
-    logo: "logo-branco.png",
-    dark: true,
-  },
-  {
-    role: "Apoio institucional",
-    roleColor: "#00995c",
-    name: "Unimed Porto Alegre",
-    desc: "Apoio institucional para aproximação com a comunidade médica cooperada da região metropolitana.",
-    textLogo: true,
-  },
-];
-
 const faqMed: Array<[string, string]> = [
   ["Preciso entender de tecnologia?", "Não. O foco é a rotina do consultório, não código. A parte técnica fica com a Goable, você foca na aplicação."],
   ["Sou de outra cidade, vale a pena?", "Sim. É presencial em Porto Alegre, em um dia único, pensado para você sair com um plano aplicável em qualquer consultório."],
@@ -375,8 +350,105 @@ function FaqListMed() {
   );
 }
 
+function LeadModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+  if (!open) return null;
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/marketing@4ued.tech", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "Lote 1 · Conect.MED (22/07) · novo pedido de vaga",
+          nome: fd.get("nome"),
+          email: fd.get("email"),
+          whatsapp: fd.get("whatsapp"),
+          especialidade: fd.get("especialidade") || "(não informado)",
+        }),
+      });
+      if (!res.ok) throw new Error("fail");
+      setSent(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  }
+
+  return (
+    <div className="med2-modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label="Garantir vaga no Lote 1">
+      <div className="med2-modal" onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="med2-modal-close" onClick={onClose} aria-label="Fechar">×</button>
+        {sent ? (
+          <div className="med2-modal-success">
+            <span className="med2-modal-check"><Check aria-hidden /></span>
+            <h3>Pedido recebido!</h3>
+            <p>
+              Sua vaga do <b>Lote 1</b> está pré-reservada. Nosso time vai entrar em contato para
+              confirmar os dados e concluir a sua inscrição no Conect.MED.
+            </p>
+            <button type="button" className="med2-btn-primary med2-btn-block" onClick={onClose}>Fechar</button>
+          </div>
+        ) : (
+          <>
+            <span className="med2-lote"><i aria-hidden /> Lote 1 · Conect.MED · 22 de julho</span>
+            <h3 className="med2-modal-title">Garanta sua vaga no Lote 1</h3>
+            <p className="med2-modal-sub">Preencha seus dados e nosso time entra em contato para concluir a inscrição.</p>
+            <form className="med2-form" onSubmit={submit}>
+              <label>
+                <span>Nome completo</span>
+                <input name="nome" type="text" required placeholder="Seu nome" autoComplete="name" />
+              </label>
+              <label>
+                <span>E-mail</span>
+                <input name="email" type="email" required placeholder="voce@clinica.com.br" autoComplete="email" />
+              </label>
+              <label>
+                <span>WhatsApp</span>
+                <input name="whatsapp" type="tel" required placeholder="(51) 99999-9999" autoComplete="tel" />
+              </label>
+              <label>
+                <span>Especialidade ou clínica <em>(opcional)</em></span>
+                <input name="especialidade" type="text" placeholder="Ex.: Cardiologia, Clínica X" />
+              </label>
+              {error ? (
+                <p className="med2-form-error">
+                  Não foi possível enviar agora. Tente de novo ou fale direto com o time no{" "}
+                  <a href={WHATSAPP} target="_blank" rel="noreferrer">WhatsApp</a>.
+                </p>
+              ) : null}
+              <button type="submit" className="med2-btn-primary med2-btn-block" disabled={sending}>
+                {sending ? "Enviando..." : "Garantir minha vaga no Lote 1"}
+              </button>
+              <span className="med2-form-note">Vagas limitadas · o time confirma disponibilidade por ordem de chegada.</span>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function MedPage() {
   const ref = useReveal();
+  const [leadOpen, setLeadOpen] = useState(false);
 
   return (
     <AppShell>
@@ -419,9 +491,9 @@ function MedPage() {
               </div>
 
               <div className="med2-actions">
-                <a className="med2-btn-primary" href={WHATSAPP} target="_blank" rel="noreferrer">
+                <button type="button" className="med2-btn-primary" onClick={() => setLeadOpen(true)}>
                   <MessageCircle aria-hidden /> Garantir minha vaga
-                </a>
+                </button>
                 <a className="med2-btn-ghost" href="#imersao">Ver como funciona <ArrowRight aria-hidden /></a>
               </div>
             </div>
@@ -502,9 +574,9 @@ function MedPage() {
                 A 1ª edição <b>esgotou</b>. A turma do Conect.MED é reduzida e os convites são
                 confirmados por ordem de resposta: <b>pode esgotar a qualquer momento</b>.
               </p>
-              <a className="med2-btn-primary med2-scarcity-btn" href={WHATSAPP} target="_blank" rel="noreferrer">
+              <button type="button" className="med2-btn-primary med2-scarcity-btn" onClick={() => setLeadOpen(true)}>
                 <MessageCircle aria-hidden /> Garantir minha vaga agora
-              </a>
+              </button>
             </div>
           </div>
         </section>
@@ -579,23 +651,26 @@ function MedPage() {
         {/* EXCELÊNCIA FACULDADE UNIMED */}
         <section className="med2-unimed">
           <div className="sb-inner">
-            <div className="med2-unimed-head" data-reveal>
-              <span className="med2-unimed-logo">
-                <img src={img("logo-faculdade-unimed.svg")} alt="Faculdade Unimed" />
-              </span>
-              <h2>A excelência da Faculdade Unimed em números</h2>
-              <p>Conheça os marcos da trajetória de quem realiza o Conect.MED no mercado de educação.</p>
+            <div className="sb-head med2-unimed-head" data-reveal>
+              <span className="sb-eyebrow med2-unimed-eyebrow">Quem realiza</span>
+              <h2 className="sb-h2 med2-unimed-h2">
+                Você estará nas mãos de quem forma a saúde brasileira <span className="med2-unimed-hl">há 30 anos</span>.
+              </h2>
+              <p className="sb-lead med2-unimed-lead">
+                O Conect.MED é uma realização da Faculdade Unimed, referência nacional em educação
+                continuada para profissionais da saúde. A trajetória fala por ela.
+              </p>
             </div>
 
             <div className="med2-unimed-grid">
               {unimedStats.map((s, i) => (
-                <article className="med2-unimed-card" data-reveal style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
-                  {s.prefix ? <em>{s.prefix.trim()}</em> : null}
-                  <strong>
+                <article className="med2-x" data-reveal style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
+                  <span className="med2-x-num">
+                    {s.prefix ? <i>+de</i> : null}
                     <CountUp value={s.value} />
                     {s.unit ? <i>{s.unit}</i> : null}
-                  </strong>
-                  <span>{s.label}</span>
+                  </span>
+                  <span className="med2-x-label">{s.label}</span>
                 </article>
               ))}
             </div>
@@ -634,43 +709,6 @@ function MedPage() {
           </div>
         </section>
 
-        {/* QUEM FAZ ACONTECER */}
-        <section className="med2-partners">
-          <div className="sb-inner">
-            <div className="sb-head med2-partners-head" data-reveal>
-              <span className="sb-eyebrow med2-eyebrow-dark2">Quem faz acontecer</span>
-              <h2 className="sb-h2 sb-h2-dark">Realização Faculdade Unimed. Apoio Goable e Unimed Porto Alegre.</h2>
-            </div>
-            <div className="med2-partner-grid">
-              {partners.map((p, i) => (
-                <article className="med2-partner" data-reveal style={{ transitionDelay: `${i * 80}ms`, "--pc": p.roleColor } as CSSProperties} key={p.name}>
-                  <span className="med2-partner-role">{p.role}</span>
-                  <div className={`med2-partner-logo ${p.dark ? "is-dark" : ""}`}>
-                    {p.textLogo ? (
-                      <span className="med2-partner-textlogo">Unimed<i>Porto Alegre</i></span>
-                    ) : (
-                      <img src={img(p.logo!)} alt={p.name} loading="lazy" />
-                    )}
-                  </div>
-                  <h3>{p.name}</h3>
-                  <p>{p.desc}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="med2-faq">
-          <div className="sb-inner">
-            <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Perguntas rápidas</span>
-              <h2 className="sb-h2">Antes de garantir sua vaga.</h2>
-            </div>
-            <FaqListMed />
-          </div>
-        </section>
-
         {/* CONVITE: incluso + cortesia + cronometro */}
         <section className="med2-enroll">
           <div className="med2-enroll-card" data-reveal>
@@ -698,22 +736,51 @@ function MedPage() {
                 <h2>Garanta sua vaga no Lote 1.</h2>
                 <p>O Conect.MED começa em:</p>
                 <Countdown />
-                <a className="med2-btn-primary med2-btn-block" href={WHATSAPP} target="_blank" rel="noreferrer">
-                  <MessageCircle aria-hidden /> Quero garantir o Lote 1
-                </a>
+                <button type="button" className="med2-btn-primary med2-btn-block" onClick={() => setLeadOpen(true)}>
+                  Garantir minha vaga no Lote 1 <ArrowRight aria-hidden />
+                </button>
                 <span className="med2-enroll-note">Vagas limitadas · o Lote 1 pode encerrar a qualquer momento.</span>
                 <Link className="med2-enroll-alt" to="/conect-ai">Conhecer as três edições do Conect.AI <ArrowUpRight aria-hidden /></Link>
               </div>
             </div>
 
             <div className="med2-enroll-foot" aria-hidden>
-              <span className="med2-lockup-logo med2-lockup-logo-sm">
-                <img src={img("logo-faculdade-unimed.svg")} alt="" />
-              </span>
-              <span>Realização Faculdade Unimed · em parceria com Goable AI</span>
+              <span>Pagamento seguro · vaga confirmada pelo nosso time</span>
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="med2-faq">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Perguntas rápidas</span>
+              <h2 className="sb-h2">Antes de garantir sua vaga.</h2>
+            </div>
+            <FaqListMed />
+          </div>
+        </section>
+
+        {/* REALIZAÇÃO (faixa simples antes do rodapé) */}
+        <div className="med2-credits">
+          <div className="sb-inner med2-credits-inner">
+            <span className="med2-credit">
+              <em>Realização</em>
+              <img src={img("logo-faculdade-unimed.svg")} alt="Faculdade Unimed" />
+            </span>
+            <span className="med2-credit-sep" aria-hidden />
+            <span className="med2-credit">
+              <em>Apoio técnico</em>
+              <img className="med2-credit-goable" src={img("logo-branco-tight.png")} alt="Goable AI" />
+            </span>
+            <span className="med2-credit-sep" aria-hidden />
+            <span className="med2-credit">
+              <em>Apoio institucional</em>
+              <b className="med2-credit-poa">Unimed <i>Porto Alegre</i></b>
+            </span>
+          </div>
+        </div>
+        <LeadModal open={leadOpen} onClose={() => setLeadOpen(false)} />
       </div>
     </AppShell>
   );

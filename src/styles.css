@@ -12889,3 +12889,387 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* CONECT.MED — refino: numeros padrao Sobre + letreiro com fade verde ------ */
+.med2-page .med2-proof article strong {
+  display: block;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem) !important;
+  font-weight: 950 !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.045em !important;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #ffffff, #7fe0b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.med2-page .med2-proof article span {
+  font-size: 0.9rem;
+}
+
+/* Letreiro: sai a mascara branca, entram fades verde-escuro nas bordas */
+.med2-marquee {
+  -webkit-mask-image: none;
+  mask-image: none;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(0, 89, 58, 0.14), transparent 18%, transparent 82%, rgba(0, 89, 58, 0.14)),
+    var(--sb-ink);
+}
+.med2-marquee::before,
+.med2-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(70px, 12vw, 160px);
+  z-index: 2;
+  pointer-events: none;
+}
+.med2-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #052018, rgba(5, 32, 24, 0));
+}
+.med2-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, #052018, rgba(5, 32, 24, 0));
+}
+
+/* CONECT.MED — refino: excelencia Unimed (autoridade) --------------------- */
+.med2-unimed {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+  background:
+    radial-gradient(circle at 82% 0%, rgba(244, 121, 32, 0.14), transparent 38%),
+    radial-gradient(circle at 10% 100%, rgba(0, 153, 92, 0.16), transparent 40%),
+    linear-gradient(160deg, #04231a, #052a1f 60%, #041a14);
+}
+.med2-unimed-head {
+  text-align: center;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+.med2-unimed-head .sb-eyebrow {
+  justify-content: center;
+}
+.med2-unimed-eyebrow {
+  color: #ffb27a;
+}
+.med2-unimed-h2 {
+  color: #fff;
+  max-width: 30ch;
+  margin-inline: auto;
+}
+.med2-unimed-hl {
+  background: linear-gradient(100deg, #35d492, #f47920 170%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-unimed-lead {
+  color: rgba(230, 245, 238, 0.72);
+  margin-inline: auto;
+}
+.med2-unimed-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 2.6rem;
+}
+.med2-x {
+  position: relative;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.3rem;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(4, 20, 15, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 1.3rem 1.35rem;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.med2-x::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.3rem;
+  width: 2.2rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #35d492, #f47920);
+}
+.med2-x:hover {
+  transform: translateY(-5px);
+  border-color: rgba(244, 121, 32, 0.45);
+  box-shadow: 0 40px 90px -60px rgba(244, 121, 32, 0.55);
+}
+.med2-x-num {
+  display: block;
+  color: #fff;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+.med2-x-num i {
+  font-style: normal;
+  font-size: 0.34em;
+  font-weight: 900;
+  letter-spacing: 0;
+  color: #ffb27a;
+  vertical-align: baseline;
+}
+.med2-x-num i:first-child {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.26em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.med2-x-label {
+  display: block;
+  margin-top: 0.55rem;
+  color: rgba(230, 245, 238, 0.7);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* CONECT.MED — botao de compra abre modal (nao whatsapp) ------------------ */
+button.med2-btn-primary {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* CONECT.MED — faixa de realizacao (antes do rodape) ---------------------- */
+.med2-credits {
+  background: var(--sb-ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: clamp(1.6rem, 3vw, 2.4rem) 1rem;
+}
+.med2-credits-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.4rem);
+}
+.med2-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.med2-credit em {
+  font-style: normal;
+  color: rgba(247, 248, 255, 0.4);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.med2-credit img {
+  height: 30px;
+  width: auto;
+  border-radius: 0.5rem;
+}
+.med2-credit-goable {
+  height: 22px;
+  opacity: 0.92;
+}
+.med2-credit-poa {
+  color: #35d492;
+  font-size: 1.05rem;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.med2-credit-poa i {
+  font-style: normal;
+  color: #f4a05f;
+  font-size: 0.62rem;
+  font-weight: 800;
+  margin-left: 0.25rem;
+}
+.med2-credit-sep {
+  width: 1px;
+  height: 1.7rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* CONECT.MED — modal de formulario de compra ------------------------------ */
+.med2-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  background: rgba(4, 8, 6, 0.72);
+  backdrop-filter: blur(8px);
+  animation: med2-fade 0.25s ease;
+}
+@keyframes med2-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.med2-modal {
+  position: relative;
+  width: min(100%, 460px);
+  max-height: 92vh;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 217, 130, 0.3);
+  border-radius: 1.6rem;
+  background:
+    radial-gradient(circle at 90% 4%, rgba(244, 121, 32, 0.16), transparent 42%),
+    linear-gradient(160deg, #0c1a15, #08120e);
+  box-shadow: 0 50px 130px -50px rgba(0, 0, 0, 0.9);
+  padding: clamp(1.5rem, 4vw, 2.2rem);
+  animation: med2-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes med2-pop {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.med2-modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.med2-modal-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+.med2-modal-title {
+  margin: 0.8rem 0 0;
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+.med2-modal-sub {
+  margin: 0.4rem 0 0;
+  color: rgba(230, 245, 238, 0.68);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.med2-form {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.3rem;
+}
+.med2-form label {
+  display: block;
+}
+.med2-form label span {
+  display: block;
+  margin-bottom: 0.32rem;
+  color: rgba(230, 245, 238, 0.8);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.med2-form label span em {
+  font-style: normal;
+  color: rgba(230, 245, 238, 0.45);
+  font-weight: 500;
+}
+.med2-form input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  padding: 0.8rem 0.95rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.med2-form input::placeholder {
+  color: rgba(230, 245, 238, 0.35);
+}
+.med2-form input:focus {
+  outline: none;
+  border-color: rgba(0, 217, 130, 0.6);
+  background: rgba(0, 153, 92, 0.1);
+}
+.med2-form .med2-btn-block {
+  margin-top: 0.4rem;
+}
+.med2-form-note {
+  display: block;
+  text-align: center;
+  color: rgba(230, 245, 238, 0.5);
+  font-size: 0.76rem;
+}
+.med2-form-error {
+  margin: 0;
+  color: #ff9d8a;
+  font-size: 0.82rem;
+}
+.med2-form-error a {
+  color: #ffb27a;
+  text-decoration: underline;
+}
+.med2-modal-success {
+  text-align: center;
+  padding: 0.8rem 0;
+}
+.med2-modal-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00b56d, #00995c);
+  color: #fff;
+  box-shadow: 0 20px 44px -18px rgba(0, 153, 92, 0.9);
+}
+.med2-modal-check svg {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+.med2-modal-success h3 {
+  margin: 0.9rem 0 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.med2-modal-success p {
+  margin: 0.5rem auto 1.3rem;
+  max-width: 24rem;
+  color: rgba(230, 245, 238, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.med2-modal-success b {
+  color: #7fe0b8;
+}
+
+@media (max-width: 1150px) {
+  .med2-unimed-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .med2-unimed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .med2-credit-sep {
+    display: none;
+  }
+}
