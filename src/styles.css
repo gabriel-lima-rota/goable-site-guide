@@ -11281,7 +11281,7 @@
 }
 .med2-proof strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   font-weight: 950;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -12907,7 +12907,7 @@
 /* CONECT.MED — refino: numeros padrao Sobre + letreiro com fade verde ------ */
 .med2-page .med2-proof article strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem) !important;
+  font-size: clamp(3.5rem, 6vw, 5rem) !important;
   font-weight: 950 !important;
   line-height: 0.9 !important;
   letter-spacing: -0.05em !important;
@@ -13394,7 +13394,7 @@ button.med2-btn-primary {
   .med2-desc { font-size: 0.95rem; }
   .med2-hero-visual-cracha { margin-top: 0.5rem; }
   .med2-cracha { width: min(240px, 62%); }
-  .med2-proof article strong { font-size: clamp(3.2rem, 13vw, 4.4rem) !important; }
+  .med2-proof article strong { font-size: clamp(3.5rem, 14vw, 4.8rem) !important; }
 
 
   /* Frentes: icone e titulo nao competem por espaco */
@@ -13773,7 +13773,7 @@ button.med2-btn-primary {
 }
 .biz-proof strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   font-weight: 950;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -15399,7 +15399,7 @@ button.med2-btn-primary {
 /* CONECT.MED — refino: numeros padrao Sobre + letreiro com fade verde ------ */
 .biz-page .biz-proof article strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem) !important;
+  font-size: clamp(3.5rem, 6vw, 5rem) !important;
   font-weight: 950 !important;
   line-height: 0.9 !important;
   letter-spacing: -0.05em !important;
@@ -15886,7 +15886,7 @@ button.biz-btn-primary {
   .biz-desc { font-size: 0.95rem; }
   .biz-hero-visual-cracha { margin-top: 0.5rem; }
   .biz-cracha { width: min(240px, 62%); }
-  .biz-proof article strong { font-size: clamp(3.2rem, 13vw, 4.4rem) !important; }
+  .biz-proof article strong { font-size: clamp(3.5rem, 14vw, 4.8rem) !important; }
 
   /* Frentes: icone e titulo nao competem por espaco */
   .biz-front-ic { width: 3rem; height: 3rem; border-radius: 0.9rem; }
@@ -16663,7 +16663,7 @@ button.biz-btn-primary {
 }
 .gov-proof strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   font-weight: 950;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -18289,7 +18289,7 @@ button.biz-btn-primary {
 /* CONECT.MED — refino: numeros padrao Sobre + letreiro com fade verde ------ */
 .gov-page .gov-proof article strong {
   display: block;
-  font-size: clamp(3.2rem, 5.5vw, 4.6rem) !important;
+  font-size: clamp(3.5rem, 6vw, 5rem) !important;
   font-weight: 950 !important;
   line-height: 0.9 !important;
   letter-spacing: -0.05em !important;
@@ -18776,7 +18776,7 @@ button.gov-btn-primary {
   .gov-desc { font-size: 0.95rem; }
   .gov-hero-visual-cracha { margin-top: 0.5rem; }
   .gov-cracha { width: min(240px, 62%); }
-  .gov-proof article strong { font-size: clamp(3.2rem, 13vw, 4.4rem) !important; }
+  .gov-proof article strong { font-size: clamp(3.5rem, 14vw, 4.8rem) !important; }
 
   /* Frentes: icone e titulo nao competem por espaco */
   .gov-front-ic { width: 3rem; height: 3rem; border-radius: 0.9rem; }
