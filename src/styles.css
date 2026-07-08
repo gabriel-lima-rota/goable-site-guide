@@ -13394,7 +13394,8 @@ button.med2-btn-primary {
   .med2-desc { font-size: 0.95rem; }
   .med2-hero-visual-cracha { margin-top: 0.5rem; }
   .med2-cracha { width: min(240px, 62%); }
-  .med2-proof article strong { font-size: clamp(2.6rem, 13vw, 3.6rem) !important; }
+  .med2-proof article strong { font-size: clamp(3.2rem, 13vw, 4.4rem) !important; }
+
 
   /* Frentes: icone e titulo nao competem por espaco */
   .med2-front-ic { width: 3rem; height: 3rem; border-radius: 0.9rem; }
