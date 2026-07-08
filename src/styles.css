@@ -8032,7 +8032,7 @@
   grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
   align-items: start;
   min-height: auto;
-  padding-block: clamp(6.6rem, 9vw, 8.4rem) clamp(4.5rem, 8vw, 6.5rem);
+  padding-block: clamp(6.6rem, 9vw, 8.4rem) clamp(3.5rem, 6vw, 5rem);
 }
 .ct-hero-h1 {
   font-size: clamp(2.7rem, 5.2vw, 4.9rem);
