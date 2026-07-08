@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, MessageCircle, Quote, Star, Linkedin, Lock, Calendar, Rocket } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, MessageCircle, Quote, Star, Linkedin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -93,10 +93,10 @@ const testimonials: Array<{ photo: string; name: string; role: string; text: str
   { photo: img("conect-face-9.jpg"), name: "Jorge Scherer", role: "CEO · Jorge Scherer Fotógrafo", text: "fiquei muito inspirado com esse curso que basicamente me abriu a mente para esse universo!!" },
 ];
 
-const fomoCards: Array<{ icon: typeof Lock; title: string; sub: string }> = [
-  { icon: Lock, title: "Turma reduzida", sub: "Vagas curadas por perfil de decisor" },
-  { icon: Calendar, title: "Última em 2026", sub: "Próxima edição só em 2027" },
-  { icon: Rocket, title: "Impacto imediato", sub: "Sistemas rodando no dia seguinte" },
+const fomoCards = [
+  { icon: "seats", title: "Turma reduzida", sub: "Vagas curadas por perfil de decisor" },
+  { icon: "cal", title: "Última em 2026", sub: "Próxima edição só em 2027" },
+  { icon: "zap", title: "Impacto imediato", sub: "Sistemas rodando no dia seguinte" },
 ];
 
 const faqBiz: Array<[string, string]> = [
@@ -452,6 +452,76 @@ function LeadModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   );
 }
 
+function GapChart() {
+  return (
+    <svg className="biz-gap" viewBox="0 0 420 260" preserveAspectRatio="xMidYMid meet" aria-hidden>
+      <defs>
+        <linearGradient id="gapAi" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#f5a623" stopOpacity="0.5" />
+          <stop offset="1" stopColor="#ffcf6b" />
+        </linearGradient>
+        <linearGradient id="gapFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#f5a623" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#f5a623" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {[70, 110, 150, 190].map((y) => (
+        <line key={y} className="biz-gap-grid" x1="30" y1={y} x2="392" y2={y} />
+      ))}
+
+      <path className="biz-gap-area" d="M34 150 L128 152 L222 158 L316 164 L392 170 L392 32 L316 60 L222 96 L128 126 L34 150 Z" fill="url(#gapFill)" />
+
+      <path className="biz-gap-noai" d="M34 150 L128 152 L222 158 L316 164 L392 170" />
+      <path className="biz-gap-ai" d="M34 150 L128 126 L222 96 L316 60 L392 32" stroke="url(#gapAi)" />
+
+      <circle className="biz-gap-dot-no" cx="392" cy="170" r="4" />
+      <circle className="biz-gap-dot-ai" cx="392" cy="32" r="5" />
+
+      <line className="biz-gap-bracket" x1="404" y1="34" x2="404" y2="168" />
+      <text className="biz-gap-gaptxt" x="410" y="104">seu atraso</text>
+
+      <text className="biz-gap-lb biz-gap-lb-ai" x="150" y="86">Empresas com IA</text>
+      <text className="biz-gap-lb biz-gap-lb-no" x="150" y="180">Ainda "estudando"</text>
+
+      {["Q1", "Q2", "Q3", "Q4"].map((q, i) => (
+        <text key={q} className="biz-gap-q" x={128 + i * 94 - 40} y="212">{q}</text>
+      ))}
+    </svg>
+  );
+}
+
+function FomoIcon({ kind }: { kind: string }) {
+  if (kind === "seats") {
+    return (
+      <svg viewBox="0 0 44 34" className="biz-fic" aria-hidden>
+        {[
+          [4, 4], [18, 4], [32, 4], [4, 19], [18, 19],
+        ].map(([x, y]) => (
+          <rect key={`${x}-${y}`} className="biz-fic-seat" x={x} y={y} width="9" height="11" rx="2" />
+        ))}
+        <rect className="biz-fic-seat-open" x="32" y="19" width="9" height="11" rx="2" />
+      </svg>
+    );
+  }
+  if (kind === "cal") {
+    return (
+      <svg viewBox="0 0 40 40" className="biz-fic" aria-hidden>
+        <rect className="biz-fic-frame" x="7" y="11" width="26" height="22" rx="3" />
+        <line className="biz-fic-frame" x1="7" y1="18" x2="33" y2="18" />
+        <line className="biz-fic-draw" x1="14" y1="7" x2="14" y2="13" />
+        <line className="biz-fic-draw" x1="26" y1="7" x2="26" y2="13" />
+        <rect className="biz-fic-mark" x="22" y="22" width="7" height="7" rx="1.5" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 40 40" className="biz-fic biz-fic-zapwrap" aria-hidden>
+      <path className="biz-fic-zap" d="M23 5 L11 22 h7 l-3 13 15 -19 h-8 z" />
+    </svg>
+  );
+}
+
 function BusinessPage() {
   const ref = useReveal();
   const [leadOpen, setLeadOpen] = useState(false);
@@ -736,29 +806,42 @@ function BusinessPage() {
         {/* CUSTO DE FICAR DE FORA */}
         <section className="biz-fomo">
           <div className="sb-inner">
-            <div className="biz-fomo-card" data-reveal>
+            <div className="biz-fomo-shell" data-reveal>
               <div className="biz-fomo-glow" aria-hidden />
-              <span className="biz-fomo-eyebrow"><span className="biz-fomo-warn">⚠</span> Custo de ficar de fora</span>
-              <h2 className="biz-fomo-h2">
-                Em 12 meses, sua empresa vai competir com quem já <span className="biz-fomo-hl">cortou 30% do custo operacional</span> com IA.
-              </h2>
-              <p className="biz-fomo-lead">
-                O gap entre empresas que incorporaram IA e as que ainda "estão estudando" cresce a
-                cada trimestre. Enquanto seu time debate se vale a pena, seu concorrente já está
-                entregando mais rápido, com menos gente e por menos dinheiro.
-              </p>
+              <div className="biz-fomo-scan" aria-hidden />
+              <div className="biz-fomo-top">
+                <div className="biz-fomo-copy">
+                  <span className="biz-fomo-eyebrow">
+                    <svg className="biz-fomo-warn" viewBox="0 0 24 24" aria-hidden><path d="M12 3 L22 20 H2 Z" /><line x1="12" y1="10" x2="12" y2="15" /><circle cx="12" cy="17.6" r="0.6" /></svg>
+                    Custo de ficar de fora
+                  </span>
+                  <h2 className="biz-fomo-h2">
+                    Em 12 meses, sua empresa vai competir com quem já <span className="biz-fomo-hl">cortou 30% do custo operacional</span> com IA.
+                  </h2>
+                  <p className="biz-fomo-lead">
+                    O gap entre quem incorporou IA e quem ainda "está estudando" cresce a cada
+                    trimestre. Enquanto seu time debate se vale a pena, seu concorrente já entrega
+                    mais rápido, com menos gente e por menos dinheiro.
+                  </p>
+                  <button type="button" className="biz-fomo-btn" onClick={() => setLeadOpen(true)}>
+                    Não quero ficar para trás <ArrowRight aria-hidden />
+                  </button>
+                </div>
+
+                <div className="biz-fomo-chart" data-reveal>
+                  <GapChart />
+                </div>
+              </div>
+
               <div className="biz-fomo-grid">
-                {fomoCards.map(({ icon: Icon, title, sub }) => (
-                  <div className="biz-fomo-mini" key={title}>
-                    <span className="biz-fomo-mini-ic"><Icon aria-hidden /></span>
-                    <strong>{title}</strong>
-                    <span>{sub}</span>
+                {fomoCards.map((c, i) => (
+                  <div className="biz-fomo-mini" data-reveal style={{ transitionDelay: `${i * 80}ms` }} key={c.title}>
+                    <span className="biz-fomo-mini-ic"><FomoIcon kind={c.icon} /></span>
+                    <strong>{c.title}</strong>
+                    <span>{c.sub}</span>
                   </div>
                 ))}
               </div>
-              <button type="button" className="biz-fomo-btn" onClick={() => setLeadOpen(true)}>
-                Não quero ficar para trás <ArrowRight aria-hidden />
-              </button>
             </div>
           </div>
         </section>

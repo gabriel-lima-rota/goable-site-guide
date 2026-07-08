@@ -16076,3 +16076,216 @@ button.biz-btn-primary {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   CONECT.BUSINESS — FOMO redesenhada (grafico do gap + icones SVG animados)
+   ========================================================================== */
+.biz-fomo-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: clamp(1.6rem, 4vw, 2.8rem);
+  background:
+    radial-gradient(circle at 4% 0%, rgba(245, 166, 35, 0.14), transparent 44%),
+    linear-gradient(155deg, #16120b, #0b0a12 68%);
+  box-shadow: 0 60px 150px -70px rgba(245, 166, 35, 0.4);
+  padding: clamp(1.8rem, 5vw, 3.4rem);
+}
+.biz-fomo-glow {
+  position: absolute;
+  inset: -30% 24% auto -14%;
+  height: 130%;
+  z-index: -1;
+  background: radial-gradient(circle at 60% 20%, rgba(245, 166, 35, 0.22), transparent 46%);
+  animation: goable-bg-breathe 9s ease-in-out infinite;
+}
+.biz-fomo-scan {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.06) 50%, transparent);
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  animation: biz-fomo-scan 6s ease-in-out infinite;
+}
+@keyframes biz-fomo-scan {
+  0% { background-position: -40% 0; }
+  100% { background-position: 140% 0; }
+}
+.biz-fomo-top {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: center;
+}
+.biz-fomo-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f5a623;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.biz-fomo-warn {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: #f5a623;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  animation: cai-chip-pulse 1.8s ease-in-out infinite;
+}
+.biz-fomo-warn circle { fill: #f5a623; stroke: none; }
+.biz-fomo-h2 {
+  margin: 1rem 0 0;
+  color: #fff;
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.biz-fomo-hl {
+  background: linear-gradient(100deg, #ffcf6b, #f5a623 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.biz-fomo-lead {
+  margin: 1.2rem 0 0;
+  max-width: 40rem;
+  color: rgba(232, 228, 245, 0.64);
+  font-size: 1rem;
+  line-height: 1.62;
+}
+.biz-fomo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.7rem;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffc54d, #f5a623);
+  color: #221500;
+  padding: 1rem 1.7rem;
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 22px 50px -20px rgba(245, 166, 35, 0.85);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.biz-fomo-btn svg { width: 1.05rem; height: 1.05rem; transition: transform 0.3s ease; }
+.biz-fomo-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.biz-fomo-btn:hover svg { transform: translateX(4px); }
+
+/* Grafico do gap */
+.biz-fomo-chart {
+  position: relative;
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.6rem 0.4rem;
+}
+.biz-gap { width: 100%; height: auto; display: block; overflow: visible; }
+.biz-gap-grid { stroke: rgba(255, 255, 255, 0.06); stroke-width: 1; }
+.biz-gap-noai, .biz-gap-ai {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+}
+.biz-gap-noai { stroke: rgba(180, 184, 200, 0.6); stroke-width: 2.4; }
+.biz-gap-ai { filter: drop-shadow(0 0 6px rgba(245, 166, 35, 0.7)); }
+.biz-fomo-chart.is-in .biz-gap-noai { animation: biz-gap-draw 1.5s ease 0.1s forwards; }
+.biz-fomo-chart.is-in .biz-gap-ai { animation: biz-gap-draw 1.6s cubic-bezier(0.16, 0.8, 0.3, 1) 0.25s forwards; }
+@keyframes biz-gap-draw { to { stroke-dashoffset: 0; } }
+.biz-gap-area { opacity: 0; }
+.biz-fomo-chart.is-in .biz-gap-area { animation: biz-gap-fill 1.2s ease 1s forwards; }
+@keyframes biz-gap-fill { to { opacity: 1; } }
+.biz-gap-dot-ai { fill: #ffcf6b; opacity: 0; }
+.biz-gap-dot-no { fill: rgba(180, 184, 200, 0.7); opacity: 0; }
+.biz-fomo-chart.is-in .biz-gap-dot-ai { animation: biz-gap-pop 0.5s ease 1.7s forwards, cai-chip-pulse 2s ease-in-out 2.2s infinite; }
+.biz-fomo-chart.is-in .biz-gap-dot-no { animation: biz-gap-pop 0.5s ease 1.5s forwards; }
+@keyframes biz-gap-pop { from { opacity: 0; } to { opacity: 1; } }
+.biz-gap-bracket {
+  stroke: #f5a623;
+  stroke-width: 1.6;
+  stroke-dasharray: 3 3;
+  opacity: 0;
+}
+.biz-fomo-chart.is-in .biz-gap-bracket { animation: biz-gap-fill 0.6s ease 1.6s forwards; }
+.biz-gap-gaptxt { fill: #ffcf6b; font-size: 12px; font-weight: 800; opacity: 0; }
+.biz-fomo-chart.is-in .biz-gap-gaptxt { animation: biz-gap-fill 0.6s ease 1.9s forwards; }
+.biz-gap-lb { font-size: 13px; font-weight: 800; }
+.biz-gap-lb-ai { fill: #ffcf6b; }
+.biz-gap-lb-no { fill: rgba(180, 184, 200, 0.75); }
+.biz-gap-q { fill: rgba(232, 228, 245, 0.45); font-size: 11px; font-weight: 700; text-anchor: middle; }
+
+/* Cards com icone SVG animado */
+.biz-fomo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+.biz-fomo-mini {
+  border: 1px solid rgba(245, 166, 35, 0.22);
+  border-radius: 1.1rem;
+  background: rgba(245, 166, 35, 0.06);
+  padding: 1.1rem 1.2rem;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+.biz-fomo-mini:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 166, 35, 0.55);
+  background: rgba(245, 166, 35, 0.1);
+}
+.biz-fomo-mini-ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(245, 166, 35, 0.4);
+  background: rgba(245, 166, 35, 0.14);
+  margin-bottom: 0.8rem;
+  padding: 0.55rem;
+}
+.biz-fomo-mini strong { display: block; color: #fff; font-size: 1rem; font-weight: 850; letter-spacing: -0.01em; }
+.biz-fomo-mini span { display: block; margin-top: 0.2rem; color: rgba(232, 228, 245, 0.55); font-size: 0.82rem; line-height: 1.4; }
+
+.biz-fic { width: 100%; height: 100%; fill: none; stroke: #f5a623; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.biz-fic-frame { stroke: #f5a623; }
+.biz-fic-draw { stroke: #ffcf6b; stroke-dasharray: 8; animation: biz-fic-draw 2.6s ease-in-out infinite; }
+@keyframes biz-fic-draw { 0% { stroke-dashoffset: 8; } 40%, 100% { stroke-dashoffset: 0; } }
+.biz-fic-mark { fill: #f5a623; stroke: none; transform-box: fill-box; transform-origin: center; animation: biz-fic-mark 2s ease-in-out infinite; }
+@keyframes biz-fic-mark { 0%, 100% { opacity: 0.5; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.1); } }
+.biz-fic-seat { fill: #f5a623; stroke: none; opacity: 0.9; }
+.biz-fic-seat-open { fill: none; stroke: #f5a623; stroke-width: 2; stroke-dasharray: 3 2.5; animation: biz-fic-blink 1.4s steps(1) infinite; }
+@keyframes biz-fic-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.biz-fic-zap { fill: #f5a623; stroke: #ffcf6b; stroke-width: 1.5; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; animation: biz-fic-zap 1.8s ease-in-out infinite; filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.7)); }
+@keyframes biz-fic-zap { 0%, 100% { opacity: 0.85; transform: scale(1); } 45% { opacity: 1; transform: scale(1.12); } 55% { opacity: 0.7; } }
+
+@media (max-width: 900px) {
+  .biz-fomo-top { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .biz-fomo-grid { grid-template-columns: 1fr; }
+  .biz-fomo-btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .biz-fomo-glow, .biz-fomo-scan, .biz-fic-draw, .biz-fic-mark, .biz-fic-seat-open, .biz-fic-zap,
+  .biz-fomo-chart.is-in .biz-gap-noai, .biz-fomo-chart.is-in .biz-gap-ai { animation: none; }
+  .biz-gap-noai, .biz-gap-ai { stroke-dashoffset: 0; }
+  .biz-gap-area, .biz-gap-dot-ai, .biz-gap-dot-no, .biz-gap-bracket, .biz-gap-gaptxt { opacity: 1; }
+}
