@@ -15926,3 +15926,153 @@ button.biz-btn-primary {
     grid-template-columns: 1fr;
   }
 }
+
+/* CONECT.BUSINESS — custo de ficar de fora (FOMO, ambar sobre violeta) ----- */
+.biz-fomo {
+  background: var(--sb-ink);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+.biz-fomo-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(245, 166, 35, 0.32);
+  border-radius: clamp(1.6rem, 4vw, 2.6rem);
+  background:
+    radial-gradient(circle at 6% 8%, rgba(245, 166, 35, 0.12), transparent 42%),
+    linear-gradient(155deg, #14110c, #0b0a12 70%);
+  box-shadow: 0 50px 130px -70px rgba(245, 166, 35, 0.35);
+  padding: clamp(1.8rem, 5vw, 3.4rem);
+}
+.biz-fomo-glow {
+  position: absolute;
+  inset: -30% 30% auto -12%;
+  height: 120%;
+  z-index: -1;
+  background: radial-gradient(circle at 60% 20%, rgba(245, 166, 35, 0.22), transparent 46%);
+  animation: goable-bg-breathe 9s ease-in-out infinite;
+}
+.biz-fomo-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f5a623;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.biz-fomo-warn {
+  font-size: 0.95rem;
+}
+.biz-fomo-h2 {
+  margin: 1rem 0 0;
+  max-width: 22ch;
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 950;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.biz-fomo-hl {
+  background: linear-gradient(100deg, #ffb74d, #f5a623 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.biz-fomo-lead {
+  margin: 1.2rem 0 0;
+  max-width: 44rem;
+  color: rgba(230, 226, 245, 0.66);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.biz-fomo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+.biz-fomo-mini {
+  border: 1px solid rgba(245, 166, 35, 0.22);
+  border-radius: 1.1rem;
+  background: rgba(245, 166, 35, 0.06);
+  padding: 1rem 1.1rem;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+.biz-fomo-mini:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 166, 35, 0.5);
+  background: rgba(245, 166, 35, 0.1);
+}
+.biz-fomo-mini-ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(245, 166, 35, 0.4);
+  background: rgba(245, 166, 35, 0.14);
+  color: #f5a623;
+  margin-bottom: 0.7rem;
+}
+.biz-fomo-mini-ic svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.biz-fomo-mini strong {
+  display: block;
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+.biz-fomo-mini span {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(230, 226, 245, 0.55);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.biz-fomo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.8rem;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffbf4d, #f5a623);
+  color: #221500;
+  padding: 1rem 1.7rem;
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 22px 50px -20px rgba(245, 166, 35, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.biz-fomo-btn svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 0.3s ease;
+}
+.biz-fomo-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 28px 64px -20px rgba(245, 166, 35, 0.9);
+}
+.biz-fomo-btn:hover svg {
+  transform: translateX(4px);
+}
+@media (max-width: 700px) {
+  .biz-fomo-grid {
+    grid-template-columns: 1fr;
+  }
+  .biz-fomo-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, MessageCircle, Quote, Star, Linkedin, Lock, Calendar, Rocket } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -80,6 +80,24 @@ const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
 ];
 
 const venueFacts = ["Porto Alegre · RS", "Dia completo · almoço incluso", "Sala fechada", "100% presencial"];
+
+const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
+  { photo: img("conect-face-1.jpg"), name: "Lucas Arthur Schaelder", role: "Mirasul", text: "Agradeço imensamente pelo tratamento e cuidado do pessoal da organização. Gostei muito do evento dessa maneira mais dinâmica. Agradeço também o conhecimento transmitido, me ensinou muito e espero poder transmitir esse conhecimento da melhor maneira para a minha empresa." },
+  { photo: img("conect-face-2.jpg"), name: "Marcio (Vinicius)", role: "Sócio administrador", text: "soluções de negócios com inteligência artificial é uma realidade, queremos navegar nestes mares, obrigado por traduzir as minhas necessidades como empresa gerando esperança e ânimo para continuar gerando riqueza e agregando valor." },
+  { photo: img("conect-face-3.jpg"), name: "Diogo Frantz", role: "Gerente Comercial", text: "Obrigado pela oportunidade de fazer parte deste evento, deste seleto grupo, Edgar e sua equipe são profissionais e pessoas extraordinárias, acessíveis e disponíveis para achar a melhor solução de IA para cada necessidade." },
+  { photo: img("conect-face-4.jpg"), name: "Maylon Dias", role: "STM Portaria Remota", text: "Edgar Abreu, com sua nova inovação empresarial Goable AI, demonstrou grande conhecimento com a tecnologia de fácil acesso elevando o empresário ao futuro e gerando menor custo ao final com a melhor tecnologia." },
+  { photo: img("conect-face-5.jpg"), name: "Regis Dantas", role: "Sócio Diretor · NX Educação", text: "Parabéns ao Edgar e toda equipe da Goable que proporcionaram um ambiente de extremo aprendizado, colaboração, foi uma entrega fantástica, sem esconder o jogo e compartilhando conteúdo altamente aplicável." },
+  { photo: img("conect-face-6.jpg"), name: "Thêmis Loro", role: "Founder · Loro Odontologia", text: "Para nós, da área da saúde, a proposta do curso em usar a IA para administração e podermos dedicar mais tempo para nos dedicarmos aos pacientes vem para colaborar muito com nosso dia a dia." },
+  { photo: img("conect-face-7.jpg"), name: "Valdecir Pressi", role: "CFO · Asun Supermercados", text: "Tendo a oportunidade de participar, aproveite. Raramente um evento transmite teoria e ja faz a prática ao vivo. A Goable AI fez de forma memorável. Parabéns Edgar, pela excelente condução." },
+  { photo: img("conect-face-8.jpg"), name: "Alam Casartelli", role: "CEO, Sócio e Fundador", text: "Fico feliz em ver meu amigo Edgar brilhando os olhos nesse novo empreendimento. Temos negócios e expertises que se complementam muito." },
+  { photo: img("conect-face-9.jpg"), name: "Jorge Scherer", role: "CEO · Jorge Scherer Fotógrafo", text: "fiquei muito inspirado com esse curso que basicamente me abriu a mente para esse universo!!" },
+];
+
+const fomoCards: Array<{ icon: typeof Lock; title: string; sub: string }> = [
+  { icon: Lock, title: "Turma reduzida", sub: "Vagas curadas por perfil de decisor" },
+  { icon: Calendar, title: "Última em 2026", sub: "Próxima edição só em 2027" },
+  { icon: Rocket, title: "Impacto imediato", sub: "Sistemas rodando no dia seguinte" },
+];
 
 const faqBiz: Array<[string, string]> = [
   ["Preciso entender de tecnologia?", "Não. O foco é o seu negócio, não código. A parte técnica fica com a Goable, você foca em onde a IA gera resultado."],
@@ -630,6 +648,59 @@ function BusinessPage() {
           </div>
         </section>
 
+        {/* DEPOIMENTOS */}
+        <section className="cai-social biz-social">
+          <span className="cai-flash cai-flash-1" aria-hidden />
+          <span className="cai-flash cai-flash-2" aria-hidden />
+          <span className="cai-flash cai-flash-3" aria-hidden />
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark biz-eyebrow">O que disseram os participantes</span>
+              <h2 className="sb-h2">Quem passou pela 1ª edição, recomenda.</h2>
+              <p className="sb-lead sb-lead-light">
+                Avaliações reais de empresários e gestores que participaram. Apenas as que vieram com
+                autorização explícita de publicação.
+              </p>
+            </div>
+
+            <div className="cai-tst-grid">
+              {testimonials.map((t, i) => (
+                <article className="cai-tst" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }} key={t.name}>
+                  <Quote className="cai-tst-quote" aria-hidden />
+                  <p className="cai-tst-text">"{t.text}"</p>
+                  <div className="cai-tst-foot">
+                    <img className="cai-tst-photo" src={t.photo} alt={`Foto de ${t.name}`} loading="lazy" />
+                    <span className="cai-tst-who">
+                      <strong>{t.name}</strong>
+                      <em>{t.role}</em>
+                    </span>
+                    <span className="cai-tst-badge"><Star aria-hidden /> 10/10</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <a
+              className="cai-linkedin"
+              data-reveal
+              href="https://www.linkedin.com/posts/valdecirpressi_goableai-conectai-cfo-ugcPost-7472818144198180864-4AvH/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="cai-linkedin-ic"><Linkedin aria-hidden /></span>
+              <span className="cai-linkedin-body">
+                <em>Destaque no LinkedIn</em>
+                <p>
+                  "Participei do <b>Conect.AI</b> da <b>Goable.AI</b> e saí com a clareza do que
+                  aplicar como CFO. Sistemas com IA deixaram de ser promessa e viraram plano de ação."
+                </p>
+                <strong>Valdecir Pressi · CFO · após a 1ª edição</strong>
+              </span>
+              <span className="cai-linkedin-cta">Ver no LinkedIn <ArrowUpRight aria-hidden /></span>
+            </a>
+          </div>
+        </section>
+
         {/* INSTITUTO CALDEIRA */}
         <section className="biz-venue">
           <div className="sb-inner">
@@ -658,6 +729,36 @@ function BusinessPage() {
                   <figcaption><strong>Sala da imersão</strong><span>Formato reduzido, foco em construção</span></figcaption>
                 </figure>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CUSTO DE FICAR DE FORA */}
+        <section className="biz-fomo">
+          <div className="sb-inner">
+            <div className="biz-fomo-card" data-reveal>
+              <div className="biz-fomo-glow" aria-hidden />
+              <span className="biz-fomo-eyebrow"><span className="biz-fomo-warn">⚠</span> Custo de ficar de fora</span>
+              <h2 className="biz-fomo-h2">
+                Em 12 meses, sua empresa vai competir com quem já <span className="biz-fomo-hl">cortou 30% do custo operacional</span> com IA.
+              </h2>
+              <p className="biz-fomo-lead">
+                O gap entre empresas que incorporaram IA e as que ainda "estão estudando" cresce a
+                cada trimestre. Enquanto seu time debate se vale a pena, seu concorrente já está
+                entregando mais rápido, com menos gente e por menos dinheiro.
+              </p>
+              <div className="biz-fomo-grid">
+                {fomoCards.map(({ icon: Icon, title, sub }) => (
+                  <div className="biz-fomo-mini" key={title}>
+                    <span className="biz-fomo-mini-ic"><Icon aria-hidden /></span>
+                    <strong>{title}</strong>
+                    <span>{sub}</span>
+                  </div>
+                ))}
+              </div>
+              <button type="button" className="biz-fomo-btn" onClick={() => setLeadOpen(true)}>
+                Não quero ficar para trás <ArrowRight aria-hidden />
+              </button>
             </div>
           </div>
         </section>
