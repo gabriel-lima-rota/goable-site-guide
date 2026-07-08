@@ -17,7 +17,7 @@ export const Route = createFileRoute("/conect-ai/med")({
 });
 
 const img = (file: string) => `/goable-assets/${file}`;
-const WHATSAPP = "https://wa.me/555185458646?text=Ol%C3%A1!%20Quero%20solicitar%20meu%20convite%20para%20o%20Conect.MED%20(22%2F07).";
+const WHATSAPP = "https://wa.me/555185458646?text=Ol%C3%A1!%20Quero%20garantir%20minha%20vaga%20no%20Lote%201%20do%20Conect.MED%20(22%2F07).";
 
 const heroFacts = ["22 de julho · quarta", "9h às 18h", "Instituto Caldeira · POA", "Exclusivo para médicos"];
 
@@ -76,6 +76,42 @@ const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
   { title: "Construção orientada", body: "Você põe a mão: aplicação prática dos conceitos em exemplos da rotina clínica, administrativa e de gestão. Não assiste, constrói.", hands: true },
   { title: "Plano de implementação", body: "Definição dos próximos passos para aplicar IA com segurança, priorizando ganhos reais." },
   { title: "Encerramento", body: "Certificado e orientação sobre a trilha de continuidade com a Faculdade Unimed." },
+];
+
+const venueFacts = ["Porto Alegre · RS", "Dia completo · almoço incluso", "Turma reduzida", "100% presencial"];
+
+const partners: Array<{ role: string; roleColor: string; name: string; desc: string; logo?: string; dark?: boolean; textLogo?: boolean }> = [
+  {
+    role: "Realização",
+    roleColor: "#f47920",
+    name: "Faculdade Unimed",
+    desc: "Referência em educação continuada para profissionais da saúde no Brasil. Traz o rigor acadêmico e a curadoria de conteúdo para a formação.",
+    logo: "logo-faculdade-unimed.svg",
+  },
+  {
+    role: "Apoio técnico",
+    roleColor: "#6d4dff",
+    name: "Goable AI",
+    desc: "Responsável pela metodologia Conect.AI, pela construção ao vivo dos sistemas e pela trilha prática do dia.",
+    logo: "logo-branco.png",
+    dark: true,
+  },
+  {
+    role: "Apoio institucional",
+    roleColor: "#00995c",
+    name: "Unimed Porto Alegre",
+    desc: "Apoio institucional para aproximação com a comunidade médica cooperada da região metropolitana.",
+    textLogo: true,
+  },
+];
+
+const faqMed: Array<[string, string]> = [
+  ["Preciso entender de tecnologia?", "Não. O foco é a rotina do consultório, não código. A parte técnica fica com a Goable, você foca na aplicação."],
+  ["Sou de outra cidade, vale a pena?", "Sim. É presencial em Porto Alegre, em um dia único, pensado para você sair com um plano aplicável em qualquer consultório."],
+  ["Vou sair com algo pronto?", "Você sai com um diagnóstico, aplicações construídas ao vivo e um plano de implementação para os próximos 30, 60 e 90 dias."],
+  ["Recebo certificado?", "Sim, com certificado e trilha de continuidade da Faculdade Unimed."],
+  ["Como funciona o pagamento?", "Ingresso individual no Lote 1, à vista ou parcelado no cartão. Você garante pelo WhatsApp e recebe os próximos passos."],
+  ["O almoço está incluso?", "Está. É dia completo no Instituto Caldeira, com almoço e networking incluídos."],
 ];
 
 const included = [
@@ -320,6 +356,25 @@ function AfterMovie() {
   );
 }
 
+function FaqListMed() {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="med2-faq-list">
+      {faqMed.map(([q, a], i) => (
+        <div className={`med2-faq-item ${open === i ? "is-open" : ""}`} key={q} data-reveal>
+          <button type="button" className="med2-faq-q" aria-expanded={open === i} onClick={() => setOpen(open === i ? -1 : i)}>
+            <span><i className="med2-faq-num">{String(i + 1).padStart(2, "0")}</i>{q}</span>
+            <ChevronDown aria-hidden />
+          </button>
+          <div className="med2-faq-a">
+            <div><p>{a}</p></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function MedPage() {
   const ref = useReveal();
 
@@ -365,7 +420,7 @@ function MedPage() {
 
               <div className="med2-actions">
                 <a className="med2-btn-primary" href={WHATSAPP} target="_blank" rel="noreferrer">
-                  <MessageCircle aria-hidden /> Solicitar meu convite
+                  <MessageCircle aria-hidden /> Garantir minha vaga
                 </a>
                 <a className="med2-btn-ghost" href="#imersao">Ver como funciona <ArrowRight aria-hidden /></a>
               </div>
@@ -448,7 +503,7 @@ function MedPage() {
                 confirmados por ordem de resposta: <b>pode esgotar a qualquer momento</b>.
               </p>
               <a className="med2-btn-primary med2-scarcity-btn" href={WHATSAPP} target="_blank" rel="noreferrer">
-                <MessageCircle aria-hidden /> Garantir meu convite agora
+                <MessageCircle aria-hidden /> Garantir minha vaga agora
               </a>
             </div>
           </div>
@@ -547,6 +602,75 @@ function MedPage() {
           </div>
         </section>
 
+        {/* INSTITUTO CALDEIRA */}
+        <section className="med2-venue">
+          <div className="sb-inner">
+            <div className="med2-venue-grid">
+              <div className="med2-venue-copy" data-reveal>
+                <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Onde acontece</span>
+                <h2 className="sb-h2">Um dia dentro do maior hub de inovação do Sul.</h2>
+                <p>
+                  O Conect.MED não acontece numa sala de hotel. Ele acontece no <b>Instituto
+                  Caldeira</b>, em Porto Alegre, o ambiente onde nascem as empresas de tecnologia
+                  mais relevantes do país. Você passa o dia onde a inovação realmente acontece.
+                </p>
+                <div className="med2-venue-facts">
+                  {venueFacts.map((f) => (
+                    <span key={f}>{f}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="med2-venue-photos" data-reveal>
+                <figure className="med2-venue-fig med2-venue-fig-lg">
+                  <img src={img("caldeira-campus.jpg")} alt="Campus Caldeira, Instituto Caldeira em Porto Alegre" loading="lazy" />
+                  <figcaption><strong>Campus Caldeira</strong><span>Hub de inovação no coração de Porto Alegre</span></figcaption>
+                </figure>
+                <figure className="med2-venue-fig">
+                  <img src={img("caldeira-sala.jpg")} alt="Sala da imersão do Conect.MED" loading="lazy" />
+                  <figcaption><strong>Sala da imersão</strong><span>Formato reduzido, foco em construção</span></figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* QUEM FAZ ACONTECER */}
+        <section className="med2-partners">
+          <div className="sb-inner">
+            <div className="sb-head med2-partners-head" data-reveal>
+              <span className="sb-eyebrow med2-eyebrow-dark2">Quem faz acontecer</span>
+              <h2 className="sb-h2 sb-h2-dark">Realização Faculdade Unimed. Apoio Goable e Unimed Porto Alegre.</h2>
+            </div>
+            <div className="med2-partner-grid">
+              {partners.map((p, i) => (
+                <article className="med2-partner" data-reveal style={{ transitionDelay: `${i * 80}ms`, "--pc": p.roleColor } as CSSProperties} key={p.name}>
+                  <span className="med2-partner-role">{p.role}</span>
+                  <div className={`med2-partner-logo ${p.dark ? "is-dark" : ""}`}>
+                    {p.textLogo ? (
+                      <span className="med2-partner-textlogo">Unimed<i>Porto Alegre</i></span>
+                    ) : (
+                      <img src={img(p.logo!)} alt={p.name} loading="lazy" />
+                    )}
+                  </div>
+                  <h3>{p.name}</h3>
+                  <p>{p.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="med2-faq">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Perguntas rápidas</span>
+              <h2 className="sb-h2">Antes de garantir sua vaga.</h2>
+            </div>
+            <FaqListMed />
+          </div>
+        </section>
+
         {/* CONVITE: incluso + cortesia + cronometro */}
         <section className="med2-enroll">
           <div className="med2-enroll-card" data-reveal>
@@ -563,20 +687,21 @@ function MedPage() {
                   ))}
                 </ul>
                 <div className="med2-price">
-                  <em>Investimento · ingresso individual</em>
-                  <p><s>R$ 3.900</s> <strong>Cortesia por convite exclusivo</strong></p>
-                  <span>Mediante confirmação de disponibilidade · vagas limitadas · turma reduzida.</span>
+                  <span className="med2-lote"><i aria-hidden /> Lote 1 · o melhor valor da temporada</span>
+                  <p className="med2-price-value">R$ 3.900<em>ingresso individual</em></p>
+                  <p className="med2-price-line">à vista ou parcelado no cartão</p>
+                  <span className="med2-price-note">O valor sobe no próximo lote. A turma é reduzida: quem entra primeiro garante o Lote 1.</span>
                 </div>
               </div>
 
               <div className="med2-enroll-right">
-                <h2>Solicite a confirmação do seu convite.</h2>
+                <h2>Garanta sua vaga no Lote 1.</h2>
                 <p>O Conect.MED começa em:</p>
                 <Countdown />
                 <a className="med2-btn-primary med2-btn-block" href={WHATSAPP} target="_blank" rel="noreferrer">
-                  <MessageCircle aria-hidden /> Responder pelo WhatsApp
+                  <MessageCircle aria-hidden /> Quero garantir o Lote 1
                 </a>
-                <span className="med2-enroll-note">Convites limitados · confirmação por disponibilidade.</span>
+                <span className="med2-enroll-note">Vagas limitadas · o Lote 1 pode encerrar a qualquer momento.</span>
                 <Link className="med2-enroll-alt" to="/conect-ai">Conhecer as três edições do Conect.AI <ArrowUpRight aria-hidden /></Link>
               </div>
             </div>

@@ -12544,3 +12544,348 @@
     animation: none;
   }
 }
+
+/* CONECT.MED — preco Lote 1 ------------------------------------------------ */
+.med2-lote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(244, 121, 32, 0.5);
+  border-radius: 999px;
+  background: rgba(244, 121, 32, 0.14);
+  color: #ffb27a;
+  padding: 0.34rem 0.72rem;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.med2-lote i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #f47920;
+  animation: cai-chip-pulse 1.8s ease-in-out infinite;
+}
+.med2-price-value {
+  margin: 0.7rem 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 950;
+  letter-spacing: -0.03em;
+}
+.med2-price-value em {
+  font-style: normal;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.med2-price-line {
+  margin: 0.2rem 0 0;
+  color: rgba(247, 248, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.med2-price-note {
+  display: block;
+  margin-top: 0.6rem;
+  color: #ffb27a;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* CONECT.MED — Instituto Caldeira ----------------------------------------- */
+.med2-venue {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(0, 153, 92, 0.16), transparent 38%),
+    var(--sb-ink);
+}
+.med2-venue-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: center;
+}
+.med2-venue-copy h2 {
+  margin-top: 0.9rem;
+}
+.med2-venue-copy > p {
+  margin: 1.1rem 0 0;
+  color: rgba(247, 248, 255, 0.74);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.med2-venue-copy b {
+  color: #7fe0b8;
+}
+.med2-venue-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+.med2-venue-facts span {
+  border: 1px solid rgba(0, 153, 92, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 153, 92, 0.12);
+  color: #9fe8c8;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.med2-venue-photos {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 0.9rem;
+}
+.med2-venue-fig {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: clamp(1.2rem, 2.4vw, 1.8rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 44px 120px -84px rgba(0, 0, 0, 0.9);
+}
+.med2-venue-fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  animation: cai-kenburns 20s ease-in-out infinite alternate;
+}
+.med2-venue-fig-lg img {
+  min-height: 340px;
+}
+.med2-venue-fig figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2rem 1.1rem 0.9rem;
+  background: linear-gradient(180deg, transparent, rgba(4, 6, 10, 0.85));
+}
+.med2-venue-fig figcaption strong {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 850;
+}
+.med2-venue-fig figcaption span {
+  display: block;
+  margin-top: 0.1rem;
+  color: rgba(247, 248, 255, 0.7);
+  font-size: 0.78rem;
+}
+
+/* CONECT.MED — quem faz acontecer (parceiros) ----------------------------- */
+.med2-partners {
+  background: #f6f8f6;
+  padding-block: clamp(4.6rem, 7.5vw, 7rem);
+}
+.med2-partners-head {
+  text-align: center;
+}
+.med2-partners-head .sb-eyebrow {
+  justify-content: center;
+}
+.med2-eyebrow-dark2 {
+  color: var(--med-orange);
+}
+.med2-partners-head h2 {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+.med2-partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.4rem;
+}
+.med2-partner {
+  border: 1px solid rgba(0, 60, 40, 0.1);
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow: 0 30px 80px -64px rgba(0, 60, 40, 0.5);
+  padding: 1.5rem 1.5rem 1.6rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.med2-partner:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--pc) 45%, transparent);
+  box-shadow: 0 46px 100px -60px color-mix(in oklab, var(--pc) 55%, transparent);
+}
+.med2-partner-role {
+  color: var(--pc);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.med2-partner-logo {
+  margin-top: 0.8rem;
+  height: 92px;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fbfdfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.med2-partner-logo.is-dark {
+  background: linear-gradient(160deg, #0d0f1c, #0a0b16);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.med2-partner-logo img {
+  max-height: 100%;
+  max-width: 78%;
+  object-fit: contain;
+}
+.med2-partner-textlogo {
+  color: #00995c;
+  font-size: 1.7rem;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  text-align: center;
+  line-height: 1;
+}
+.med2-partner-textlogo i {
+  display: block;
+  margin-top: 0.15rem;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #f47920;
+}
+.med2-partner h3 {
+  margin: 1rem 0 0;
+  color: #0c2f24;
+  font-size: 1.2rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+.med2-partner p {
+  margin: 0.4rem 0 0;
+  color: rgba(12, 47, 36, 0.66);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* CONECT.MED — FAQ -------------------------------------------------------- */
+.med2-faq {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.6rem, 7.5vw, 7rem);
+  background:
+    radial-gradient(circle at 84% 8%, rgba(0, 153, 92, 0.12), transparent 34%),
+    var(--sb-ink-2);
+}
+.med2-faq-list {
+  max-width: 860px;
+  margin: 2.2rem auto 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.med2-faq-item {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.med2-faq-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #00995c, #f47920);
+  transform: scaleY(0);
+  transition: transform 0.35s ease;
+}
+.med2-faq-item.is-open {
+  border-color: rgba(0, 217, 130, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+.med2-faq-item.is-open::before {
+  transform: scaleY(1);
+}
+.med2-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding: 1.15rem 1.4rem;
+}
+.med2-faq-num {
+  font-style: normal;
+  margin-right: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+  background: linear-gradient(122deg, #7fe0b8, #f47920);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-faq-q svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  color: #7fe0b8;
+  transition: transform 0.3s ease;
+}
+.med2-faq-item.is-open .med2-faq-q svg {
+  transform: rotate(180deg);
+}
+.med2-faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.med2-faq-item.is-open .med2-faq-a {
+  grid-template-rows: 1fr;
+}
+.med2-faq-a > div {
+  overflow: hidden;
+}
+.med2-faq-a p {
+  margin: 0;
+  padding: 0 1.4rem 1.25rem 2.9rem;
+  color: rgba(247, 248, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1023px) {
+  .med2-venue-grid {
+    grid-template-columns: 1fr;
+  }
+  .med2-partner-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .med2-venue-photos {
+    grid-template-columns: 1fr;
+  }
+}
