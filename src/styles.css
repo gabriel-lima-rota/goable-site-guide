@@ -19405,3 +19405,14 @@ button.gov-btn-primary {
 @media (max-width: 620px) {
   .med2-stat-bento .sb-stat { grid-column: span 12; }
 }
+
+/* CONECT eventos — FIX: titulo dos cards de frente com contraste (estava escuro no escuro) */
+.med2-front-titles h3,
+.biz-front-titles h3,
+.gov-front-titles h3 {
+  color: #ffffff !important;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
