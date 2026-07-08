@@ -88,6 +88,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Goable AI cria sistemas inteligentes sob medida. Antes da solução, o entendimento." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/QcFQOlQPTkP50xLNR4vy6A6bW1p2/social-images/social-1782952951483-COMBO_STUDIOS-644.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/QcFQOlQPTkP50xLNR4vy6A6bW1p2/social-images/social-1782952951483-COMBO_STUDIOS-644.webp" },
+      { property: "og:site_name", content: "Goable AI" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:url", content: "https://goable.ai/" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "theme-color", content: "#070a12" },
     ],
     links: [
       {
@@ -95,6 +100,34 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "canonical", href: "https://goable.ai/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Goable AI",
+          url: "https://goable.ai",
+          logo: "https://goable.ai/favicon.png",
+          description: "A Goable desenvolve soluções de inteligência artificial sob medida para empresas, instituições e governos.",
+          sameAs: [
+            "https://www.instagram.com/goable.ai/",
+            "https://www.linkedin.com/company/goable-ai/",
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Goable AI",
+          url: "https://goable.ai",
+          inLanguage: "pt-BR",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goable.ai/sitemap.xml
