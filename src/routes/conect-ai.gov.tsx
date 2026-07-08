@@ -597,15 +597,6 @@ function GovPage() {
               </div>
             </div>
           </div>
-
-          <div className="gov-proof" data-reveal>
-            {indicators.map((p) => (
-              <article key={p.label}>
-                <strong><CountUp value={p.value} decimals={p.decimals} suffix={p.suffix} /></strong>
-                <span>{p.label}</span>
-              </article>
-            ))}
-          </div>
         </section>
 
         {/* LETREIRO */}

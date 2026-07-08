@@ -531,31 +531,6 @@ function MedPage() {
           </div>
         </div>
 
-        {/* RESULTADOS DA 1ª EDIÇÃO (bloco estilo Sobre) */}
-        <section className="med2-results">
-          <div className="sb-inner">
-            <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow">Resultados da 1ª edição</span>
-              <h2 className="sb-h2 sb-h2-dark">Os números que a última turma deixou.</h2>
-              <p className="sb-lead">
-                Avaliações reais de quem participou da 1ª edição do Conect, no Instituto Caldeira.
-              </p>
-            </div>
-            <div className="sb-stat-bento med2-stat-bento">
-              {indicators.map((s, i) => (
-                <article className="sb-stat" data-reveal style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
-                  <span className="sb-stat-area">{s.area}</span>
-                  <div className="sb-stat-num">
-                    <CountUp value={s.value} decimals={s.decimals} suffix={s.suffix} />
-                  </div>
-                  <h3 className="sb-stat-label">{s.label}</h3>
-                  <p className="sb-stat-find">{s.find}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ONDE A IA GERA EFICIÊNCIA */}
         <section className="med2-fronts">
           <div className="sb-inner">
