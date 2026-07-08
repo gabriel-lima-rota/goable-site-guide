@@ -13335,3 +13335,29 @@ button.med2-btn-primary {
   color: #0d4f66;
   font-weight: 600;
 }
+
+/* CONECT.MED — indicadores do hero: grandes e brancos como o reference ----- */
+.med2-page .med2-proof {
+  gap: 0.9rem;
+}
+.med2-page .med2-proof article {
+  padding: 1.6rem 1.6rem 1.4rem;
+}
+.med2-page .med2-proof article strong {
+  font-size: clamp(2.9rem, 5.6vw, 4.4rem) !important;
+  font-weight: 950 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.05em !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  text-shadow: 0 10px 40px rgba(0, 153, 92, 0.35);
+}
+.med2-page .med2-proof article span {
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(247, 248, 255, 0.7);
+}
