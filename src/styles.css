@@ -18776,7 +18776,7 @@ button.gov-btn-primary {
   .gov-desc { font-size: 0.95rem; }
   .gov-hero-visual-cracha { margin-top: 0.5rem; }
   .gov-cracha { width: min(240px, 62%); }
-  .gov-proof article strong { font-size: clamp(2.6rem, 13vw, 3.6rem) !important; }
+  .gov-proof article strong { font-size: clamp(3.2rem, 13vw, 4.4rem) !important; }
 
   /* Frentes: icone e titulo nao competem por espaco */
   .gov-front-ic { width: 3rem; height: 3rem; border-radius: 0.9rem; }
