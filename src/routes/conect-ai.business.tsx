@@ -7,10 +7,16 @@ import { AppShell } from "@/components/goable/AppShell";
 export const Route = createFileRoute("/conect-ai/business")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/conect-ai/business" },
       { title: "Conect.Business · IA aplicada à operação empresarial | 23/07 · Goable AI" },
       { name: "description", content: "Imersão prática de IA para empresários, founders, C-levels e gestores. 23 de julho de 2026, Instituto Caldeira, Porto Alegre. 2ª edição, última turma de 2026." },
       { property: "og:title", content: "Conect.Business · IA aplicada à operação empresarial" },
       { property: "og:description", content: "23/07/2026 · Instituto Caldeira · Porto Alegre · Última turma de 2026" },
+    ],
+    links: [{ rel: "canonical", href: "https://goable.ai/conect-ai/business" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Event", name: "Conect.Business", description: "Imersao pratica de IA aplicada a operacao empresarial. 2a edicao, ultima turma de 2026.", startDate: "2026-07-23T09:00:00-03:00", endDate: "2026-07-23T18:00:00-03:00", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled", location: { "@type": "Place", name: "Instituto Caldeira", address: { "@type": "PostalAddress", addressLocality: "Porto Alegre", addressRegion: "RS", addressCountry: "BR" } }, organizer: { "@type": "Organization", name: "Goable AI", url: "https://goable.ai" }, offers: { "@type": "Offer", price: "3900", priceCurrency: "BRL", availability: "https://schema.org/LimitedAvailability", url: "https://goable.ai/conect-ai/business" }, url: "https://goable.ai/conect-ai/business" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqBiz.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
     ],
   }),
   component: BusinessPage,

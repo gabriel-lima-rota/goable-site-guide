@@ -7,10 +7,16 @@ import { AppShell } from "@/components/goable/AppShell";
 export const Route = createFileRoute("/conect-ai/med")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/conect-ai/med" },
       { title: "Conect.MED · IA aplicada à prática médica | 22/07 · Faculdade Unimed e Goable AI" },
       { name: "description", content: "Imersão presencial de IA para médicos. Realização Faculdade Unimed em parceria com Goable AI. 22 de julho de 2026, Instituto Caldeira, Porto Alegre. Cortesia por convite." },
       { property: "og:title", content: "Conect.MED · IA aplicada à prática médica" },
       { property: "og:description", content: "22/07/2026 · Instituto Caldeira · Porto Alegre · Realização Faculdade Unimed" },
+    ],
+    links: [{ rel: "canonical", href: "https://goable.ai/conect-ai/med" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Event", name: "Conect.MED", description: "Imersao pratica de IA aplicada a pratica medica, realizacao Faculdade Unimed em parceria com Goable AI.", startDate: "2026-07-22T09:00:00-03:00", endDate: "2026-07-22T18:00:00-03:00", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled", location: { "@type": "Place", name: "Instituto Caldeira", address: { "@type": "PostalAddress", addressLocality: "Porto Alegre", addressRegion: "RS", addressCountry: "BR" } }, organizer: [{ "@type": "Organization", name: "Faculdade Unimed" }, { "@type": "Organization", name: "Goable AI", url: "https://goable.ai" }], offers: { "@type": "Offer", price: "3900", priceCurrency: "BRL", availability: "https://schema.org/LimitedAvailability", url: "https://goable.ai/conect-ai/med" }, url: "https://goable.ai/conect-ai/med" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqMed.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
     ],
   }),
   component: MedPage,

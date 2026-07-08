@@ -9,10 +9,35 @@ import { CTAButton } from "@/components/goable/CTAButton";
 export const Route = createFileRoute("/conect-ai/")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/conect-ai" },
       { title: "Conect.AI 2026 · 3 edições em julho | Goable AI" },
       { name: "description", content: "Três imersões práticas de IA no Instituto Caldeira, Porto Alegre: Conect.GOV (21/07), Conect.MED (22/07 · Faculdade Unimed) e Conect.Business (23/07)." },
       { property: "og:title", content: "Conect.AI 2026 · 3 edições em julho | Goable AI" },
       { property: "og:description", content: "Gestão pública, medicina e empresas. Instituto Caldeira, Porto Alegre. A 1ª edição fechou com NPS 9,71." },
+    ],
+    links: [{ rel: "canonical", href: "https://goable.ai/conect-ai" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Conect.AI 2026",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Conect.GOV", url: "https://goable.ai/conect-ai/gov" },
+            { "@type": "ListItem", position: 2, name: "Conect.MED", url: "https://goable.ai/conect-ai/med" },
+            { "@type": "ListItem", position: 3, name: "Conect.Business", url: "https://goable.ai/conect-ai/business" },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+        }),
+      },
     ],
   }),
   component: ConectAiIndex,

@@ -8,6 +8,7 @@ import { CTAButton } from "@/components/goable/CTAButton";
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/sobre" },
       { title: "Sobre a Goable AI · Sistemas com IA para empresas" },
       {
         name: "description",
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/sobre")({
           "A Goable cria sistemas com IA para empresas venderem mais, reduzirem custos e padronizarem processos. Conheça a tese, o time e os cases.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://goable.ai/sobre" }],
   }),
   component: SobrePage,
 });

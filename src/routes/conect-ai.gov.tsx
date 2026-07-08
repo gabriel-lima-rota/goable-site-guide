@@ -7,10 +7,16 @@ import { AppShell } from "@/components/goable/AppShell";
 export const Route = createFileRoute("/conect-ai/gov")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/conect-ai/gov" },
       { title: "Conect.GOV · IA na gestão pública | 21/07 · Goable AI" },
       { name: "description", content: "Imersão prática de IA para prefeitos, secretários e lideranças municipais. 21 de julho de 2026, Instituto Caldeira, Porto Alegre. Convite exclusivo." },
       { property: "og:title", content: "Conect.GOV · IA na gestão pública" },
       { property: "og:description", content: "21/07/2026 · Instituto Caldeira · Porto Alegre · Convite exclusivo" },
+    ],
+    links: [{ rel: "canonical", href: "https://goable.ai/conect-ai/gov" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Event", name: "Conect.GOV", description: "Imersao pratica de IA aplicada a gestao publica, para prefeitos, secretarios e liderancas municipais.", startDate: "2026-07-21T09:00:00-03:00", endDate: "2026-07-21T18:00:00-03:00", eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled", location: { "@type": "Place", name: "Instituto Caldeira", address: { "@type": "PostalAddress", addressLocality: "Porto Alegre", addressRegion: "RS", addressCountry: "BR" } }, organizer: [{ "@type": "Organization", name: "Goable AI", url: "https://goable.ai" }, { "@type": "Organization", name: "Camila Rodrigues Assessoria Juridica" }], url: "https://goable.ai/conect-ai/gov" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqBiz.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
     ],
   }),
   component: GovPage,

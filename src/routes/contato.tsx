@@ -8,11 +8,13 @@ import { HomeDiagnosticChat } from "@/components/goable/HomeDiagnosticChat";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://goable.ai/contato" },
       { title: "Contato | Goable AI" },
       { name: "description", content: "Comece com um diagnóstico, não com um formulário. A Goable entende sua operação antes de propor qualquer caminho." },
       { property: "og:title", content: "Contato | Goable AI" },
       { property: "og:description", content: "Comece com um diagnóstico, não com um formulário. A Goable entende sua operação antes de propor qualquer caminho." },
     ],
+    links: [{ rel: "canonical", href: "https://goable.ai/contato" }],
   }),
   component: ContatoPage,
 });
