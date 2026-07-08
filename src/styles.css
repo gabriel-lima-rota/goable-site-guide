@@ -19275,3 +19275,43 @@ button.gov-btn-primary {
 .cai-proof span {
   font-size: 0.95rem;
 }
+
+/* CONECT.GOV — lockup do hero limpo (Camila sem box branco) */
+.gov-lockup-v2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+.gov-lockup-v2 .gov-lockup-text {
+  color: rgba(247, 248, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.gov-lockup-div {
+  width: 1px;
+  height: 1.8rem;
+  background: rgba(255, 255, 255, 0.18);
+}
+.gov-lockup-camila {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.gov-lockup-camila em {
+  font-style: normal;
+  color: #d4af37;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.gov-lockup-camila img {
+  height: 26px;
+  width: auto;
+}
+@media (max-width: 640px) {
+  .gov-lockup-camila img { height: 22px; }
+}

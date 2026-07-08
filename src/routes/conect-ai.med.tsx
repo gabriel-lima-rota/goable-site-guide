@@ -78,7 +78,7 @@ const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
   { title: "Encerramento", body: "Certificado e orientação sobre a trilha de continuidade com a Faculdade Unimed." },
 ];
 
-const venueFacts = ["Porto Alegre · RS", "Dia completo · almoço incluso", "Turma reduzida", "100% presencial"];
+const venueFacts = ["Espaço Caldeira", "Porto Alegre · RS", "Dia completo · almoço incluso", "100% presencial"];
 
 const faqMed: Array<[string, string]> = [
   ["Preciso entender de tecnologia?", "Não. O foco é a rotina do consultório, não código. A parte técnica fica com a Goable, você foca na aplicação."],
@@ -571,8 +571,8 @@ function MedPage() {
             <div className="med2-scarcity" data-reveal>
               <span className="med2-scarcity-badge"><i aria-hidden /> Vagas limitadas</span>
               <p>
-                A 1ª edição <b>esgotou</b>. A turma do Conect.MED é reduzida e os convites são
-                confirmados por ordem de resposta: <b>pode esgotar a qualquer momento</b>.
+                A turma do Conect.MED é <b>reduzida</b> e as vagas do Lote 1 são poucas. Elas são
+                confirmadas por ordem de chegada e <b>podem encerrar a qualquer momento</b>.
               </p>
               <button type="button" className="med2-btn-primary med2-scarcity-btn" onClick={() => setLeadOpen(true)}>
                 <MessageCircle aria-hidden /> Garantir minha vaga agora
@@ -688,7 +688,7 @@ function MedPage() {
                 <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Onde acontece</span>
                 <h2 className="sb-h2">Um dia dentro do maior hub de inovação do Sul.</h2>
                 <p>
-                  O Conect.MED não acontece numa sala de hotel. Ele acontece no <b>Instituto
+                  O Conect.MED não acontece numa sala de hotel. Ele acontece no <b>Espaço Caldeira, no Instituto
                   Caldeira</b>, em Porto Alegre, o ambiente onde nascem as empresas de tecnologia
                   mais relevantes do país. Você passa o dia onde a inovação realmente acontece.
                 </p>
@@ -704,8 +704,8 @@ function MedPage() {
                   <figcaption><strong>Campus Caldeira</strong><span>Hub de inovação no coração de Porto Alegre</span></figcaption>
                 </figure>
                 <figure className="med2-venue-fig">
-                  <img src={img("caldeira-sala.jpg")} alt="Sala da imersão do Conect.MED" loading="lazy" />
-                  <figcaption><strong>Sala da imersão</strong><span>Formato reduzido, foco em construção</span></figcaption>
+                  <img src={img("caldeira-sala.jpg")} alt="Espaço Caldeira, onde acontece o Conect.MED" loading="lazy" />
+                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
                 </figure>
               </div>
             </div>

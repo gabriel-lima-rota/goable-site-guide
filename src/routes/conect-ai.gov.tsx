@@ -78,7 +78,7 @@ const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
   { title: "Encerramento", body: "Direcionamento para continuidade e aplicação segura na rotina da gestão pública." },
 ];
 
-const venueFacts = ["Porto Alegre · RS", "Dia completo · almoço incluso", "Encontro exclusivo", "100% presencial"];
+const venueFacts = ["Espaço Caldeira", "Porto Alegre · RS", "Dia completo · almoço incluso", "100% presencial"];
 
 const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
   { photo: img("conect-face-1.jpg"), name: "Lucas Arthur Schaelder", role: "Mirasul", text: "Agradeço imensamente pelo tratamento e cuidado do pessoal da organização. Gostei muito do evento dessa maneira mais dinâmica. Agradeço também o conhecimento transmitido, me ensinou muito e espero poder transmitir esse conhecimento da melhor maneira para a minha empresa." },
@@ -88,8 +88,6 @@ const testimonials: Array<{ photo: string; name: string; role: string; text: str
   { photo: img("conect-face-5.jpg"), name: "Regis Dantas", role: "Sócio Diretor · NX Educação", text: "Parabéns ao Edgar e toda equipe da Goable que proporcionaram um ambiente de extremo aprendizado, colaboração, foi uma entrega fantástica, sem esconder o jogo e compartilhando conteúdo altamente aplicável." },
   { photo: img("conect-face-6.jpg"), name: "Thêmis Loro", role: "Founder · Loro Odontologia", text: "Para nós, da área da saúde, a proposta do curso em usar a IA para administração e podermos dedicar mais tempo para nos dedicarmos aos pacientes vem para colaborar muito com nosso dia a dia." },
   { photo: img("conect-face-7.jpg"), name: "Valdecir Pressi", role: "CFO · Asun Supermercados", text: "Tendo a oportunidade de participar, aproveite. Raramente um evento transmite teoria e ja faz a prática ao vivo. A Goable AI fez de forma memorável. Parabéns Edgar, pela excelente condução." },
-  { photo: img("conect-face-8.jpg"), name: "Alam Casartelli", role: "CEO, Sócio e Fundador", text: "Fico feliz em ver meu amigo Edgar brilhando os olhos nesse novo empreendimento. Temos negócios e expertises que se complementam muito." },
-  { photo: img("conect-face-9.jpg"), name: "Jorge Scherer", role: "CEO · Jorge Scherer Fotógrafo", text: "fiquei muito inspirado com esse curso que basicamente me abriu a mente para esse universo!!" },
 ];
 
 const fomoCards = [
@@ -539,11 +537,13 @@ function GovPage() {
 
           <div className="gov-hero-inner">
             <div className="gov-hero-copy" data-reveal>
-              <div className="gov-lockup">
-                <span className="gov-lockup-logo gov-lockup-logo-camila">
+              <div className="gov-lockup gov-lockup-v2">
+                <span className="gov-lockup-text">Realização Goable AI</span>
+                <span className="gov-lockup-div" aria-hidden />
+                <span className="gov-lockup-camila">
+                  <em>Correalização</em>
                   <img src={img("logo-camila-rodrigues.png")} alt="Camila Rodrigues Assessoria Jurídica" />
                 </span>
-                <span className="gov-lockup-text">Realização Goable AI · Correalização Camila Rodrigues</span>
               </div>
 
               <span className="gov-chips">
@@ -786,7 +786,7 @@ function GovPage() {
                 <span className="sb-eyebrow sb-eyebrow-dark gov-eyebrow">Onde acontece</span>
                 <h2 className="sb-h2">Um dia dentro do maior hub de inovação do Sul.</h2>
                 <p>
-                  O Conect.GOV não acontece numa sala de hotel. Ele acontece no <b>Instituto
+                  O Conect.GOV não acontece numa sala de hotel. Ele acontece no <b>Espaço Caldeira, no Instituto
                   Caldeira</b>, em Porto Alegre, o ambiente onde nascem as empresas de tecnologia
                   mais relevantes do país. Você passa o dia onde a inovação realmente acontece.
                 </p>
@@ -802,8 +802,8 @@ function GovPage() {
                   <figcaption><strong>Campus Caldeira</strong><span>Hub de inovação no coração de Porto Alegre</span></figcaption>
                 </figure>
                 <figure className="gov-venue-fig">
-                  <img src={img("caldeira-sala.jpg")} alt="Sala da imersão do Conect.GOV" loading="lazy" />
-                  <figcaption><strong>Sala da imersão</strong><span>Formato reduzido, foco em construção</span></figcaption>
+                  <img src={img("caldeira-sala.jpg")} alt="Espaço Caldeira, onde acontece o Conect.GOV" loading="lazy" />
+                  <figcaption><strong>Espaço Caldeira</strong><span>O ambiente da imersão do dia</span></figcaption>
                 </figure>
               </div>
             </div>
