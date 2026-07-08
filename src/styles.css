@@ -19238,3 +19238,40 @@ button.gov-btn-primary {
 .sb-cai-teaser-copy .sb-h2 {
   margin-top: 0.6rem;
 }
+
+/* CONECT.AI overview — miniaturas com foto tratada na ID (no lugar do SVG) + numeros maiores */
+.cai-stage-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.05) brightness(0.72);
+  transition: transform 0.7s ease, filter 0.5s ease;
+}
+.cai-edition:hover .cai-stage-photo {
+  transform: scale(1.06);
+  filter: saturate(0.85) contrast(1.06) brightness(0.8);
+}
+.cai-stage-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(7, 8, 15, 0.15), rgba(7, 8, 15, 0.72)),
+    radial-gradient(circle at 78% 16%, color-mix(in oklab, var(--cai-accent) 55%, transparent), transparent 58%),
+    linear-gradient(120deg, color-mix(in oklab, var(--cai-accent) 42%, transparent), transparent 60%);
+  mix-blend-mode: normal;
+}
+.cai-edition:hover .cai-stage {
+  filter: none;
+}
+/* numeros do evento anterior maiores */
+.cai-proof strong {
+  font-size: clamp(2.9rem, 5.6vw, 4.4rem) !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.05em !important;
+}
+.cai-proof span {
+  font-size: 0.95rem;
+}

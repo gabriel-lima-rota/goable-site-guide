@@ -123,6 +123,7 @@ type Edition = {
   focus: string[];
   note: string;
   href: string;
+  photo: string;
 };
 
 const editions: Edition[] = [
@@ -139,6 +140,7 @@ const editions: Edition[] = [
     focus: ["Aplicações ao vivo", "Casos reais de gestão", "Networking entre líderes"],
     note: "Vagas limitadas · acesso por convite.",
     href: "/conect-ai/gov",
+    photo: img("combo-studios-259.webp"),
   },
   {
     key: "med",
@@ -153,6 +155,7 @@ const editions: Edition[] = [
     focus: ["Construção orientada", "IA na rotina clínica", "Com a Faculdade Unimed"],
     note: "Turma reduzida · acesso por convite.",
     href: "/conect-ai/med",
+    photo: img("combo-studios-558.webp"),
   },
   {
     key: "business",
@@ -160,13 +163,14 @@ const editions: Edition[] = [
     badge: "2ª edição",
     name: "Conect",
     dot: "Business",
-    tagline: "O dia em que a sua operação vira máquina.",
+    tagline: "IA aplicada para maximizar a operação real das empresas.",
     day: "23 jul",
     weekday: "quinta-feira",
     audience: "Para empresários e C-levels que lideram e querem escala.",
     focus: ["Aplicações ao vivo", "Assistente da sua empresa", "Sala fechada de decisores"],
     note: "Última turma de 2026 · poucas vagas.",
     href: "/conect-ai/business",
+    photo: img("combo-studios-592.webp"),
   },
 ];
 
@@ -228,18 +232,6 @@ const testimonials: Array<{ photo: string; name: string; role: string; text: str
     name: "Valdecir Pressi",
     role: "CFO · Asun Supermercados",
     text: "Tendo a oportunidade de participar, aproveite. Raramente um evento transmite teoria e ja faz a prática ao vivo. A Goable AI fez de forma memorável. Parabéns Edgar, pela excelente condução.",
-  },
-  {
-    photo: img("conect-face-8.jpg"),
-    name: "Alam Casartelli",
-    role: "CEO, Sócio e Fundador",
-    text: "Fico feliz em ver meu amigo Edgar brilhando os olhos nesse novo empreendimento. Temos negócios e expertises que se complementam muito.",
-  },
-  {
-    photo: img("conect-face-9.jpg"),
-    name: "Jorge Scherer",
-    role: "CEO · Jorge Scherer Fotógrafo",
-    text: "fiquei muito inspirado com esse curso que basicamente me abriu a mente para esse universo!!",
   },
 ];
 
@@ -521,7 +513,8 @@ function ConectAiIndex() {
                     <span className="cai-edition-bar" aria-hidden />
                     <span className="cai-edition-shine" aria-hidden />
                     <div className="cai-stage" aria-hidden>
-                      <StageFigure kind={ed.key} />
+                      <img className="cai-stage-photo" src={ed.photo} alt="" loading="lazy" draggable={false} />
+                      <span className="cai-stage-tint" aria-hidden />
                       <span className="cai-stage-live"><i /> No palco em {ed.day}</span>
                       <span className="cai-stage-glyph"><Glyph aria-hidden /></span>
                     </div>
@@ -592,7 +585,7 @@ function ConectAiIndex() {
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow">Como funciona o dia</span>
-              <h2 className="sb-h2 sb-h2-dark">Não é palestra. É você construindo, das 9h às 18h.</h2>
+              <h2 className="sb-h2 sb-h2-dark">Um dia inteiro para aplicar IA na sua operação.</h2>
               <p className="sb-lead">
                 Um dia inteiro e presencial. Você não fica assistindo: participa da montagem das
                 aplicações de IA para a sua realidade e sai com um plano na mão.
