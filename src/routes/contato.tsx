@@ -85,7 +85,7 @@ function ContatoPage() {
           <div className="ct2-aura" aria-hidden />
           <div className="ct2-wave" aria-hidden />
           <img className="ct2-shape ct2-shape-1" src={img("goable-4d.png")} alt="" aria-hidden draggable={false} />
-          <img className="ct2-shape ct2-shape-2" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
+          <img className="ct2-shape ct2-shape-2" src={img("goable-gradient-glass-9.webp")} alt="" aria-hidden draggable={false} />
           <img className="ct2-shape ct2-shape-3" src={img("goable-3d.png")} alt="" aria-hidden draggable={false} />
 
           <div className="ct2-hero-inner" data-reveal>
@@ -116,7 +116,7 @@ function ContatoPage() {
 
         {/* PASSO A PASSO */}
         <section className="ct2-steps-section">
-          <img className="ct2-step-shape" src={img("goable-gradient-glass-21.png")} alt="" aria-hidden draggable={false} />
+          <img className="ct2-step-shape" src={img("goable-gradient-glass-21.webp")} alt="" aria-hidden draggable={false} />
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow">Como vamos fazer</span>

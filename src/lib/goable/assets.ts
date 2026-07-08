@@ -13,7 +13,7 @@ export const brand = {
 };
 
 export const glass = {
-  gSymbol: asset("goable-glass-symbol-cutout.png"),
+  gSymbol: asset("goable-glass-symbol-cutout.webp"),
   conectWave: asset("goable-conect-ai-evento-tela.webp"),
 };
 
@@ -31,20 +31,20 @@ export const glass3d = {
 };
 
 export const gradientGlass = {
-  chain: asset("goable-gradient-glass-1.png"),
-  waveOrange: asset("goable-gradient-glass-2.png"),
-  spiralRed: asset("goable-gradient-glass-3.png"),
-  hookYellow: asset("goable-gradient-glass-4.png"),
-  archLime: asset("goable-gradient-glass-5.png"),
-  foldViolet: asset("goable-gradient-glass-6.png"),
-  slabGreen: asset("goable-gradient-glass-7.png"),
-  ribbonBlue: asset("goable-gradient-glass-8.png"),
-  loopIridescent: asset("goable-gradient-glass-9.png"),
-  foldBlue: asset("goable-gradient-glass-21.png"),
-  doubleCapsule: asset("goable-gradient-glass-22.png"),
-  amberDisc: asset("goable-gradient-glass-23.png"),
-  magentaSeal: asset("goable-gradient-glass-24.png"),
-  goldPetal: asset("goable-gradient-glass-25.png"),
+  chain: asset("goable-gradient-glass-1.webp"),
+  waveOrange: asset("goable-gradient-glass-2.webp"),
+  spiralRed: asset("goable-gradient-glass-3.webp"),
+  hookYellow: asset("goable-gradient-glass-4.webp"),
+  archLime: asset("goable-gradient-glass-5.webp"),
+  foldViolet: asset("goable-gradient-glass-6.webp"),
+  slabGreen: asset("goable-gradient-glass-7.webp"),
+  ribbonBlue: asset("goable-gradient-glass-8.webp"),
+  loopIridescent: asset("goable-gradient-glass-9.webp"),
+  foldBlue: asset("goable-gradient-glass-21.webp"),
+  doubleCapsule: asset("goable-gradient-glass-22.webp"),
+  amberDisc: asset("goable-gradient-glass-23.webp"),
+  magentaSeal: asset("goable-gradient-glass-24.webp"),
+  goldPetal: asset("goable-gradient-glass-25.webp"),
 };
 
 export const photos = {

@@ -455,7 +455,7 @@ function ConectAiIndex() {
           <div className="cai-grid" aria-hidden />
           <div className="cai-aura" aria-hidden />
           <div className="cai-wave" aria-hidden />
-          <img className="cai-shape cai-shape-1" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
+          <img className="cai-shape cai-shape-1" src={img("goable-gradient-glass-9.webp")} alt="" aria-hidden draggable={false} />
           <img className="cai-shape cai-shape-2" src={img("goable-4d.png")} alt="" aria-hidden draggable={false} />
           <NeuralMotif className="cai-neural" />
 

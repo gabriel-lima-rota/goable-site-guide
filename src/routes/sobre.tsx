@@ -325,7 +325,7 @@ function SobrePage() {
           <div className="sb-hero-grid" aria-hidden />
           <div className="sb-hero-aura" aria-hidden />
           <div className="sb-hero-wave" aria-hidden />
-          <img className="sb-hero-orb" src={img("goable-gradient-glass-9.png")} alt="" aria-hidden draggable={false} />
+          <img className="sb-hero-orb" src={img("goable-gradient-glass-9.webp")} alt="" aria-hidden draggable={false} />
           <div className="sb-hero-inner">
             <div className="sb-hero-copy" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark">Sobre a Goable AI</span>
