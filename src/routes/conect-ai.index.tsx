@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight, ChevronDown, Landmark, Stethoscope, TrendingUp } from "lucide-react";
+import { ArrowRight, Target, Blocks, Users, Compass, Linkedin, ArrowUpRight, ChevronDown, Landmark, Stethoscope, TrendingUp, Quote, Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -186,7 +186,62 @@ const deliverables: Array<[string, string, string]> = [
   ["06", "Roteiro de implementação", "Próximos passos estruturados, com prioridades e visão dos ganhos nos próximos 30, 60 e 90 dias."],
 ];
 
-const faces = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => img(`conect-face-${n}.jpg`));
+const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
+  {
+    photo: img("conect-face-1.jpg"),
+    name: "Lucas Arthur Schaelder",
+    role: "Mirasul",
+    text: "Agradeço imensamente pelo tratamento e cuidado do pessoal da organização. Gostei muito do evento dessa maneira mais dinâmica. Agradeço também o conhecimento transmitido, me ensinou muito e espero poder transmitir esse conhecimento da melhor maneira para a minha empresa.",
+  },
+  {
+    photo: img("conect-face-2.jpg"),
+    name: "Marcio (Vinicius)",
+    role: "Sócio administrador",
+    text: "soluções de negócios com inteligência artificial é uma realidade, queremos navegar nestes mares, obrigado por traduzir as minhas necessidades como empresa gerando esperança e ânimo para continuar gerando riqueza e agregando valor.",
+  },
+  {
+    photo: img("conect-face-3.jpg"),
+    name: "Diogo Frantz",
+    role: "Gerente Comercial",
+    text: "Obrigado pela oportunidade de fazer parte deste evento, deste seleto grupo, Edgar e sua equipe são profissionais e pessoas extraordinárias, acessíveis e disponíveis para achar a melhor solução de IA para cada necessidade.",
+  },
+  {
+    photo: img("conect-face-4.jpg"),
+    name: "Maylon Dias",
+    role: "STM Portaria Remota",
+    text: "Edgar Abreu, com sua nova inovação empresarial Goable AI, demonstrou grande conhecimento com a tecnologia de fácil acesso elevando o empresário ao futuro e gerando menor custo ao final com a melhor tecnologia.",
+  },
+  {
+    photo: img("conect-face-5.jpg"),
+    name: "Regis Dantas",
+    role: "Sócio Diretor · NX Educação",
+    text: "Parabéns ao Edgar e toda equipe da Goable que proporcionaram um ambiente de extremo aprendizado, colaboração, foi uma entrega fantástica, sem esconder o jogo e compartilhando conteúdo altamente aplicável.",
+  },
+  {
+    photo: img("conect-face-6.jpg"),
+    name: "Thêmis Loro",
+    role: "Founder · Loro Odontologia",
+    text: "Para nós, da área da saúde, a proposta do curso em usar a IA para administração e podermos dedicar mais tempo para nos dedicarmos aos pacientes vem para que colaborar muito com nosso dia a dia.",
+  },
+  {
+    photo: img("conect-face-7.jpg"),
+    name: "Valdecir Pressi",
+    role: "CFO · Asun Supermercados",
+    text: "Tendo a oportunidade de participar, aproveite. Raramente um evento transmite teoria e ja faz a prática ao vivo. A Goable AI fez de forma memorável. Parabéns Edgar, pela excelente condução.",
+  },
+  {
+    photo: img("conect-face-8.jpg"),
+    name: "Alam Casartelli",
+    role: "CEO, Sócio e Fundador",
+    text: "Fico feliz em ver meu amigo Edgar brilhando os olhos nesse novo empreendimento. Temos negócios e expertises que se complementam muito.",
+  },
+  {
+    photo: img("conect-face-9.jpg"),
+    name: "Jorge Scherer",
+    role: "CEO · Jorge Scherer Fotógrafo",
+    text: "fiquei muito inspirado com esse curso que basicamente me abriu a mente para esse universo!!",
+  },
+];
 
 const venueFacts = ["Porto Alegre · RS", "Dia completo, 9h às 18h", "100% presencial"];
 
@@ -562,40 +617,49 @@ function ConectAiIndex() {
           <span className="cai-flash cai-flash-3" aria-hidden />
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow sb-eyebrow-dark">Prova social</span>
-              <h2 className="sb-h2">A 1ª edição não terminou em aplauso. Terminou em NPS 9,71.</h2>
+              <span className="sb-eyebrow sb-eyebrow-dark">O que disseram os participantes</span>
+              <h2 className="sb-h2">Depoimentos autorizados da 1ª edição.</h2>
               <p className="sb-lead sb-lead-light">
-                Mais de 40 empresas, uma sala cheia de decisores e uma nota que fala por si.
+                Avaliações reais de quem participou. Selecionamos apenas as que vieram com
+                autorização explícita de publicação.
               </p>
             </div>
 
-            <div className="cai-faces" data-reveal>
-              {faces.map((src, i) => (
-                <span className="cai-face" style={{ animationDelay: `${(i % 5) * 0.55}s` }} key={src}>
-                  <img src={src} alt={`Participante da 1ª edição do Conect.AI ${i + 1}`} loading="lazy" />
-                </span>
+            <div className="cai-tst-grid">
+              {testimonials.map((t, i) => (
+                <article className="cai-tst" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }} key={t.name}>
+                  <Quote className="cai-tst-quote" aria-hidden />
+                  <p className="cai-tst-text">"{t.text}"</p>
+                  <div className="cai-tst-foot">
+                    <img className="cai-tst-photo" src={t.photo} alt={`Foto de ${t.name}`} loading="lazy" />
+                    <span className="cai-tst-who">
+                      <strong>{t.name}</strong>
+                      <em>{t.role}</em>
+                    </span>
+                    <span className="cai-tst-badge"><Star aria-hidden /> 10/10</span>
+                  </div>
+                </article>
               ))}
-              <span className="cai-face-more">+40 empresas</span>
             </div>
 
-            <div className="cai-testi" data-reveal>
-              <div className="cai-testi-who">
-                <span className="cai-testi-mono" aria-hidden>VP</span>
-                <span className="cai-testi-name">
-                  <strong>Valdecir Pressi</strong>
-                  <span>CFO · participante da 1ª edição</span>
-                </span>
-              </div>
-              <a
-                className="cai-testi-link"
-                href="https://www.linkedin.com/posts/valdecirpressi_goableai-conectai-cfo-ugcPost-7472818144198180864-4AvH/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Linkedin className="sb-ic" aria-hidden /> Ler o depoimento no LinkedIn
-                <ArrowUpRight className="sb-ic" aria-hidden />
-              </a>
-            </div>
+            <a
+              className="cai-linkedin"
+              data-reveal
+              href="https://www.linkedin.com/posts/valdecirpressi_goableai-conectai-cfo-ugcPost-7472818144198180864-4AvH/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="cai-linkedin-ic"><Linkedin aria-hidden /></span>
+              <span className="cai-linkedin-body">
+                <em>Destaque no LinkedIn</em>
+                <p>
+                  "Participei do <b>Conect.AI</b> da <b>Goable.AI</b> e saí com a clareza do que
+                  aplicar como CFO. Sistemas com IA deixaram de ser promessa e viraram plano de ação."
+                </p>
+                <strong>Valdecir Pressi · CFO · após a 1ª edição</strong>
+              </span>
+              <span className="cai-linkedin-cta">Ver no LinkedIn <ArrowUpRight aria-hidden /></span>
+            </a>
           </div>
         </section>
 
