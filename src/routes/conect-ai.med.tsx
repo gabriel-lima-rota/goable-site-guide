@@ -287,6 +287,39 @@ function FrontCard({ f, index }: { f: (typeof fronts)[number]; index: number }) 
   );
 }
 
+function AfterMovie() {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="med2-movie-frame" data-reveal>
+      {playing ? (
+        <video
+          className="med2-movie-video"
+          src={img("conectai-aftermovie.mp4")}
+          poster={img("conectai-aftermovie-poster.jpg")}
+          controls
+          autoPlay
+          playsInline
+        />
+      ) : (
+        <button type="button" className="med2-movie-poster" onClick={() => setPlaying(true)} aria-label="Assistir o aftermovie da 1ª edição">
+          <img src={img("conectai-aftermovie-poster.jpg")} alt="" loading="lazy" draggable={false} />
+          <span className="med2-movie-shade" aria-hidden />
+          <span className="med2-movie-top" aria-hidden>
+            <i className="med2-movie-chip"><b /> Aftermovie · 1ª edição</i>
+            <i className="med2-movie-dur">1:15</i>
+          </span>
+          <span className="med2-movie-play" aria-hidden>
+            <span className="med2-movie-ring" />
+            <span className="med2-movie-ring med2-movie-ring-2" />
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z" /></svg>
+          </span>
+          <span className="med2-movie-cta" aria-hidden>Dê o play e sinta a energia da sala</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 function MedPage() {
   const ref = useReveal();
 
@@ -394,6 +427,29 @@ function MedPage() {
             <div className="med2-quote" data-reveal>
               <p>"IA aplicada à medicina precisa partir da <b>rotina real</b>, não da ferramenta."</p>
               <span>Todos os exemplos do encontro são conectados a situações concretas de consultório.</span>
+            </div>
+          </div>
+        </section>
+
+        {/* AFTERMOVIE + ESCASSEZ */}
+        <section className="med2-movie">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Por dentro do evento</span>
+              <h2 className="sb-h2">Assista ao que a última turma <span className="med2-hl">viveu</span>.</h2>
+            </div>
+
+            <AfterMovie />
+
+            <div className="med2-scarcity" data-reveal>
+              <span className="med2-scarcity-badge"><i aria-hidden /> Vagas limitadas</span>
+              <p>
+                A 1ª edição <b>esgotou</b>. A turma do Conect.MED é reduzida e os convites são
+                confirmados por ordem de resposta: <b>pode esgotar a qualquer momento</b>.
+              </p>
+              <a className="med2-btn-primary med2-scarcity-btn" href={WHATSAPP} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden /> Garantir meu convite agora
+              </a>
             </div>
           </div>
         </section>
