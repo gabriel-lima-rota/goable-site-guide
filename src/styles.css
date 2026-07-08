@@ -13273,3 +13273,65 @@ button.med2-btn-primary {
     display: none;
   }
 }
+
+/* CONECT.MED — excelencia Unimed v3: FUNDO CLARO + logo no topo ----------- */
+.med2-unimed {
+  background:
+    radial-gradient(circle at 82% 2%, rgba(244, 121, 32, 0.1), transparent 40%),
+    radial-gradient(circle at 8% 100%, rgba(0, 153, 92, 0.1), transparent 42%),
+    #eef5f1 !important;
+}
+.med2-unimed-logo {
+  display: inline-flex;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 0.5rem 0.85rem;
+  box-shadow: 0 22px 54px -30px rgba(0, 89, 58, 0.5);
+  margin-bottom: 1.1rem;
+}
+.med2-unimed-logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+.med2-unimed-eyebrow {
+  color: var(--med-orange) !important;
+}
+.med2-unimed-h2 {
+  color: #063d2a !important;
+}
+.med2-unimed-hl {
+  background: linear-gradient(100deg, #00995c, #f47920 180%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-unimed-lead {
+  color: rgba(6, 61, 42, 0.7) !important;
+}
+.med2-x {
+  border: 1px solid rgba(0, 89, 58, 0.1);
+  background: #fff;
+  box-shadow: 0 30px 70px -55px rgba(0, 60, 40, 0.5);
+}
+.med2-x:hover {
+  border-color: rgba(244, 121, 32, 0.4);
+  box-shadow: 0 44px 96px -58px rgba(244, 121, 32, 0.5);
+}
+.med2-x::before {
+  background: linear-gradient(90deg, #00995c, #f47920);
+}
+.med2-x-num {
+  color: var(--med-orange);
+}
+.med2-x-num i {
+  color: var(--med-orange);
+}
+.med2-x-num i:first-child {
+  color: var(--med-orange);
+  opacity: 0.9;
+}
+.med2-x-label {
+  color: #0d4f66;
+  font-weight: 600;
+}

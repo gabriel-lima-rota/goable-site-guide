@@ -652,6 +652,9 @@ function MedPage() {
         <section className="med2-unimed">
           <div className="sb-inner">
             <div className="sb-head med2-unimed-head" data-reveal>
+              <span className="med2-unimed-logo">
+                <img src={img("logo-faculdade-unimed.svg")} alt="Faculdade Unimed" />
+              </span>
               <span className="sb-eyebrow med2-unimed-eyebrow">Quem realiza</span>
               <h2 className="sb-h2 med2-unimed-h2">
                 Você estará nas mãos de quem forma a saúde brasileira <span className="med2-unimed-hl">há 30 anos</span>.
