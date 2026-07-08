@@ -16621,7 +16621,7 @@ button.biz-btn-primary {
   margin: clamp(2.6rem, 5vw, 4rem) auto 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
+  gap: 0.9rem;
 }
 .gov-proof article {
   position: relative;
@@ -16630,10 +16630,12 @@ button.biz-btn-primary {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 1.2rem;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
     rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  padding: 1.25rem 1.4rem 1.15rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 18px 40px -18px rgba(0, 0, 0, 0.35);
+  padding: 1.55rem 1.5rem 1.45rem;
   backdrop-filter: blur(18px) saturate(1.08);
 }
 .gov-proof article::before {
@@ -16643,15 +16645,25 @@ button.biz-btn-primary {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #2f6bed, #d4af37, transparent);
-  opacity: 0.85;
+  background: linear-gradient(90deg, #2f6bed, #d4af37, transparent 85%);
+  opacity: 0.9;
+}
+.gov-proof article::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 28' preserveAspectRatio='none'%3E%3Cpath d='M0 20 h40 l10 -12 l10 24 l10 -24 l10 24 l10 -18 h100' fill='none' stroke='%232f6bed' stroke-width='1.5' opacity='0.35'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  pointer-events: none;
 }
 .gov-proof strong {
   display: block;
-  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-size: clamp(3.2rem, 5.5vw, 4.6rem);
   font-weight: 950;
-  line-height: 0.92;
-  letter-spacing: -0.045em;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
   background: linear-gradient(120deg, #fff, #cadcff);
   -webkit-background-clip: text;
@@ -16660,10 +16672,12 @@ button.biz-btn-primary {
 }
 .gov-proof span {
   display: block;
-  margin-top: 0.35rem;
-  color: rgba(247, 248, 255, 0.68);
-  font-size: 0.88rem;
+  margin-top: 0.45rem;
+  color: rgba(247, 248, 255, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
+
 
 /* Letreiro */
 .gov-marquee {
