@@ -10940,3 +10940,603 @@
     animation: none;
   }
 }
+/* ==========================================================================
+   CONECT.MED — med2-* (pagina de evento · Faculdade Unimed + Goable)
+   Cores oficiais: verde #00995C · laranja #F47920
+   ========================================================================== */
+.med2-page {
+  --med: #00995c;
+  --med-deep: #00593a;
+  --med-orange: #f47920;
+}
+
+/* HERO -------------------------------------------------------------------- */
+.med2-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(6.6rem, 9vw, 8.6rem) clamp(3rem, 5vw, 4.5rem);
+  background:
+    radial-gradient(circle at 82% 12%, rgba(0, 153, 92, 0.3), transparent 40%),
+    radial-gradient(circle at 10% 92%, rgba(244, 121, 32, 0.1), transparent 34%),
+    var(--sb-ink);
+}
+.med2-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 74%);
+  opacity: 0.5;
+  animation: goable-mesh-pan 26s linear infinite;
+}
+.med2-aura {
+  position: absolute;
+  top: -16%;
+  right: -8%;
+  width: min(740px, 72vw);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(244, 246, 250, 0.12), transparent 26%),
+    radial-gradient(circle at 60% 54%, rgba(0, 153, 92, 0.4), transparent 48%),
+    radial-gradient(circle at 32% 70%, rgba(244, 121, 32, 0.16), transparent 48%);
+  filter: blur(64px);
+  opacity: 0.75;
+  translate: calc(var(--sb-px, 0px) * 0.4) calc(var(--sb-py, 0px) * 0.4);
+  transition: translate 0.5s ease;
+  animation: goable-parallax-drift 18s ease-in-out infinite;
+}
+/* Linha de batimento cardiaco atravessando o hero */
+.med2-pulseline {
+  position: absolute;
+  inset: auto -10% 10% -10%;
+  height: 130px;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 130'><path d='M0 70 H210 L240 70 260 34 285 106 305 52 320 70 H520 L545 70 562 44 585 96 605 60 618 70 H900' fill='none' stroke='%2300995C' stroke-width='2' stroke-linejoin='round' stroke-linecap='round' opacity='0.85'/></svg>");
+  background-repeat: repeat-x;
+  background-size: 900px 130px;
+  filter: drop-shadow(0 0 14px rgba(0, 153, 92, 0.55));
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  animation: med2-ecg 9s linear infinite;
+}
+@keyframes med2-ecg {
+  to { background-position-x: -900px; }
+}
+
+.med2-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+.med2-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.med2-lockup-logo {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.85rem;
+  background: #fff;
+  padding: 0.4rem 0.7rem;
+  box-shadow: 0 14px 40px -18px rgba(0, 153, 92, 0.65);
+}
+.med2-lockup-logo img {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+.med2-lockup-text {
+  color: rgba(247, 248, 255, 0.72);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.med2-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.1rem;
+}
+.med2-chips i {
+  font-style: normal;
+  border: 1px solid rgba(0, 153, 92, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 153, 92, 0.14);
+  color: #7fe0b8;
+  padding: 0.34rem 0.72rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.med2-h1 {
+  margin: 1rem 0 0;
+  color: #fff;
+  font-size: clamp(3rem, 7.4vw, 5.6rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.med2-h1-dot {
+  color: var(--med);
+}
+.med2-sub {
+  margin: 0.6rem 0 0;
+  color: rgba(247, 248, 255, 0.9);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.med2-hl {
+  background: linear-gradient(100deg, #35d492, #f47920 160%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-desc {
+  margin: 1.1rem 0 0;
+  max-width: 36rem;
+  color: rgba(247, 248, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.med2-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+.med2-facts span {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(247, 248, 255, 0.82);
+  padding: 0.42rem 0.82rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+.med2-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.8rem;
+}
+.med2-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00b56d, #00995c);
+  color: #fff;
+  padding: 1.02rem 1.7rem;
+  font-size: 0.98rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 22px 48px -20px rgba(0, 153, 92, 0.85);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.med2-btn-primary svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.med2-btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 28px 60px -20px rgba(0, 153, 92, 0.95);
+}
+.med2-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  padding: 1.02rem 1.7rem;
+  font-size: 0.98rem;
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.med2-btn-ghost svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 0.3s ease;
+}
+.med2-btn-ghost:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 153, 92, 0.22);
+  border-color: rgba(127, 224, 184, 0.55);
+}
+.med2-btn-ghost:hover svg {
+  transform: translateX(3px);
+}
+
+.med2-hero-visual {
+  position: relative;
+}
+.med2-hero-photo {
+  position: relative;
+  border-radius: clamp(1.6rem, 3vw, 2.6rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 56px 150px -90px rgba(0, 0, 0, 0.94),
+    0 44px 130px -96px rgba(0, 153, 92, 0.75);
+  translate: calc(var(--sb-px, 0px) * 0.6) calc(var(--sb-py, 0px) * 0.6);
+  transition: translate 0.5s ease;
+}
+.med2-hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  filter: saturate(0.98) contrast(1.04);
+}
+.med2-hero-photo-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 10, 18, 0.05), rgba(7, 10, 18, 0.6)),
+    radial-gradient(circle at 80% 16%, rgba(0, 153, 92, 0.22), transparent 42%);
+}
+.med2-hero-badge {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 1.1rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06)),
+    rgba(13, 14, 30, 0.55);
+  padding: 0.75rem 0.95rem;
+  backdrop-filter: blur(22px);
+}
+.med2-hero-badge span {
+  display: block;
+  color: #7fe0b8;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.med2-hero-badge strong {
+  display: block;
+  margin-top: 0.25rem;
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+
+/* Indicadores */
+.med2-proof {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 2rem, 1200px);
+  margin: clamp(2.6rem, 5vw, 4rem) auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+.med2-proof article {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  padding: 1.25rem 1.4rem 1.15rem;
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+.med2-proof article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00995c, #f47920, transparent);
+  opacity: 0.85;
+}
+.med2-proof strong {
+  display: block;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #fff, #7fe0b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-proof span {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(247, 248, 255, 0.68);
+  font-size: 0.88rem;
+}
+
+/* Letreiro */
+.med2-marquee {
+  overflow: hidden;
+  background: var(--sb-ink);
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.95rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.med2-marquee-row {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: cai-marquee-scroll 30s linear infinite;
+}
+.med2-marquee-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-left: 2.2rem;
+  color: rgba(247, 248, 255, 0.56);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.med2-marquee-row span::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00995c, #f47920);
+  flex: none;
+}
+.med2-marquee:hover .med2-marquee-row {
+  animation-play-state: paused;
+}
+
+/* Cronometro (usado na Acao 5, ja definido) */
+.med2-count {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+.med2-count-unit {
+  min-width: 4.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  padding: 0.7rem 0.6rem 0.6rem;
+  backdrop-filter: blur(12px);
+}
+.med2-count-unit strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #fff, #7fe0b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-count-unit em {
+  display: block;
+  margin-top: 0.1rem;
+  font-style: normal;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .med2-grid, .med2-aura, .med2-pulseline, .med2-marquee-row {
+    animation: none;
+  }
+}
+@media (max-width: 1023px) {
+  .med2-hero-inner {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .med2-h1 {
+    font-size: clamp(2.6rem, 14vw, 3.6rem);
+  }
+  .med2-proof {
+    grid-template-columns: 1fr;
+  }
+  .med2-actions {
+    flex-direction: column;
+  }
+  .med2-btn-primary, .med2-btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+  .med2-count {
+    flex-wrap: wrap;
+  }
+}
+
+/* CONECT.MED — Acao 2: frentes de eficiencia ------------------------------ */
+.med2-eyebrow {
+  color: #7fe0b8;
+}
+.med2-fronts {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.8rem, 8vw, 7.4rem);
+  background:
+    radial-gradient(circle at 84% 6%, rgba(0, 153, 92, 0.14), transparent 36%),
+    var(--sb-ink-2);
+}
+.med2-front-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.med2-front {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 153, 92, 0.28);
+  border-radius: 1.6rem;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(0, 153, 92, 0.14), transparent 44%),
+    linear-gradient(160deg, #0d0f1c, #0a0b16);
+  box-shadow: 0 40px 100px -74px rgba(0, 153, 92, 0.6);
+  padding: 1.6rem 1.6rem 1.5rem;
+  transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+.med2-front:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 217, 130, 0.55);
+  box-shadow: 0 54px 120px -60px rgba(0, 153, 92, 0.75);
+}
+.med2-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00995c, #f47920, transparent);
+}
+.med2-front-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+.med2-front-num {
+  font-size: 1.5rem;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  background: linear-gradient(122deg, #35d492, #f47920 170%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-front-head h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.med2-front-context {
+  margin: 0.7rem 0 0;
+  color: rgba(247, 248, 255, 0.55);
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.med2-front-apps {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.med2-front-apps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: rgba(247, 248, 255, 0.82);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.med2-front-apps svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: none;
+  margin-top: 0.2rem;
+  color: #35d492;
+}
+.med2-front-result {
+  margin-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.9rem;
+}
+.med2-front-result em {
+  display: block;
+  font-style: normal;
+  color: #f4a05f;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.med2-front-result p {
+  margin: 0.35rem 0 0;
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.med2-quote {
+  margin-top: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, #00995c, #f47920) 1;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.3rem 1.5rem;
+}
+.med2-quote p {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 850;
+  letter-spacing: -0.015em;
+}
+.med2-quote b {
+  background: linear-gradient(100deg, #35d492, #f47920 170%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.med2-quote span {
+  display: block;
+  margin-top: 0.45rem;
+  color: rgba(247, 248, 255, 0.62);
+  font-size: 0.9rem;
+}
+@media (max-width: 1023px) {
+  .med2-front-grid {
+    grid-template-columns: 1fr;
+  }
+}
