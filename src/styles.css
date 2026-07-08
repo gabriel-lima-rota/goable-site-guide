@@ -19364,3 +19364,29 @@ button.gov-btn-primary {
 @media (max-width: 640px) {
   .gov-lockup-camila img { height: 22px; }
 }
+
+/* ==========================================================================
+   CONECT.MED — FIX DEFINITIVO dos numeros da prova (remove fantasma/duplicacao)
+   Uma unica regra final, alta especificidade, cobrindo strong e o span interno.
+   ========================================================================== */
+.med2-page .med2-proof article strong,
+.med2-page .med2-proof article strong span,
+.med2-page .med2-proof article strong * {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  letter-spacing: -0.02em !important;
+  filter: none !important;
+}
+.med2-page .med2-proof article strong {
+  display: block !important;
+  font-weight: 950 !important;
+  line-height: 0.95 !important;
+  font-variant-numeric: tabular-nums !important;
+  white-space: nowrap !important;
+  font-size: clamp(2.6rem, 5vw, 3.9rem) !important;
+}
