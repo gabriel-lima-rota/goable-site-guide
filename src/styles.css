@@ -19390,3 +19390,51 @@ button.gov-btn-primary {
   white-space: nowrap !important;
   font-size: clamp(2.6rem, 5vw, 3.9rem) !important;
 }
+
+/* CONECT.MED — bloco Resultados no estilo Sobre (parede de dados, cores MED) */
+.med2-results {
+  background:
+    radial-gradient(circle at 84% 4%, rgba(244, 121, 32, 0.08), transparent 38%),
+    #f2f8f5;
+  padding-block: clamp(4.2rem, 7vw, 6.4rem);
+}
+.med2-stat-bento .sb-stat {
+  grid-column: span 4;
+  border-color: rgba(0, 153, 92, 0.14);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(0, 153, 92, 0.08), transparent 42%),
+    linear-gradient(150deg, #ffffff, #f0faf5);
+  box-shadow: 0 30px 90px -78px rgba(0, 60, 40, 0.5);
+}
+.med2-stat-bento .sb-stat:hover {
+  transform: translateY(-5px);
+  border-color: rgba(244, 121, 32, 0.4);
+  box-shadow: 0 44px 96px -60px rgba(244, 121, 32, 0.5);
+}
+.med2-stat-bento .sb-stat::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  width: 2.4rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00995c, #f47920);
+}
+.med2-stat-bento .sb-stat-area {
+  color: #f47920;
+}
+.med2-stat-bento .sb-stat-num {
+  background: linear-gradient(122deg, #00995c 0%, #00593a 60%, #00995c 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+}
+@media (max-width: 900px) {
+  .med2-stat-bento .sb-stat { grid-column: span 6; }
+}
+@media (max-width: 620px) {
+  .med2-stat-bento .sb-stat { grid-column: span 12; }
+}
