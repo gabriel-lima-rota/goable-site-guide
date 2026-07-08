@@ -3,7 +3,6 @@ import { ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
-import { CTAButton } from "@/components/goable/CTAButton";
 
 export const Route = createFileRoute("/conect-ai/med")({
   head: () => ({
@@ -68,6 +67,40 @@ const fronts: Array<{ num: string; title: string; context: string; apps: string[
     apps: ["Controle financeiro e acompanhamento de indicadores", "Relatórios mensais automatizados", "Organização de cobranças e recorrências", "Visão de agenda, ocupação e produtividade", "Apoio à análise de custos e margem"],
     result: "Mais clareza para gerir o consultório com método e previsibilidade.",
   },
+];
+
+const immersion: Array<{ title: string; body: string; hands?: boolean }> = [
+  { title: "Boas-vindas e diagnóstico", body: "Mapeamento das principais rotinas, gargalos e oportunidades de aplicação de IA no seu consultório." },
+  { title: "Fundamentos de IA para médicos", body: "O que a IA já permite na prática médica e quais cuidados devem orientar o uso em saúde." },
+  { title: "Almoço e networking", body: "Encontro entre médicos, gestores de clínicas, docentes da Faculdade Unimed e especialistas em IA aplicada." },
+  { title: "Construção orientada", body: "Você põe a mão: aplicação prática dos conceitos em exemplos da rotina clínica, administrativa e de gestão. Não assiste, constrói.", hands: true },
+  { title: "Plano de implementação", body: "Definição dos próximos passos para aplicar IA com segurança, priorizando ganhos reais." },
+  { title: "Encerramento", body: "Certificado e orientação sobre a trilha de continuidade com a Faculdade Unimed." },
+];
+
+const included = [
+  "Dia completo no Instituto Caldeira, com almoço e networking",
+  "Imersão prática conduzida por especialistas",
+  "Construção orientada de aplicações de IA para a rotina médica",
+  "Diagnóstico e plano de implementação para o consultório",
+  "Certificado e trilha de continuidade com a Faculdade Unimed",
+];
+
+const unimedStats: Array<{ prefix?: string; value: number; unit?: string; label: string }> = [
+  { value: 30, unit: "anos", label: "de experiência" },
+  { prefix: "+de ", value: 470, unit: "mil", label: "alunos capacitados" },
+  { prefix: "+de ", value: 850, label: "turmas de pós-graduação" },
+  { prefix: "+de ", value: 1360, label: "turmas de curta duração e aperfeiçoamento" },
+  { prefix: "+de ", value: 1600, label: "projetos corporativos entregues" },
+];
+
+const takeaways: Array<[string, string, string]> = [
+  ["01", "Diagnóstico de oportunidades", "Mapeamento das rotinas do consultório com maior potencial de ganho: tarefas repetitivas, documentação, comunicação, gestão e faturamento."],
+  ["02", "Aplicações estruturadas ao vivo", "Construção orientada de exemplos práticos para apoiar atendimento, organização de informações, documentos e processos administrativos."],
+  ["03", "Plano de implementação", "Direcionamento sobre o que priorizar nos próximos 30, 60 e 90 dias, considerando ganho real, segurança e viabilidade operacional."],
+  ["04", "Governança, LGPD e sigilo médico", "Orientações para uso responsável de IA em saúde, com atenção a dados sensíveis, acesso, revisão humana e comunicação ética."],
+  ["05", "Assistente com contexto da prática médica", "Estruturação de um assistente de IA com linguagem, especialidade, protocolos e necessidades reais do consultório."],
+  ["06", "Materiais e continuidade", "Materiais de apoio e trilha de continuidade com a Faculdade Unimed para manter a aplicação prática após o evento."],
 ];
 
 function useReveal() {
@@ -299,15 +332,138 @@ function MedPage() {
           </div>
         </section>
 
-        {/* CTA FINAL (provisório, será substituído nas próximas ações) */}
-        <section className="sb-final">
-          <div className="sb-final-card" data-reveal>
-            <div className="sb-final-glow" aria-hidden />
-            <span className="sb-eyebrow sb-eyebrow-dark">Convites limitados</span>
-            <h2 className="sb-h2">Solicite a confirmação do seu convite.</h2>
-            <div className="sb-final-actions">
-              <CTAButton variant="primary" size="lg" href={WHATSAPP}>Responder pelo WhatsApp</CTAButton>
-              <CTAButton variant="glass" size="lg" to="/conect-ai">Ver as três edições</CTAButton>
+        {/* COMO FUNCIONA A IMERSÃO */}
+        <section className="med2-agenda" id="imersao">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow">Como funciona a imersão</span>
+              <h2 className="sb-h2 sb-h2-dark">Não é palestra. É o seu consultório na mesa, das 9h às 18h.</h2>
+              <p className="sb-lead">
+                Um dia inteiro e presencial no Instituto Caldeira. Você não fica assistindo: identifica
+                as oportunidades da sua prática e participa da construção das aplicações.
+              </p>
+            </div>
+
+            <div className="med2-timeline">
+              <span className="med2-timeline-rail" aria-hidden />
+              {immersion.map((s, i) => (
+                <div
+                  className={`med2-tl-step ${s.hands ? "is-hands" : ""}`}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                  key={s.title}
+                >
+                  <span className="med2-tl-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="med2-tl-dot" aria-hidden />
+                  <div className="med2-tl-card">
+                    {s.hands ? <span className="med2-tl-tag">Você põe a mão</span> : null}
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* O QUE VOCÊ LEVA DO DIA */}
+        <section className="med2-take">
+          <div className="sb-inner">
+            <div className="sb-head" data-reveal>
+              <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">Entregas da imersão</span>
+              <h2 className="sb-h2">O que você <span className="med2-hl">leva do dia</span>.</h2>
+              <p className="sb-lead sb-lead-light">
+                O objetivo não é apresentar uma visão genérica sobre IA. É organizar uma leitura
+                prática de como a tecnologia pode apoiar a rotina médica com método,
+                responsabilidade e utilidade.
+              </p>
+            </div>
+
+            <div className="med2-take-grid">
+              {takeaways.map(([num, title, body], i) => (
+                <article className="med2-take-card" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }} key={num}>
+                  <span className="med2-take-num">{num}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                  <span className="med2-take-pulse" aria-hidden />
+                </article>
+              ))}
+            </div>
+
+            <figure className="med2-photo-band" data-reveal>
+              <img src={img("combo-studios-558.webp")} alt="Construção orientada ao vivo na 1ª edição do Conect" loading="lazy" />
+              <figcaption>
+                <i aria-hidden /> Construção orientada, ao vivo · registro da 1ª edição do Conect
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* EXCELÊNCIA FACULDADE UNIMED */}
+        <section className="med2-unimed">
+          <div className="sb-inner">
+            <div className="med2-unimed-head" data-reveal>
+              <span className="med2-unimed-logo">
+                <img src={img("logo-faculdade-unimed.svg")} alt="Faculdade Unimed" />
+              </span>
+              <h2>A excelência da Faculdade Unimed em números</h2>
+              <p>Conheça os marcos da trajetória de quem realiza o Conect.MED no mercado de educação.</p>
+            </div>
+
+            <div className="med2-unimed-grid">
+              {unimedStats.map((s, i) => (
+                <article className="med2-unimed-card" data-reveal style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
+                  {s.prefix ? <em>{s.prefix.trim()}</em> : null}
+                  <strong>
+                    <CountUp value={s.value} />
+                    {s.unit ? <i>{s.unit}</i> : null}
+                  </strong>
+                  <span>{s.label}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONVITE: incluso + cortesia + cronometro */}
+        <section className="med2-enroll">
+          <div className="med2-enroll-card" data-reveal>
+            <div className="med2-enroll-glow" aria-hidden />
+            <span className="med2-enroll-cone med2-enroll-cone-l" aria-hidden />
+            <span className="med2-enroll-cone med2-enroll-cone-r" aria-hidden />
+
+            <div className="med2-enroll-grid">
+              <div className="med2-enroll-left">
+                <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">O que está incluso nessa experiência</span>
+                <ul className="med2-included">
+                  {included.map((item) => (
+                    <li key={item}><Check aria-hidden /> {item}</li>
+                  ))}
+                </ul>
+                <div className="med2-price">
+                  <em>Investimento · ingresso individual</em>
+                  <p><s>R$ 3.900</s> <strong>Cortesia por convite exclusivo</strong></p>
+                  <span>Mediante confirmação de disponibilidade · vagas limitadas · turma reduzida.</span>
+                </div>
+              </div>
+
+              <div className="med2-enroll-right">
+                <h2>Solicite a confirmação do seu convite.</h2>
+                <p>O Conect.MED começa em:</p>
+                <Countdown />
+                <a className="med2-btn-primary med2-btn-block" href={WHATSAPP} target="_blank" rel="noreferrer">
+                  <MessageCircle aria-hidden /> Responder pelo WhatsApp
+                </a>
+                <span className="med2-enroll-note">Convites limitados · confirmação por disponibilidade.</span>
+                <Link className="med2-enroll-alt" to="/conect-ai">Conhecer as três edições do Conect.AI <ArrowUpRight aria-hidden /></Link>
+              </div>
+            </div>
+
+            <div className="med2-enroll-foot" aria-hidden>
+              <span className="med2-lockup-logo med2-lockup-logo-sm">
+                <img src={img("logo-faculdade-unimed.svg")} alt="" />
+              </span>
+              <span>Realização Faculdade Unimed · em parceria com Goable AI</span>
             </div>
           </div>
         </section>
