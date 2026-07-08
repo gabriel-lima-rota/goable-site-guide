@@ -535,7 +535,7 @@ function MedPage() {
         <section className="med2-results">
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow med2-eyebrow-dark2">Resultados da 1ª edição</span>
+              <span className="sb-eyebrow">Resultados da 1ª edição</span>
               <h2 className="sb-h2 sb-h2-dark">Os números que a última turma deixou.</h2>
               <p className="sb-lead">
                 Avaliações reais de quem participou da 1ª edição do Conect, no Instituto Caldeira.
