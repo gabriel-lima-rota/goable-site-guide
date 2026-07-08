@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { AppShell } from "@/components/goable/AppShell";
@@ -206,6 +206,87 @@ function onHeroLeave(e: React.PointerEvent<HTMLElement>) {
   e.currentTarget.style.setProperty("--sb-py", "0px");
 }
 
+function IconEcg() {
+  return (
+    <svg viewBox="0 0 48 48" className="med2-fi" aria-hidden>
+      <rect className="med2-fi-frame" x="5" y="9" width="38" height="30" rx="7" />
+      <path className="med2-fi-ecg" d="M10 24 h6 l3 -7 5 14 4 -9 2 2 h8" />
+    </svg>
+  );
+}
+function IconDoc() {
+  return (
+    <svg viewBox="0 0 48 48" className="med2-fi" aria-hidden>
+      <path className="med2-fi-frame" d="M13 6 h16 l8 8 v28 h-24 z" />
+      <path className="med2-fi-frame" d="M29 6 v8 h8" />
+      <line className="med2-fi-line med2-fi-line-1" x1="18" y1="22" x2="34" y2="22" />
+      <line className="med2-fi-line med2-fi-line-2" x1="18" y1="28" x2="34" y2="28" />
+      <line className="med2-fi-line med2-fi-line-3" x1="18" y1="34" x2="28" y2="34" />
+    </svg>
+  );
+}
+function IconGrow() {
+  return (
+    <svg viewBox="0 0 48 48" className="med2-fi" aria-hidden>
+      <path className="med2-fi-frame" d="M8 8 v32 h32" />
+      <path className="med2-fi-grow" d="M12 34 l8 -8 6 4 12 -14" />
+      <path className="med2-fi-arrow" d="M32 15 h6 v6" />
+    </svg>
+  );
+}
+function IconGauge() {
+  return (
+    <svg viewBox="0 0 48 48" className="med2-fi" aria-hidden>
+      <path className="med2-fi-frame" d="M8 36 a16 16 0 1 1 32 0" />
+      <line className="med2-fi-frame" x1="10" y1="36" x2="38" y2="36" />
+      <g className="med2-fi-needle">
+        <line x1="24" y1="34" x2="24" y2="20" />
+        <circle cx="24" cy="34" r="2.4" />
+      </g>
+    </svg>
+  );
+}
+
+const frontIcons = [IconEcg, IconDoc, IconGrow, IconGauge];
+
+function FrontCard({ f, index }: { f: (typeof fronts)[number]; index: number }) {
+  const [open, setOpen] = useState(false);
+  const Icon = frontIcons[index];
+  return (
+    <article
+      className={`med2-front ${open ? "is-open" : ""}`}
+      data-reveal
+      style={{ transitionDelay: `${(index % 2) * 80}ms` }}
+      onClick={() => setOpen((v) => !v)}
+    >
+      <div className="med2-front-top">
+        <span className="med2-front-ic"><Icon /></span>
+        <div className="med2-front-titles">
+          <span className="med2-front-num">{f.num}</span>
+          <h3>{f.title}</h3>
+        </div>
+      </div>
+      <p className="med2-front-context">"{f.context}"</p>
+      <span className="med2-front-hint" aria-hidden>
+        {f.apps.length} aplicações possíveis <ChevronDown />
+      </span>
+      <div className="med2-front-appswrap">
+        <div>
+          <ul className="med2-front-apps">
+            {f.apps.map((a) => (
+              <li key={a}><Check aria-hidden /> {a}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="med2-front-result">
+        <em>Resultado esperado</em>
+        <p>{f.result}</p>
+      </div>
+    </article>
+  );
+}
+
 function MedPage() {
   const ref = useReveal();
 
@@ -297,33 +378,16 @@ function MedPage() {
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
               <span className="sb-eyebrow sb-eyebrow-dark med2-eyebrow">A oportunidade</span>
-              <h2 className="sb-h2">Onde a IA gera eficiência na <span className="med2-hl">rotina médica</span>.</h2>
+              <h2 className="sb-h2">A IA entra onde o consultório <span className="med2-hl">perde tempo</span>.</h2>
               <p className="sb-lead sb-lead-light">
-                A rotina médica envolve muito mais do que o atendimento. Agenda, prontuário,
-                documentação, convênios, faturamento e gestão consomem tempo relevante do médico e
-                da equipe. O Conect.MED mostra onde a IA entra com critério, segurança e utilidade
-                prática, respeitando a LGPD, o sigilo profissional e as diretrizes éticas da medicina.
+                Agenda, prontuário, convênios, faturamento e gestão consomem horas do médico e da
+                equipe. Quatro frentes, com critério, segurança e respeito à LGPD e ao sigilo.
               </p>
             </div>
 
             <div className="med2-front-grid">
               {fronts.map((f, i) => (
-                <article className="med2-front" data-reveal style={{ transitionDelay: `${(i % 2) * 80}ms` }} key={f.num}>
-                  <div className="med2-front-head">
-                    <span className="med2-front-num">{f.num}</span>
-                    <h3>{f.title}</h3>
-                  </div>
-                  <p className="med2-front-context">"{f.context}"</p>
-                  <ul className="med2-front-apps">
-                    {f.apps.map((a) => (
-                      <li key={a}><Check aria-hidden /> {a}</li>
-                    ))}
-                  </ul>
-                  <div className="med2-front-result">
-                    <em>Resultado esperado</em>
-                    <p>{f.result}</p>
-                  </div>
-                </article>
+                <FrontCard f={f} index={i} key={f.num} />
               ))}
             </div>
 
