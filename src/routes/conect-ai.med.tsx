@@ -748,7 +748,7 @@ function MedPage() {
             </div>
 
             <div className="med2-enroll-foot" aria-hidden>
-              <span>Pagamento seguro · vaga confirmada pelo nosso time</span>
+              <span>Sem pagamento agora · o nosso time confirma sua vaga e os próximos passos</span>
             </div>
           </div>
         </section>

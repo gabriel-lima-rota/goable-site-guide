@@ -13361,3 +13361,57 @@ button.med2-btn-primary {
   font-weight: 600;
   color: rgba(247, 248, 255, 0.7);
 }
+
+/* ==========================================================================
+   CONECT.MED — pente-fino mobile + ajustes finos
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Unimed 3 cols ja cai; aqui os textos longos nao apertam */
+  .med2-x-num { font-size: clamp(2.1rem, 6vw, 3rem); }
+}
+@media (max-width: 640px) {
+  /* iOS nao dá zoom no foco dos inputs */
+  .med2-form input { font-size: 16px; }
+
+  /* Hero */
+  .med2-hero { padding-block: 5.6rem 3rem; }
+  .med2-lockup-text { font-size: 0.62rem; letter-spacing: 0.1em; }
+  .med2-desc { font-size: 0.95rem; }
+  .med2-hero-visual-cracha { margin-top: 0.5rem; }
+  .med2-cracha { width: min(240px, 62%); }
+  .med2-proof article strong { font-size: clamp(2.6rem, 13vw, 3.6rem) !important; }
+
+  /* Frentes: icone e titulo nao competem por espaco */
+  .med2-front-ic { width: 3rem; height: 3rem; border-radius: 0.9rem; }
+  .med2-front-context { min-height: 0; }
+
+  /* Excelencia Unimed */
+  .med2-x { padding: 1.25rem 1.15rem; }
+  .med2-x-label { font-size: 0.84rem; }
+
+  /* Convite / preco */
+  .med2-enroll-card { padding: 1.4rem 1.2rem; }
+  .med2-enroll-right { padding: 1.3rem 1.1rem; }
+  .med2-price-value { font-size: clamp(2rem, 10vw, 2.6rem); }
+  .med2-count-unit { min-width: 3.7rem; padding: 0.6rem 0.4rem 0.55rem; }
+  .med2-count-unit strong { font-size: 1.35rem; }
+
+  /* Realizacao: empilha centralizado e some os separadores */
+  .med2-credits-inner { flex-direction: column; gap: 1.1rem; }
+  .med2-credit { flex-direction: column; text-align: center; gap: 0.35rem; }
+
+  /* Modal ocupa quase a tela */
+  .med2-modal { width: 100%; border-radius: 1.3rem; }
+
+  /* Timeline: numero e card respiram */
+  .med2-tl-card { padding: 1rem 1.1rem; }
+
+  /* Aftermovie: play e legenda proporcionais */
+  .med2-movie-play { width: 4.4rem; height: 4.4rem; }
+  .med2-movie-play svg { width: 1.7rem; height: 1.7rem; }
+}
+
+/* Ajuste fino: espacamento do lockup no hero em qualquer largura */
+.med2-lockup {
+  margin-bottom: 0.2rem;
+}
