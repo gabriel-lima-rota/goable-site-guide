@@ -177,13 +177,13 @@ const whyCards: Array<[typeof Target, string, string]> = [
   [Compass, "Direção, não hype", "No fim do dia você tem um plano e prioridades claras, não um monte de buzzword."],
 ];
 
-const deliverables: Array<[string, string, string]> = [
-  ["01", "Diagnóstico das oportunidades", "Um mapa dos principais pontos de perda: retrabalho, processos lentos, informação dispersa e rotinas que podem ganhar eficiência."],
-  ["02", "Mapa de aplicação por setor", "Leitura prática de onde a IA entra no seu contexto, seja licitação, consultório ou operação comercial."],
-  ["03", "Construção ao vivo", "Você participa da montagem de aplicações de IA na prática, com a sua operação na mesa."],
-  ["04", "Plano de automação", "Direcionamento sobre quais rotinas automatizar primeiro, com prioridade para ganho real e baixo risco."],
-  ["05", "Governança e segurança", "Orientações sobre LGPD, dados sensíveis, níveis de acesso e uso responsável da tecnologia."],
-  ["06", "Roteiro de implementação", "Próximos passos estruturados, com prioridades e visão dos ganhos nos próximos 30, 60 e 90 dias."],
+const agenda: Array<{ time: string; title: string; body: string; hands?: boolean }> = [
+  { time: "09h", title: "Boas-vindas e diagnóstico", body: "A gente mapeia junto, na sua frente, os gargalos e as oportunidades reais da sua operação." },
+  { time: "10h", title: "Fundamentos aplicados de IA", body: "O que a IA já resolve hoje no seu setor, sem tecniquês e com exemplos concretos." },
+  { time: "12h", title: "Almoço e networking", body: "Conexão com outros decisores e com os especialistas, na mesa, sem crachá de plateia." },
+  { time: "13h30", title: "Construção orientada, ao vivo", body: "Aqui você põe a mão: monta as aplicações de IA para a sua realidade, guiado passo a passo. Não assiste, constrói.", hands: true },
+  { time: "17h", title: "Plano de implementação", body: "Você organiza prioridades e sai com um roteiro claro para os próximos 30, 60 e 90 dias." },
+  { time: "18h", title: "Encerramento e continuidade", body: "Materiais de apoio e a trilha para seguir aplicando com a Goable depois do evento." },
 ];
 
 const testimonials: Array<{ photo: string; name: string; role: string; text: string }> = [
@@ -587,24 +587,35 @@ function ConectAiIndex() {
           </div>
         </section>
 
-        {/* O QUE VOCÊ LEVA */}
-        <section className="cai-deliver">
+        {/* COMO FUNCIONA O DIA (timeline) */}
+        <section className="cai-agenda">
           <div className="sb-inner">
             <div className="sb-head" data-reveal>
-              <span className="sb-eyebrow">As entregas</span>
-              <h2 className="sb-h2 sb-h2-dark">Você entra com dúvidas. Sai com um plano.</h2>
+              <span className="sb-eyebrow">Como funciona o dia</span>
+              <h2 className="sb-h2 sb-h2-dark">Não é palestra. É você construindo, das 9h às 18h.</h2>
               <p className="sb-lead">
-                Independente da edição, todo mundo sai do dia com as mesmas seis entregas na mão.
+                Um dia inteiro e presencial. Você não fica assistindo: participa da montagem das
+                aplicações de IA para a sua realidade e sai com um plano na mão.
               </p>
             </div>
-            <div className="cai-deliver-grid">
-              {deliverables.map(([num, title, body], i) => (
-                <article className="cai-deliver-card" data-reveal style={{ transitionDelay: `${(i % 3) * 70}ms` }} key={num}>
-                  <span className="cai-deliver-num">{num}</span>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                  <span className="cai-deliver-pulse" aria-hidden />
-                </article>
+
+            <div className="cai-timeline">
+              <span className="cai-timeline-rail" aria-hidden />
+              {agenda.map((s, i) => (
+                <div
+                  className={`cai-tl-step ${s.hands ? "is-hands" : ""}`}
+                  data-reveal
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                  key={s.time}
+                >
+                  <span className="cai-tl-time">{s.time}</span>
+                  <span className="cai-tl-dot" aria-hidden />
+                  <div className="cai-tl-card">
+                    {s.hands ? <span className="cai-tl-tag">Você põe a mão</span> : null}
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
